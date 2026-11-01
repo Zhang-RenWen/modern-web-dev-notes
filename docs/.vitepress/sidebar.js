@@ -1176,36 +1176,32 @@ export const sidebar = [
     "text": "新標準 ES2020 (ES11)",
     "items": [
       {
-        "text": "14-1 私有屬性和私有方法",
+        "text": "14-1 Promise allSettled",
         "link": "/14-1"
       },
       {
-        "text": "14-2 Promise allSettled",
+        "text": "14-2 String.prototype.matchAll()",
         "link": "/14-2"
       },
       {
-        "text": "14-3 String.prototype.matchAll()",
+        "text": "14-3 Operators-Optional chaining (?.)",
         "link": "/14-3"
       },
       {
-        "text": "14-4 Operators-Optional chaining (?.)",
+        "text": "14-4 動態 import",
         "link": "/14-4"
       },
       {
-        "text": "14-5 動態 import",
+        "text": "14-5 BigInt 類型",
         "link": "/14-5"
       },
       {
-        "text": "14-6 BigInt 類型",
+        "text": "14-6 絕對全域物件 globalThis",
         "link": "/14-6"
       },
       {
-        "text": "14-7 絕對全域物件 globalThis",
+        "text": "14-7 Nullish coalescing operator (??)",
         "link": "/14-7"
-      },
-      {
-        "text": "14-8 Nullish coalescing operator (??)",
-        "link": "/14-8"
       }
     ],
     "collapsed": true
@@ -1286,6 +1282,10 @@ export const sidebar = [
       {
         "text": "16-8 Class static initialization blocks",
         "link": "/16-8"
+      },
+      {
+        "text": "16-9 私有屬性和私有方法",
+        "link": "/16-9"
       }
     ],
     "collapsed": true
@@ -1324,6 +1324,108 @@ export const sidebar = [
       {
         "text": "17-8 Symbols as keys on weak collections",
         "link": "/17-8"
+      }
+    ],
+    "collapsed": true
+  },
+  {
+    "text": "新標準 ES2024 (ES15)",
+    "items": [
+      {
+        "text": "18-1 Object.groupBy() / Map.groupBy()",
+        "link": "/18-1"
+      },
+      {
+        "text": "18-2 Promise.withResolvers()",
+        "link": "/18-2"
+      },
+      {
+        "text": "18-3 String.prototype.isWellFormed() / toWellFormed()",
+        "link": "/18-3"
+      },
+      {
+        "text": "18-4 RegExp v 旗標",
+        "link": "/18-4"
+      },
+      {
+        "text": "18-5 可調整大小的 ArrayBuffer 與 transfer",
+        "link": "/18-5"
+      },
+      {
+        "text": "18-6 Atomics.waitAsync()",
+        "link": "/18-6"
+      }
+    ],
+    "collapsed": true
+  },
+  {
+    "text": "新標準 ES2025 (ES16)",
+    "items": [
+      {
+        "text": "19-1 Iterator helpers",
+        "link": "/19-1"
+      },
+      {
+        "text": "19-2 Set 新方法",
+        "link": "/19-2"
+      },
+      {
+        "text": "19-3 Import Attributes 與 JSON Modules",
+        "link": "/19-3"
+      },
+      {
+        "text": "19-4 Promise.try()",
+        "link": "/19-4"
+      },
+      {
+        "text": "19-5 RegExp.escape()",
+        "link": "/19-5"
+      },
+      {
+        "text": "19-6 RegExp 修飾符",
+        "link": "/19-6"
+      },
+      {
+        "text": "19-7 重複的命名匹配群組",
+        "link": "/19-7"
+      },
+      {
+        "text": "19-8 Float16Array 與 Math.f16round()",
+        "link": "/19-8"
+      }
+    ],
+    "collapsed": true
+  },
+  {
+    "text": "新標準 ES2026 (ES17)",
+    "items": [
+      {
+        "text": "20-1 Array.fromAsync()",
+        "link": "/20-1"
+      },
+      {
+        "text": "20-2 Error.isError()",
+        "link": "/20-2"
+      },
+      {
+        "text": "20-3 Math.sumPrecise()",
+        "link": "/20-3"
+      },
+      {
+        "text": "20-4 Uint8Array 與 Base64 / Hex 互轉",
+        "link": "/20-4"
+      },
+      {
+        "text": "20-5 Iterator.concat()",
+        "link": "/20-5"
+      },
+      {
+        "text": "20-6 JSON.parse() 取得原始文字",
+        "link": "/20-6"
+      },
+      {
+        "text": "20-7 Map.prototype.getOrInsert()（Upsert）",
+        "link": "/20-7"
       }
     ],
     "collapsed": true
