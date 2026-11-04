@@ -1,10 +1,10 @@
-# 21-11 工程化、測試與部署 {#21-11}
+# 模擬面試 11：工程化、測試與部署 {#interview-11}
 
 ::: info 新增（2026-11）
 對應職缺：Git／Git Flow（全部）、Webpack／Vite（台達電、國泰）、Jest／Cypress／單元測試（國泰、台達電）、Docker／K8s／CI/CD（台達電 3 個缺、國泰）、Storybook、Design System、Micro-Frontends、i18n。
 :::
 
-### Q1. Webpack 和 Vite 差在哪？ <Badge type="tip" text="高頻" /> {#21-11-1}
+### Q1. Webpack 和 Vite 差在哪？ <Badge type="tip" text="高頻" /> {#interview-11-1}
 
 ::: details 標準答案與過程
 | | Webpack | Vite |
@@ -20,7 +20,7 @@
 
 **相關筆記**：[1-6-8 webpack 前端知識點](./1-6-8.md)、[1-6-7 前端模組化發展](./1-6-7.md)
 
-### Q2. Tree Shaking 的條件是什麼？為什麼有時候沒效？ <Badge type="tip" text="高頻" /> {#21-11-2}
+### Q2. Tree Shaking 的條件是什麼？為什麼有時候沒效？ <Badge type="tip" text="高頻" /> {#interview-11-2}
 
 ::: details 標準答案與過程
 Tree Shaking 是靠 ESM 的**靜態結構**在建置時找出沒被使用的匯出並刪除。
@@ -33,9 +33,9 @@ Tree Shaking 是靠 ESM 的**靜態結構**在建置時找出沒被使用的匯�
 沒效的常見原因：套件只提供 CJS 版本；`import * as _ from 'lodash'` 後動態存取；模組頂層有副作用（修改全域、註冊 polyfill）；Babel 把 ESM 轉成 CJS（`modules: false` 沒設）。
 :::
 
-**相關筆記**：[1-6-8 webpack 和 Rollup](./1-6-8.md)、[21-3 Q13 ESM 與 CommonJS](./21-3.md#21-3-13)
+**相關筆記**：[1-6-8 webpack 和 Rollup](./1-6-8.md)、[模擬面試 3 Q13 ESM 與 CommonJS](./interview-3.md#interview-3-13)
 
-### Q3. Webpack 的 Loader 和 Plugin 差在哪？ <Badge type="tip" text="基礎" /> {#21-11-3}
+### Q3. Webpack 的 Loader 和 Plugin 差在哪？ <Badge type="tip" text="基礎" /> {#interview-11-3}
 
 ::: details 標準答案與過程
 - **Loader**：轉換「單一檔案」的內容，讓 Webpack 能理解非 JS 檔。由右到左（由下到上）串接執行。例：`ts-loader`、`css-loader`、`vue-loader`。
@@ -51,7 +51,7 @@ module.exports = function (source) {
 
 **相關筆記**：[1-6-8 撰寫 webpack loader／plugin](./1-6-8.md)
 
-### Q4. Monorepo 的優缺點？怎麼管？ <Badge type="tip" text="高頻" /> {#21-11-4}
+### Q4. Monorepo 的優缺點？怎麼管？ <Badge type="tip" text="高頻" /> {#interview-11-4}
 
 ::: details 標準答案與過程
 優點：共用元件與型別直接引用、跨套件修改一次提交、統一工具鏈與規範、重構容易。
@@ -73,7 +73,7 @@ packages/
 
 **相關筆記**：[1-6-9 前端專案化背後的專案組織設計](./1-6-9.md)
 
-### Q5. Git Flow 和 Trunk-based 怎麼選？merge 和 rebase 差在哪？ <Badge type="tip" text="高頻" /> {#21-11-5}
+### Q5. Git Flow 和 Trunk-based 怎麼選？merge 和 rebase 差在哪？ <Badge type="tip" text="高頻" /> {#interview-11-5}
 
 ::: details 標準答案與過程
 **分支策略**
@@ -92,7 +92,7 @@ packages/
 
 **相關筆記**：[1-7-2 Git 心智模型與團隊實務](./1-7-2.md)、[1-7-3 Git 情境速查](./1-7-3.md)
 
-### Q6. 前端測試怎麼規劃？什麼該測？ <Badge type="tip" text="高頻" /> {#21-11-6}
+### Q6. 前端測試怎麼規劃？什麼該測？ <Badge type="tip" text="高頻" /> {#interview-11-6}
 
 ::: details 標準答案與過程
 | 層級 | 工具 | 測什麼 | 比例 |
@@ -118,7 +118,7 @@ test('金額欄位輸入負數時顯示錯誤', async () => {
 ```
 :::
 
-### Q7. 前端的 CI/CD pipeline 會包含哪些步驟？ <Badge type="tip" text="高頻" /> {#21-11-7}
+### Q7. 前端的 CI/CD pipeline 會包含哪些步驟？ <Badge type="tip" text="高頻" /> {#interview-11-7}
 
 ::: details 標準答案與過程
 ```txt
@@ -137,7 +137,7 @@ PR 階段：install（npm ci）→ lint / type-check → unit test → build →
 
 **相關筆記**：[1-7-1 工程交付流程](./1-7-1.md#1-7-1-3)
 
-### Q8. 前端 SPA 怎麼用 Docker 部署？ <Badge type="tip" text="高頻" /> {#21-11-8}
+### Q8. 前端 SPA 怎麼用 Docker 部署？ <Badge type="tip" text="高頻" /> {#interview-11-8}
 
 ::: details 標準答案與過程
 用 multi-stage build：第一階段 build，第二階段只放靜態檔與 Nginx，映像檔小且不含原始碼與 node_modules。
@@ -177,9 +177,9 @@ server {
 除錯指令：`docker build -t web .`、`docker run -p 8080:80 web`、`docker logs <id>`、`docker exec -it <id> sh`。
 :::
 
-**相關筆記**：[1-7-5 Container：Docker 與 Kubernetes](./1-7-5.md)、[21-8 Q6 快取策略](./21-8.md#21-8-6)
+**相關筆記**：[1-7-5 Container：Docker 與 Kubernetes](./1-7-5.md)、[模擬面試 8 Q6 快取策略](./interview-8.md#interview-8-6)
 
-### Q9. Kubernetes 你需要知道哪些？ <Badge type="tip" text="基礎" /> {#21-11-9}
+### Q9. Kubernetes 你需要知道哪些？ <Badge type="tip" text="基礎" /> {#interview-11-9}
 
 **考點**：台達電「basic Kubernetes (reading yaml, running kubectl)」。
 
@@ -209,7 +209,7 @@ kubectl port-forward svc/web 8080:80 -n web
 
 **相關筆記**：[1-7-5 Container：Docker 與 Kubernetes](./1-7-5.md)
 
-### Q10. Micro-Frontends 有哪些做法？什麼時候該用？ <Badge type="warning" text="進階" /> {#21-11-10}
+### Q10. Micro-Frontends 有哪些做法？什麼時候該用？ <Badge type="warning" text="進階" /> {#interview-11-10}
 
 ::: details 標準答案與過程
 Micro-Frontends 是把大型前端依業務拆成可**獨立開發、獨立部署**的子應用，由一個 shell 組合起來。
@@ -229,7 +229,7 @@ Micro-Frontends 是把大型前端依業務拆成可**獨立開發、獨立部�
 
 **相關筆記**：[1-1-4 未來趨勢：Web components](./1-1-4.md)、[1-22-6 Strangler Pattern](./1-22-6.md#1-22-6-6)
 
-### Q11. 怎麼建立共用元件庫和 Design System？ <Badge type="tip" text="高頻" /> {#21-11-11}
+### Q11. 怎麼建立共用元件庫和 Design System？ <Badge type="tip" text="高頻" /> {#interview-11-11}
 
 ::: details 標準答案與過程
 1. **Design Tokens**：顏色、間距、字級、圓角定義成變數（CSS variables），和設計師在 Figma 同步。
@@ -243,7 +243,7 @@ Micro-Frontends 是把大型前端依業務拆成可**獨立開發、獨立部�
 
 **相關筆記**：[1-6-11 去框架化的前端架構](./1-6-11.md)、[1-6-12 高難度通用元件](./1-6-12.md#1-6-12-2)、[1-6-10 標準化工具管理團隊](./1-6-10.md)
 
-### Q12. i18n 要注意什麼？ <Badge type="tip" text="高頻" /> {#21-11-12}
+### Q12. i18n 要注意什麼？ <Badge type="tip" text="高頻" /> {#interview-11-12}
 
 ::: details 標準答案與過程
 1. **Key 管理**：用有語意的階層 key（`policy.detail.premium`），不要用中文原文當 key；缺字時 fallback 到預設語系並回報。
@@ -263,9 +263,9 @@ new Intl.RelativeTimeFormat('zh-TW', { numeric: 'auto' }).format(-1, 'day') // �
 8. **流程**：翻譯檔與 CMS／翻譯平台同步，CI 檢查缺漏的 key。
 :::
 
-**相關筆記**：[21-6 Q10 Next.js i18n](./21-6.md#21-6-10)
+**相關筆記**：[模擬面試 6 Q10 Next.js i18n](./interview-6.md#interview-6-10)
 
-### Q13. 線上出問題，你怎麼跨前後端排查？ <Badge type="tip" text="高頻" /> {#21-11-13}
+### Q13. 線上出問題，你怎麼跨前後端排查？ <Badge type="tip" text="高頻" /> {#interview-11-13}
 
 **考點**：台達電「production incident response — read logs, triage issues across frontend, backend, and infrastructure」。
 
@@ -288,7 +288,7 @@ curl -sv https://api.example.com/health
 
 **相關筆記**：[1-17-1 Linux 指令與排查](./1-17-1.md)、[1-7-6 Observability](./1-7-6.md#1-7-6-3)
 
-### Q14. 你怎麼使用 AI 工具開發？怎麼確保品質？ <Badge type="tip" text="基礎" /> {#21-11-14}
+### Q14. 你怎麼使用 AI 工具開發？怎麼確保品質？ <Badge type="tip" text="基礎" /> {#interview-11-14}
 
 **考點**：台達電明列「AI Fluency」。
 

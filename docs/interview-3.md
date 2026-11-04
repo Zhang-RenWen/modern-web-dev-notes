@@ -1,10 +1,10 @@
-# 21-3 JavaScript 核心 {#21-3}
+# 模擬面試 3：JavaScript 核心 {#interview-3}
 
 ::: info 新增（2026-11）
-所有職缺都要求熟悉 JavaScript（ES6+），這些是一面最常出現的觀念題。手寫實作題另見 [21-12](./21-12.md)。
+所有職缺都要求熟悉 JavaScript（ES6+），這些是一面最常出現的觀念題。手寫實作題另見 [模擬面試 12](./interview-12.md)。
 :::
 
-### Q1. JavaScript 有哪些型別？怎麼準確判斷？ <Badge type="tip" text="基礎" /> {#21-3-1}
+### Q1. JavaScript 有哪些型別？怎麼準確判斷？ <Badge type="tip" text="基礎" /> {#interview-3-1}
 
 ::: details 標準答案與過程
 - **原始型別（7 種）**：`string`、`number`、`bigint`、`boolean`、`undefined`、`symbol`、`null`。
@@ -29,7 +29,7 @@ typeOf(new Date())  // 'date'
 
 **相關筆記**：[1-2-4 高頻考點及基礎題庫](./1-2-4.md)
 
-### Q2. `==` 和 `===` 差在哪？ <Badge type="tip" text="基礎" /> {#21-3-2}
+### Q2. `==` 和 `===` 差在哪？ <Badge type="tip" text="基礎" /> {#interview-3-2}
 
 ::: details 標準答案與過程
 - `===` 不做型別轉換，型別不同直接 `false`。
@@ -42,7 +42,7 @@ typeOf(new Date())  // 'date'
 
 **相關筆記**：[3-3 物件的內建功能強化（Object.is）](./3-3.md)、[14-7 Nullish coalescing](./14-7.md)
 
-### Q3. `var`、`let`、`const` 差在哪？什麼是 TDZ？ <Badge type="tip" text="基礎" /> {#21-3-3}
+### Q3. `var`、`let`、`const` 差在哪？什麼是 TDZ？ <Badge type="tip" text="基礎" /> {#interview-3-3}
 
 ::: details 標準答案與過程
 | | var | let | const |
@@ -68,7 +68,7 @@ let b = 2
 
 **相關筆記**：[2-6 let 和 const 敘述](./2-6.md)、[9-1 變數宣告](./9-1.md)
 
-### Q4. 什麼是閉包？下面程式輸出什麼？ <Badge type="tip" text="高頻" /> {#21-3-4}
+### Q4. 什麼是閉包？下面程式輸出什麼？ <Badge type="tip" text="高頻" /> {#interview-3-4}
 
 ```js
 for (var i = 0; i < 3; i++) {
@@ -104,7 +104,7 @@ for (var i = 0; i < 3; i++) ((j) => setTimeout(() => console.log(j), 0))(i)
 
 **相關筆記**：[1-2-2 閉包](./1-2-2.md)、[1-2-8 JS／TS 面試核心](./1-2-8.md#1-2-8-2)
 
-### Q5. `this` 怎麼決定？ <Badge type="tip" text="高頻" /> {#21-3-5}
+### Q5. `this` 怎麼決定？ <Badge type="tip" text="高頻" /> {#interview-3-5}
 
 ::: details 解題思路
 `this` 在**呼叫時**決定（箭頭函式例外）。依優先順序背四條規則，再講箭頭函式。
@@ -137,7 +137,7 @@ obj.arrow()  // undefined（取外層模組頂層的 this，也就是 undefined�
 
 **相關筆記**：[1-2-1 this](./1-2-1.md)、[2-2 箭頭函式](./2-2.md)
 
-### Q6. 原型鏈是什麼？`new` 做了哪些事？ <Badge type="tip" text="高頻" /> {#21-3-6}
+### Q6. 原型鏈是什麼？`new` 做了哪些事？ <Badge type="tip" text="高頻" /> {#interview-3-6}
 
 ::: details 標準答案與過程
 每個物件有內部連結 `[[Prototype]]`（可用 `Object.getPrototypeOf` 取得），讀取屬性時找不到就沿著原型往上找，直到 `null`，這條鏈就是原型鏈。`class` 只是原型繼承的語法糖。
@@ -160,7 +160,7 @@ function myNew(Ctor, ...args) {
 
 **相關筆記**：[1-2-7 物件導向和原型鏈](./1-2-7.md)、[3-1 類別](./3-1.md)
 
-### Q7. Event Loop：下面程式輸出順序？ <Badge type="tip" text="高頻" /> {#21-3-7}
+### Q7. Event Loop：下面程式輸出順序？ <Badge type="tip" text="高頻" /> {#interview-3-7}
 
 ```js
 console.log('1')
@@ -196,7 +196,7 @@ console.log('7')
 
 **相關筆記**：[1-2-5 實作非同步流程（巨任務和微任務）](./1-2-5.md)、[1-2-8 JS 單執行緒的真相](./1-2-8.md#1-2-8-1)、[4-4 非同步函式](./4-4.md)
 
-### Q8. `Promise.all`、`allSettled`、`race`、`any` 差在哪？ <Badge type="tip" text="高頻" /> {#21-3-8}
+### Q8. `Promise.all`、`allSettled`、`race`、`any` 差在哪？ <Badge type="tip" text="高頻" /> {#interview-3-8}
 
 ::: details 標準答案與過程
 | 方法 | 何時 resolve | 何時 reject | 用途 |
@@ -217,7 +217,7 @@ await Promise.race([fetch('/api/quote'), timeout(3000)])
 
 **相關筆記**：[4-1 Promise](./4-1.md)、[14-1 Promise.allSettled](./14-1.md)、[15-2 Promise.any](./15-2.md)、[1-2-6 Promise 深入解析](./1-2-6.md)
 
-### Q9. 深拷貝和淺拷貝？怎麼做深拷貝？ <Badge type="tip" text="高頻" /> {#21-3-9}
+### Q9. 深拷貝和淺拷貝？怎麼做深拷貝？ <Badge type="tip" text="高頻" /> {#interview-3-9}
 
 ::: details 標準答案與過程
 - **淺拷貝**：只複製第一層，巢狀物件仍共用參考。`{ ...obj }`、`Object.assign`、`arr.slice()`。
@@ -229,12 +229,12 @@ await Promise.race([fetch('/api/quote'), timeout(3000)])
 | `JSON.parse(JSON.stringify(obj))` | 簡單 | 遺失 `undefined`、函式、Symbol；Date 變字串；循環參考會丟錯 |
 | 手寫遞迴 + WeakMap | 可客製 | 要自己處理各種型別 |
 
-實務：優先 `structuredClone`；框架狀態更新通常只需要「沿路徑淺拷貝」（不可變更新），不需要整棵深拷貝。手寫版本見 [21-12 Q3](./21-12.md#21-12-3)。
+實務：優先 `structuredClone`；框架狀態更新通常只需要「沿路徑淺拷貝」（不可變更新），不需要整棵深拷貝。手寫版本見 [模擬面試 12 Q3](./interview-12.md#interview-12-3)。
 :::
 
 **相關筆記**：[3-3 Object.assign](./3-3.md)、[2-4 展開運算子](./2-4.md)
 
-### Q10. 什麼情況會記憶體洩漏？怎麼確認？ <Badge type="tip" text="高頻" /> {#21-3-10}
+### Q10. 什麼情況會記憶體洩漏？怎麼確認？ <Badge type="tip" text="高頻" /> {#interview-3-10}
 
 ::: details 標準答案與過程
 GC 回收的條件是「從根（全域、呼叫堆疊）無法再存取到」，不是有沒有設成 null。
@@ -254,7 +254,7 @@ GC 回收的條件是「從根（全域、呼叫堆疊）無法再存取到」�
 
 **相關筆記**：[1-2-2 閉包（記憶體洩漏場景）](./1-2-2.md)、[1-6-12 Memory Leak 排查 SOP](./1-6-12.md#1-6-12-1)、[5-2 弱映射](./5-2.md)
 
-### Q11. 哪些陣列方法會改變原陣列？ <Badge type="tip" text="基礎" /> {#21-3-11}
+### Q11. 哪些陣列方法會改變原陣列？ <Badge type="tip" text="基礎" /> {#interview-3-11}
 
 ::: details 標準答案與過程
 - **會改原陣列**：`push`、`pop`、`shift`、`unshift`、`splice`、`sort`、`reverse`、`fill`、`copyWithin`。
@@ -270,7 +270,7 @@ const updated = list.with(2, { ...list[2], qty: 3 })     // 替換第 3 筆
 
 **相關筆記**：[17-1 toSorted](./17-1.md)、[17-3 with](./17-3.md)、[17-6 toSpliced](./17-6.md)
 
-### Q12. 為什麼 `0.1 + 0.2 !== 0.3`？金額怎麼算？ <Badge type="tip" text="基礎" /> {#21-3-12}
+### Q12. 為什麼 `0.1 + 0.2 !== 0.3`？金額怎麼算？ <Badge type="tip" text="基礎" /> {#interview-3-12}
 
 ::: details 標準答案與過程
 JavaScript 的 number 是 IEEE 754 雙精度浮點數，0.1、0.2 在二進位是無限循環小數，只能近似儲存，相加後是 `0.30000000000000004`。
@@ -287,7 +287,7 @@ JavaScript 的 number 是 IEEE 754 雙精度浮點數，0.1、0.2 在二進位�
 
 **相關筆記**：[7-1 數值（Number.EPSILON、安全整數）](./7-1.md)、[14-5 BigInt](./14-5.md)、[20-3 Math.sumPrecise](./20-3.md)
 
-### Q13. ES Module 和 CommonJS 差在哪？ <Badge type="tip" text="基礎" /> {#21-3-13}
+### Q13. ES Module 和 CommonJS 差在哪？ <Badge type="tip" text="基礎" /> {#interview-3-13}
 
 ::: details 標準答案與過程
 | | CommonJS | ES Module |
@@ -302,4 +302,4 @@ JavaScript 的 number 是 IEEE 754 雙精度浮點數，0.1、0.2 在二進位�
 Node.js 以 `package.json` 的 `"type": "module"` 或副檔名 `.mjs` / `.cjs` 區分。新專案用 ESM。
 :::
 
-**相關筆記**：[8-1 CommonJS](./8-1.md)、[8-2 JavaScript 模組](./8-2.md)、[1-6-7 前端模組化發展](./1-6-7.md)、[16-5 頂層 await](./16-5.md)
+**相關筆記**：[1-23-2 Node.js 模組系統（含瀏覽器只認 ESM）](./1-23-2.md#1-23-2-5)、[8-1 CommonJS](./8-1.md)、[8-2 JavaScript 模組](./8-2.md)、[1-6-7 前端模組化發展](./1-6-7.md)、[16-5 頂層 await](./16-5.md)

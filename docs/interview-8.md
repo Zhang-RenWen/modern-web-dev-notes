@@ -1,10 +1,10 @@
-# 21-8 效能優化 {#21-8}
+# 模擬面試 8：效能優化 {#interview-8}
 
 ::: info 新增（2026-11）
 對應職缺：Core Web Vitals、SSR／ISR 策略（台達電）、優化頁面操作流程與效能（台達電 DDC、VueJS）、前端效能與跨瀏覽器（國泰 DDT）。資深面試一定會追問「怎麼量測」與「改善了多少」。
 :::
 
-### Q1. Core Web Vitals 有哪些指標？標準是多少？怎麼改善？ <Badge type="tip" text="高頻" /> {#21-8-1}
+### Q1. Core Web Vitals 有哪些指標？標準是多少？怎麼改善？ <Badge type="tip" text="高頻" /> {#interview-8-1}
 
 ::: details 標準答案與過程
 | 指標 | 量什麼 | 良好 | 常見原因 | 改善 |
@@ -28,7 +28,7 @@ onLCP(report); onINP(report); onCLS(report)
 
 **相關筆記**：[1-4-1 效能監控和錯誤收集與回報](./1-4-1.md)、[1-4-5 HTTP-網頁效能入門](./1-4-5.md)
 
-### Q2. 使用者說頁面很慢，你怎麼排查？ <Badge type="tip" text="高頻" /> {#21-8-2}
+### Q2. 使用者說頁面很慢，你怎麼排查？ <Badge type="tip" text="高頻" /> {#interview-8-2}
 
 ::: details 解題思路
 不要直接列優化手段。先釐清「哪裡慢、對誰慢」，再分層量測，最後才改。
@@ -53,7 +53,7 @@ onLCP(report); onINP(report); onCLS(report)
 
 **相關筆記**：[1-3-3 瀏覽器渲染流程與除錯](./1-3-3.md)、[1-22-4 效能診斷順序](./1-22-4.md#1-22-4-5)
 
-### Q3. 前端要顯示 10 萬筆資料，怎麼做？ <Badge type="tip" text="高頻" /> {#21-8-3}
+### Q3. 前端要顯示 10 萬筆資料，怎麼做？ <Badge type="tip" text="高頻" /> {#interview-8-3}
 
 **考點**：職缺明列「大數據量渲染與複雜計算處理（Virtual Scroll、Web Worker、Wasm）」。
 
@@ -82,9 +82,9 @@ function visibleRange(scrollTop, viewportHeight, total) {
 7. **WASM**：適合「大量運算、輸出小」的工作；若每幀都要把大量資料搬回 JS，搬運成本可能抵銷優勢。
 :::
 
-**相關筆記**：[1-6-12 WASM 不一定比 JS 快](./1-6-12.md#1-6-12-4)、[1-15-1 渲染技術定位](./1-15-1.md#1-15-1-1)、[21-5 Q12](./21-5.md#21-5-12)
+**相關筆記**：[1-6-12 WASM 不一定比 JS 快](./1-6-12.md#1-6-12-4)、[1-15-1 渲染技術定位](./1-15-1.md#1-15-1-1)、[模擬面試 5 Q12](./interview-5.md#interview-5-12)
 
-### Q4. Bundle 太大怎麼辦？ <Badge type="tip" text="高頻" /> {#21-8-4}
+### Q4. Bundle 太大怎麼辦？ <Badge type="tip" text="高頻" /> {#interview-8-4}
 
 ::: details 標準答案與過程
 1. **分析**：`rollup-plugin-visualizer`、`webpack-bundle-analyzer` 找出最大的模組。
@@ -96,9 +96,9 @@ function visibleRange(scrollTop, viewportHeight, total) {
 7. **CI 效能預算**：bundle 超過門檻就失敗。
 :::
 
-**相關筆記**：[1-6-8 webpack 前端知識點](./1-6-8.md)、[14-4 動態 import](./14-4.md)、[21-11 Q2 Tree Shaking](./21-11.md#21-11-2)
+**相關筆記**：[1-6-8 webpack 前端知識點](./1-6-8.md)、[14-4 動態 import](./14-4.md)、[模擬面試 11 Q2 Tree Shaking](./interview-11.md#interview-11-2)
 
-### Q5. 圖片怎麼優化？ <Badge type="tip" text="基礎" /> {#21-8-5}
+### Q5. 圖片怎麼優化？ <Badge type="tip" text="基礎" /> {#interview-8-5}
 
 ::: details 標準答案與過程
 - **格式**：照片用 AVIF／WebP（`picture` 提供 fallback），圖示用 SVG。
@@ -111,7 +111,7 @@ function visibleRange(scrollTop, viewportHeight, total) {
 
 **相關筆記**：[1-4-2 效能最佳化（WebP、隨選載入）](./1-4-2.md)
 
-### Q6. 瀏覽器快取策略怎麼設計？ <Badge type="tip" text="高頻" /> {#21-8-6}
+### Q6. 瀏覽器快取策略怎麼設計？ <Badge type="tip" text="高頻" /> {#interview-8-6}
 
 ::: details 標準答案與過程
 | 類型 | Header | 行為 |
@@ -131,7 +131,7 @@ SPA 部署的標準配置：
 
 **相關筆記**：[1-4-4 快取政策](./1-4-4.md)
 
-### Q7. debounce 和 throttle 差在哪？各用在哪？ <Badge type="tip" text="高頻" /> {#21-8-7}
+### Q7. debounce 和 throttle 差在哪？各用在哪？ <Badge type="tip" text="高頻" /> {#interview-8-7}
 
 ::: details 標準答案與過程
 - **debounce（防抖）**：停止觸發一段時間後才執行最後一次。適合搜尋輸入、視窗 resize 結束後重算、自動儲存。
@@ -139,12 +139,12 @@ SPA 部署的標準配置：
 
 記法：debounce 是「等你講完再回」，throttle 是「每隔一秒回一次」。捲動判斷元素是否可見，現代做法改用 `IntersectionObserver`，不需要 throttle。
 
-手寫實作見 [21-12 Q1、Q2](./21-12.md#21-12-1)。
+手寫實作見 [模擬面試 12 Q1、Q2](./interview-12.md#interview-12-1)。
 :::
 
 **相關筆記**：[1-2-8 面試四題（Closure）](./1-2-8.md#1-2-8-2)
 
-### Q8. 怎麼讓 INP 變好？什麼是長任務？ <Badge type="warning" text="進階" /> {#21-8-8}
+### Q8. 怎麼讓 INP 變好？什麼是長任務？ <Badge type="warning" text="進階" /> {#interview-8-8}
 
 ::: details 標準答案與過程
 超過 50 毫秒的主執行緒任務就是長任務（Long Task），期間使用者的點擊、輸入都要等。INP 量的是「互動 → 處理 → 畫面更新」的總延遲。
@@ -173,7 +173,7 @@ async function processInChunks(items, handle) {
 
 **相關筆記**：[1-2-5 巨任務和微任務](./1-2-5.md)
 
-### Q9. SSR 一定比較快嗎？ <Badge type="warning" text="進階" /> {#21-8-9}
+### Q9. SSR 一定比較快嗎？ <Badge type="warning" text="進階" /> {#interview-8-9}
 
 ::: details 標準答案與過程
 不一定。SSR 讓 HTML 更早有內容（改善 FCP／LCP、SEO），但：
@@ -185,9 +185,9 @@ async function processInChunks(items, handle) {
 改善方式：靜態部分 SSG／ISR、串流 SSR（先送外框、資料好了再補）、Server Components 減少 client JS、邊緣快取。選擇看頁面性質，不是一律 SSR。
 :::
 
-**相關筆記**：[21-6 Q6 CSR／SSR／SSG／ISR](./21-6.md#21-6-6)、[1-6-5 同構應用（效能最佳化）](./1-6-5.md)
+**相關筆記**：[模擬面試 6 Q6 CSR／SSR／SSG／ISR](./interview-6.md#interview-6-6)、[1-6-5 同構應用（效能最佳化）](./1-6-5.md)
 
-### Q10. 前端怎麼做錯誤監控？ <Badge type="tip" text="基礎" /> {#21-8-10}
+### Q10. 前端怎麼做錯誤監控？ <Badge type="tip" text="基礎" /> {#interview-8-10}
 
 ::: details 標準答案與過程
 要收集的錯誤：

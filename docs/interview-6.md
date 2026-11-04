@@ -1,10 +1,10 @@
-# 21-6 React 與 Next.js {#21-6}
+# 模擬面試 6：React 與 Next.js {#interview-6}
 
 ::: info 新增（2026-11）
 對應職缺：台達電前端軟體開發（Next.js App Router + Pages Router、SSR／ISR、Core Web Vitals、i18n）、國泰（React + Angular）、台達全端。Next.js 改版頻繁，回答時說清楚你用的版本。
 :::
 
-### Q1. Hooks 為什麼不能放在條件或迴圈裡？ <Badge type="tip" text="高頻" /> {#21-6-1}
+### Q1. Hooks 為什麼不能放在條件或迴圈裡？ <Badge type="tip" text="高頻" /> {#interview-6-1}
 
 ::: details 解題思路
 從實作講：React 用「呼叫順序」對應每個 hook 的狀態，而不是名稱。
@@ -20,7 +20,7 @@ React 19 的 `use()` 是例外，可以在條件中呼叫。
 
 **相關筆記**：[1-6-4 顛覆性的 React hook](./1-6-4.md)
 
-### Q2. `useEffect` 的依賴陣列與 cleanup 怎麼運作？為什麼開發時會執行兩次？ <Badge type="tip" text="高頻" /> {#21-6-2}
+### Q2. `useEffect` 的依賴陣列與 cleanup 怎麼運作？為什麼開發時會執行兩次？ <Badge type="tip" text="高頻" /> {#interview-6-2}
 
 ::: details 標準答案與過程
 - 不給依賴：每次渲染後都執行。
@@ -45,7 +45,7 @@ useEffect(() => {
 
 **相關筆記**：[1-2-8 React 現代主線](./1-2-8.md#1-2-8-5)
 
-### Q3. 元件什麼時候會重新渲染？`memo`、`useMemo`、`useCallback` 何時用？ <Badge type="tip" text="高頻" /> {#21-6-3}
+### Q3. 元件什麼時候會重新渲染？`memo`、`useMemo`、`useCallback` 何時用？ <Badge type="tip" text="高頻" /> {#interview-6-3}
 
 ::: details 標準答案與過程
 重新渲染的原因：自己的 state 改變、父元件重新渲染（不論 props 有沒有變）、用到的 Context 值改變。
@@ -63,7 +63,7 @@ React Compiler（2025 年 10 月釋出 1.0）可以自動做記憶化，啟用�
 
 **相關筆記**：[1-4-3 架構與效能：React](./1-4-3.md)、[1-6-2 單向數據流架構 React 解析](./1-6-2.md)
 
-### Q4. 受控元件和非受控元件差在哪？ <Badge type="tip" text="基礎" /> {#21-6-4}
+### Q4. 受控元件和非受控元件差在哪？ <Badge type="tip" text="基礎" /> {#interview-6-4}
 
 ::: details 標準答案與過程
 - **受控**：表單值由 React state 決定（`value` + `onChange`），每次輸入都觸發渲染。容易做即時驗證、格式化、連動。
@@ -72,7 +72,7 @@ React Compiler（2025 年 10 月釋出 1.0）可以自動做記憶化，啟用�
 大型表單常用 React Hook Form：預設非受控以減少渲染，搭配 Zod 驗證。檔案上傳 `input type="file"` 一定是非受控。
 :::
 
-### Q5. React 的狀態管理怎麼選？ <Badge type="tip" text="高頻" /> {#21-6-5}
+### Q5. React 的狀態管理怎麼選？ <Badge type="tip" text="高頻" /> {#interview-6-5}
 
 ::: details 標準答案與過程
 先分類，再選工具：
@@ -91,7 +91,7 @@ Context 的坑：value 改變時所有消費者都重新渲染，不適合放高
 
 **相關筆記**：[1-6-3 React：資料狀態管理](./1-6-3.md)、[1-6-11 狀態先分類，再選工具](./1-6-11.md#1-6-11-3)
 
-### Q6. CSR、SSR、SSG、ISR 差在哪？怎麼選？ <Badge type="tip" text="高頻" /> {#21-6-6}
+### Q6. CSR、SSR、SSG、ISR 差在哪？怎麼選？ <Badge type="tip" text="高頻" /> {#interview-6-6}
 
 ::: details 標準答案與過程
 | 模式 | HTML 何時產生 | 優點 | 缺點 | 適合 |
@@ -108,7 +108,7 @@ Context 的坑：value 改變時所有消費者都重新渲染，不適合放高
 
 **相關筆記**：[1-6-5 同構應用](./1-6-5.md)、[1-6-12 SSR（Hydration）的登入](./1-6-12.md#1-6-12-7)
 
-### Q7. Next.js App Router 和 Pages Router 差在哪？ <Badge type="tip" text="高頻" /> {#21-6-7}
+### Q7. Next.js App Router 和 Pages Router 差在哪？ <Badge type="tip" text="高頻" /> {#interview-6-7}
 
 ::: details 標準答案與過程
 | | Pages Router（`pages/`） | App Router（`app/`） |
@@ -124,7 +124,7 @@ Context 的坑：value 改變時所有消費者都重新渲染，不適合放高
 兩者可以並存，方便漸進遷移。快取行為在 Next.js 各版本變動很大（例如 15 版起 `fetch` 預設不快取），面試時要說明以哪個版本為準。
 :::
 
-### Q8. Server Component 和 Client Component 怎麼分？ <Badge type="tip" text="高頻" /> {#21-6-8}
+### Q8. Server Component 和 Client Component 怎麼分？ <Badge type="tip" text="高頻" /> {#interview-6-8}
 
 ::: details 標準答案與過程
 - **Server Component**：只在伺服器執行，程式碼不送到瀏覽器。可直接存取資料庫、密鑰。不能用 state、effect、瀏覽器 API、事件處理器。
@@ -149,7 +149,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 傳給 Client Component 的 props 必須可序列化（不能傳函式，Server Actions 例外）。
 :::
 
-### Q9. Hydration mismatch 是什麼？怎麼解決？ <Badge type="tip" text="高頻" /> {#21-6-9}
+### Q9. Hydration mismatch 是什麼？怎麼解決？ <Badge type="tip" text="高頻" /> {#interview-6-9}
 
 ::: details 標準答案與過程
 Hydration 是瀏覽器拿到伺服器產生的 HTML 後，React 把事件與狀態接上去。如果客戶端第一次渲染的結果和伺服器 HTML 不同，就會出現 mismatch 警告，React 可能丟掉伺服器 HTML 重新渲染。
@@ -177,7 +177,7 @@ function LocalTime({ iso }: { iso: string }) {
 
 **相關筆記**：[1-6-5 同構應用（注水和脫水）](./1-6-5.md)
 
-### Q10. Next.js 怎麼做 i18n 與多區域部署？ <Badge type="warning" text="進階" /> {#21-6-10}
+### Q10. Next.js 怎麼做 i18n 與多區域部署？ <Badge type="warning" text="進階" /> {#interview-6-10}
 
 ::: details 標準答案與過程
 1. **路由**：App Router 用 `app/[locale]/...` 動態區段；Middleware 依 cookie、`Accept-Language` 導向預設語系。
@@ -189,9 +189,9 @@ function LocalTime({ iso }: { iso: string }) {
 7. **流程**：翻譯 key 的命名規範、缺字檢查放 CI、與 CMS 或翻譯平台串接。
 :::
 
-**相關筆記**：[21-11 Q12 i18n 實作](./21-11.md#21-11-12)
+**相關筆記**：[模擬面試 11 Q12 i18n 實作](./interview-11.md#interview-11-12)
 
-### Q11. React 18／19 新增了哪些重要能力？ <Badge type="tip" text="基礎" /> {#21-6-11}
+### Q11. React 18／19 新增了哪些重要能力？ <Badge type="tip" text="基礎" /> {#interview-6-11}
 
 ::: details 標準答案與過程
 **React 18**：
@@ -210,7 +210,7 @@ function LocalTime({ iso }: { iso: string }) {
 
 **相關筆記**：[1-6-4 React：新一代特性](./1-6-4.md)
 
-### Q12. React 和 Vue 的核心差異？ <Badge type="tip" text="高頻" /> {#21-6-12}
+### Q12. React 和 Vue 的核心差異？ <Badge type="tip" text="高頻" /> {#interview-6-12}
 
 ::: details 標準答案與過程
 | | React | Vue |

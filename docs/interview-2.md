@@ -1,10 +1,10 @@
-# 21-2 HTML、CSS、RWD 與相容性 {#21-2}
+# 模擬面試 2：HTML、CSS、RWD 與相容性 {#interview-2}
 
 ::: info 新增（2026-11）
 對應職缺關鍵字：RWD、跨瀏覽器相容、依設計稿切版、Sass／Tailwind。
 :::
 
-### Q1. 什麼是語意化 HTML？跟無障礙有什麼關係？ <Badge type="tip" text="基礎" /> {#21-2-1}
+### Q1. 什麼是語意化 HTML？跟無障礙有什麼關係？ <Badge type="tip" text="基礎" /> {#interview-2-1}
 
 **考點**：是否把 HTML 當結構而非排版工具；是否知道螢幕閱讀器、SEO 如何讀頁面。
 
@@ -26,7 +26,7 @@
 
 **相關筆記**：[1-1-1 HTML 語意化](./1-1-1.md)、[1-1-6 HTML 與無障礙](./1-1-6.md)
 
-### Q2. 什麼是 BFC？怎麼觸發？能解決什麼問題？ <Badge type="tip" text="高頻" /> {#21-2-2}
+### Q2. 什麼是 BFC？怎麼觸發？能解決什麼問題？ <Badge type="tip" text="高頻" /> {#interview-2-2}
 
 **考點**：版面配置的底層規則。
 
@@ -54,7 +54,7 @@ BFC（Block Formatting Context）是一塊獨立的區塊版面配置區域，�
 
 **相關筆記**：[1-1-2 版面配置（BFC）](./1-1-2.md)
 
-### Q3. 水平垂直置中有哪些方法？ <Badge type="tip" text="基礎" /> {#21-2-3}
+### Q3. 水平垂直置中有哪些方法？ <Badge type="tip" text="基礎" /> {#interview-2-3}
 
 **考點**：對 Flex、Grid、定位的熟悉度，以及能否依情境選擇。
 
@@ -79,7 +79,7 @@ BFC（Block Formatting Context）是一塊獨立的區塊版面配置區域，�
 
 **相關筆記**：[1-1-3 實現置中](./1-1-3.md)
 
-### Q4. Box Model 是什麼？`box-sizing` 兩個值差在哪？ <Badge type="tip" text="基礎" /> {#21-2-4}
+### Q4. Box Model 是什麼？`box-sizing` 兩個值差在哪？ <Badge type="tip" text="基礎" /> {#interview-2-4}
 
 ::: details 標準答案與過程
 每個元素由 content、padding、border、margin 組成。
@@ -98,7 +98,7 @@ margin 不包含在 `width` 內，相鄰區塊的垂直 margin 可能合併（�
 
 **相關筆記**：[1-1-7 CSS 精華觀念](./1-1-7.md)
 
-### Q5. Flex 與 Grid 怎麼選？`flex: 1` 代表什麼？ <Badge type="tip" text="高頻" /> {#21-2-5}
+### Q5. Flex 與 Grid 怎麼選？`flex: 1` 代表什麼？ <Badge type="tip" text="高頻" /> {#interview-2-5}
 
 ::: details 解題思路
 用「一維 vs 二維」和「內容決定 vs 版面決定」兩個角度回答，再解釋縮寫。
@@ -122,7 +122,7 @@ margin 不包含在 `width` 內，相鄰區塊的垂直 margin 可能合併（�
 
 **相關筆記**：[1-1-5 現代 CSS 特色](./1-1-5.md)、[1-1-7 CSS 精華觀念](./1-1-7.md)
 
-### Q6. CSS 優先權（specificity）怎麼算？ <Badge type="tip" text="基礎" /> {#21-2-6}
+### Q6. CSS 優先權（specificity）怎麼算？ <Badge type="tip" text="基礎" /> {#interview-2-6}
 
 ::: details 標準答案與過程
 比較順序：
@@ -139,7 +139,7 @@ margin 不包含在 `width` 內，相鄰區塊的垂直 margin 可能合併（�
 
 **相關筆記**：[1-1-7 CSS 精華觀念](./1-1-7.md#1-1-7-2)
 
-### Q7. 你怎麼做 RWD？百分比是相對於誰？ <Badge type="tip" text="高頻" /> {#21-2-7}
+### Q7. 你怎麼做 RWD？百分比是相對於誰？ <Badge type="tip" text="高頻" /> {#interview-2-7}
 
 **考點**：RWD 不只是 media query；是否懂相對單位。
 
@@ -174,7 +174,7 @@ margin 不包含在 `width` 內，相鄰區塊的垂直 margin 可能合併（�
 
 **相關筆記**：[1-1-5 現代 CSS 特色（含「% 相對於誰」）](./1-1-5.md)
 
-### Q8. z-index 設很大卻沒有蓋過去，為什麼？ <Badge type="warning" text="進階" /> {#21-2-8}
+### Q8. z-index 設很大卻沒有蓋過去，為什麼？ <Badge type="warning" text="進階" /> {#interview-2-8}
 
 ::: details 標準答案與過程
 z-index 只在**同一個層疊上下文（stacking context）**內比較。如果元素的祖先建立了新的層疊上下文，它再大也只能在祖先內部排序，無法超過祖先的兄弟。
@@ -186,7 +186,7 @@ z-index 只在**同一個層疊上下文（stacking context）**內比較。如�
 
 **相關筆記**：[1-1-7 CSS 精華觀念](./1-1-7.md#1-1-7-2)
 
-### Q9. Reflow 與 Repaint 差在哪？怎麼寫出不卡的動畫？ <Badge type="tip" text="高頻" /> {#21-2-9}
+### Q9. Reflow 與 Repaint 差在哪？怎麼寫出不卡的動畫？ <Badge type="tip" text="高頻" /> {#interview-2-9}
 
 ::: details 標準答案與過程
 - **Reflow（Layout）**：幾何資訊改變（寬高、位置、字級、增刪 DOM），要重新計算版面，成本最高，且可能影響整棵樹。
@@ -211,7 +211,7 @@ items.forEach((el, i) => { el.style.height = heights[i] + 10 + 'px' })
 
 **相關筆記**：[1-3-3 瀏覽器渲染流程與除錯](./1-3-3.md)、[1-4-2 效能最佳化](./1-4-2.md)
 
-### Q10. 跨瀏覽器相容問題你怎麼處理？ <Badge type="tip" text="高頻" /> {#21-2-10}
+### Q10. 跨瀏覽器相容問題你怎麼處理？ <Badge type="tip" text="高頻" /> {#interview-2-10}
 
 **考點**：有沒有系統化的方法，而不是遇到才查。
 

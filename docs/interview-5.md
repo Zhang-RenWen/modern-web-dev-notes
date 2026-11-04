@@ -1,10 +1,10 @@
-# 21-5 Vue {#21-5}
+# 模擬面試 5：Vue {#interview-5}
 
 ::: info 新增（2026-11）
 對應職缺：凱基人壽（Vue）、台達電 VueJS（Vuex、Vue Router、共用模組）、國泰 DDT、台達全端（Vue 3 或 React）。
 :::
 
-### Q1. Vue 2 和 Vue 3 的響應式原理差在哪？ <Badge type="tip" text="高頻" /> {#21-5-1}
+### Q1. Vue 2 和 Vue 3 的響應式原理差在哪？ <Badge type="tip" text="高頻" /> {#interview-5-1}
 
 ::: details 解題思路
 分「怎麼攔截」和「怎麼追蹤依賴」兩層。再講 Vue 2 的限制如何被 Proxy 解決。
@@ -52,7 +52,7 @@ function effect(fn) { activeEffect = fn; fn(); activeEffect = null }
 
 **相關筆記**：[1-6-1 響應式架構設計](./1-6-1.md)、[6-1 代理器初探](./6-1.md)、[5-2 弱映射](./5-2.md)
 
-### Q2. `ref` 和 `reactive` 怎麼選？ <Badge type="tip" text="高頻" /> {#21-5-2}
+### Q2. `ref` 和 `reactive` 怎麼選？ <Badge type="tip" text="高頻" /> {#interview-5-2}
 
 ::: details 標準答案與過程
 - `reactive`：只接受物件，回傳 Proxy。**解構或整個替換會失去響應性**。
@@ -70,7 +70,7 @@ list.value = await fetchList() // ✅ 整個替換沒問題
 Vue 官方建議以 `ref` 為主；要解構 reactive 用 `toRefs`。大型且不需深層追蹤的資料（圖表資料、大型列表）用 `shallowRef` 減少代理成本。
 :::
 
-### Q3. `computed`、`watch`、`watchEffect` 差在哪？ <Badge type="tip" text="高頻" /> {#21-5-3}
+### Q3. `computed`、`watch`、`watchEffect` 差在哪？ <Badge type="tip" text="高頻" /> {#interview-5-3}
 
 ::: details 標準答案與過程
 | | computed | watch | watchEffect |
@@ -86,7 +86,7 @@ Vue 官方建議以 `ref` 為主；要解構 reactive 用 `toRefs`。大型且�
 
 **相關筆記**：[1-6-11 Source Data 與 Derived Data 分離](./1-6-11.md#1-6-11-1)
 
-### Q4. 父子元件的生命週期執行順序？ <Badge type="tip" text="基礎" /> {#21-5-4}
+### Q4. 父子元件的生命週期執行順序？ <Badge type="tip" text="基礎" /> {#interview-5-4}
 
 ::: details 標準答案與過程
 Composition API 的 hooks：`setup` → `onBeforeMount` → `onMounted` → `onBeforeUpdate` → `onUpdated` → `onBeforeUnmount` → `onUnmounted`（另有 `onActivated` / `onDeactivated` 給 KeepAlive）。
@@ -98,7 +98,7 @@ Composition API 的 hooks：`setup` → `onBeforeMount` → `onMounted` → `onB
 實務：需要 DOM 的操作放 `onMounted`；計時器、事件監聽、第三方實例在 `onUnmounted` 清掉；資料請求可在 `setup` 直接發，不必等 mounted。
 :::
 
-### Q5. 元件之間有哪些通訊方式？ <Badge type="tip" text="高頻" /> {#21-5-5}
+### Q5. 元件之間有哪些通訊方式？ <Badge type="tip" text="高頻" /> {#interview-5-5}
 
 ::: details 標準答案與過程
 | 關係 | 方式 |
@@ -115,7 +115,7 @@ Composition API 的 hooks：`setup` → `onBeforeMount` → `onMounted` → `onB
 
 **相關筆記**：[1-6-2 元件通訊和封裝](./1-6-2.md)
 
-### Q6. `v-if` 與 `v-show` 差在哪？`v-for` 為什麼要 `key`？ <Badge type="tip" text="基礎" /> {#21-5-6}
+### Q6. `v-if` 與 `v-show` 差在哪？`v-for` 為什麼要 `key`？ <Badge type="tip" text="基礎" /> {#interview-5-6}
 
 ::: details 標準答案與過程
 - `v-if`：條件為假時不渲染，切換時會建立／銷毀元件（觸發生命週期）。初始成本低、切換成本高。
@@ -128,7 +128,7 @@ Composition API 的 hooks：`setup` → `onBeforeMount` → `onMounted` → `onB
 
 **相關筆記**：[1-6-2 不是每次加上 Key 都能效能最佳化](./1-6-2.md)、[1-4-3 Vue 3 動靜結合的 DOM diff](./1-4-3.md)
 
-### Q7. `nextTick` 是什麼？原理是？ <Badge type="tip" text="高頻" /> {#21-5-7}
+### Q7. `nextTick` 是什麼？原理是？ <Badge type="tip" text="高頻" /> {#interview-5-7}
 
 ::: details 標準答案與過程
 Vue 更新 DOM 是**非同步批次**的：同一個 tick 內多次改資料，只會排一次渲染任務。所以改完資料立刻讀 DOM，拿到的是舊的。`nextTick` 讓你在這次 DOM 更新完成後執行程式。
@@ -142,9 +142,9 @@ inputRef.value.focus() // DOM 已經出現
 ```
 :::
 
-**相關筆記**：[1-2-5 巨任務和微任務](./1-2-5.md)、[21-3 Q7 Event Loop](./21-3.md#21-3-7)
+**相關筆記**：[1-2-5 巨任務和微任務](./1-2-5.md)、[模擬面試 3 Q7 Event Loop](./interview-3.md#interview-3-7)
 
-### Q8. Vuex 和 Pinia 差在哪？什麼資料該放 store？ <Badge type="tip" text="高頻" /> {#21-5-8}
+### Q8. Vuex 和 Pinia 差在哪？什麼資料該放 store？ <Badge type="tip" text="高頻" /> {#interview-5-8}
 
 ::: details 標準答案與過程
 | | Vuex | Pinia |
@@ -165,7 +165,7 @@ inputRef.value.focus() // DOM 已經出現
 
 **相關筆記**：[1-6-11 狀態先分類，再選工具](./1-6-11.md#1-6-11-3)、[1-6-3 資料狀態管理](./1-6-3.md)
 
-### Q9. 怎麼用 Vue Router 做權限控管與動態路由？ <Badge type="tip" text="高頻" /> {#21-5-9}
+### Q9. 怎麼用 Vue Router 做權限控管與動態路由？ <Badge type="tip" text="高頻" /> {#interview-5-9}
 
 ::: details 解題思路
 權限分兩層：**能不能看到入口**（選單）與**能不能進入**（路由守衛）。最後強調真正的權限在後端。
@@ -202,7 +202,7 @@ router.beforeEach(async (to) => {
 
 **相關筆記**：[1-6-12 Vue Router 4 動態路由 + 動態 import](./1-6-12.md#1-6-12-8)、[1-19-5 權限模型](./1-19-5.md#1-19-5-2)
 
-### Q10. `KeepAlive` 是什麼？有什麼坑？ <Badge type="tip" text="基礎" /> {#21-5-10}
+### Q10. `KeepAlive` 是什麼？有什麼坑？ <Badge type="tip" text="基礎" /> {#interview-5-10}
 
 ::: details 標準答案與過程
 `KeepAlive` 快取被切走的元件實例，切回來時不重新建立，保留表單輸入、捲動位置等狀態。可用 `include` / `exclude` / `max`（LRU 淘汰）控制。
@@ -216,7 +216,7 @@ router.beforeEach(async (to) => {
 4. 不設 `max` 可能累積大量實例造成記憶體上升。
 :::
 
-### Q11. Composition API 比 Options API 好在哪？怎麼設計 Composable？ <Badge type="tip" text="高頻" /> {#21-5-11}
+### Q11. Composition API 比 Options API 好在哪？怎麼設計 Composable？ <Badge type="tip" text="高頻" /> {#interview-5-11}
 
 ::: details 標準答案與過程
 Options API 依「選項類型」組織（data、methods、computed），一個功能的程式碼散在各處；Composition API 依「功能」組織，能抽成 composable 重用，型別推導也比較好。Mixin 的問題（命名衝突、來源不明）也一併解決。
@@ -256,7 +256,7 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>) {
 ```
 :::
 
-### Q12. 大量資料的 Vue 頁面怎麼優化？ <Badge type="warning" text="進階" /> {#21-5-12}
+### Q12. 大量資料的 Vue 頁面怎麼優化？ <Badge type="warning" text="進階" /> {#interview-5-12}
 
 ::: details 標準答案與過程
 先量測（Vue DevTools Performance、Chrome Performance），確認瓶頸在渲染、響應式代理還是計算。
@@ -273,4 +273,4 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>) {
 Vue 3 編譯器本身有靜態提升與 Patch Flags，只 diff 動態節點，所以模板寫法盡量讓靜態部分保持靜態。
 :::
 
-**相關筆記**：[1-4-3 Vue 3 動靜結合的 DOM diff](./1-4-3.md)、[21-8 效能優化](./21-8.md)
+**相關筆記**：[1-4-3 Vue 3 動靜結合的 DOM diff](./1-4-3.md)、[模擬面試 8 效能優化](./interview-8.md)

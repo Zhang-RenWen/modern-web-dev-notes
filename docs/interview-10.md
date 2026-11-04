@@ -1,10 +1,10 @@
-# 21-10 前端資安 {#21-10}
+# 模擬面試 10：前端資安 {#interview-10}
 
 ::: info 新增（2026-11）
 對應職缺：「Attention to security」（台達電）、金融業職缺普遍重視。前端資安題的核心是：知道前端能擋什麼、不能擋什麼。
 :::
 
-### Q1. XSS 有哪幾種？怎麼防？ <Badge type="tip" text="高頻" /> {#21-10-1}
+### Q1. XSS 有哪幾種？怎麼防？ <Badge type="tip" text="高頻" /> {#interview-10-1}
 
 ::: details 標準答案與過程
 XSS 是攻擊者讓惡意腳本在受害者的瀏覽器、以網站的身分執行。
@@ -26,7 +26,7 @@ XSS 是攻擊者讓惡意腳本在受害者的瀏覽器、以網站的身分執�
 
 **相關筆記**：[1-19-1 資安實作建議](./1-19-1.md)、[1-19-7 HTTP Security Headers](./1-19-7.md)
 
-### Q2. CSRF 是什麼？SameSite 怎麼幫忙？ <Badge type="tip" text="高頻" /> {#21-10-2}
+### Q2. CSRF 是什麼？SameSite 怎麼幫忙？ <Badge type="tip" text="高頻" /> {#interview-10-2}
 
 ::: details 標準答案與過程
 CSRF 是攻擊者讓已登入的使用者，在不知情下從**別的網站**對你的網站發出請求；因為瀏覽器會自動帶 cookie，伺服器以為是本人操作。
@@ -44,7 +44,7 @@ CORS 不能防 CSRF：簡單請求（form POST）不會觸發 preflight，請求
 
 **相關筆記**：[1-19-6 寫入 API 防護（CSRF）](./1-19-6.md#1-19-6-1)
 
-### Q3. CSP 是什麼？怎麼導入不會把網站弄壞？ <Badge type="warning" text="進階" /> {#21-10-3}
+### Q3. CSP 是什麼？怎麼導入不會把網站弄壞？ <Badge type="warning" text="進階" /> {#interview-10-3}
 
 ::: details 標準答案與過程
 Content-Security-Policy 用回應標頭告訴瀏覽器「哪些來源的資源可以載入或執行」。
@@ -73,7 +73,7 @@ Content-Security-Policy:
 
 **相關筆記**：[1-19-7 傳輸層與 HTTP Security Headers](./1-19-7.md)
 
-### Q4. 前端可以防止使用者竄改資料或繞過權限嗎？ <Badge type="tip" text="高頻" /> {#21-10-4}
+### Q4. 前端可以防止使用者竄改資料或繞過權限嗎？ <Badge type="tip" text="高頻" /> {#interview-10-4}
 
 ::: details 標準答案與過程
 不行。前端程式碼與請求都在使用者手上，DevTools 可以改 payload、改 JS、直接呼叫 API。前端的檢查（隱藏按鈕、禁用欄位、表單驗證）只是 **UX**，不是防線。
@@ -90,7 +90,7 @@ Content-Security-Policy:
 
 **相關筆記**：[1-19-3 資安五條底層原則](./1-19-3.md#1-19-3-1)、[1-19-6 寫入 API 防護與資料遮罩](./1-19-6.md)
 
-### Q5. 點擊劫持（Clickjacking）是什麼？ <Badge type="tip" text="基礎" /> {#21-10-5}
+### Q5. 點擊劫持（Clickjacking）是什麼？ <Badge type="tip" text="基礎" /> {#interview-10-5}
 
 ::: details 標準答案與過程
 攻擊者把你的網站放進透明 `iframe`，疊在誘騙用的按鈕上，使用者以為點的是攻擊者頁面，實際點到你網站的「確認轉帳」。
@@ -100,7 +100,7 @@ Content-Security-Policy:
 
 **相關筆記**：[1-19-7 HTTP Security Headers](./1-19-7.md)
 
-### Q6. npm 套件的供應鏈風險怎麼管？ <Badge type="warning" text="進階" /> {#21-10-6}
+### Q6. npm 套件的供應鏈風險怎麼管？ <Badge type="warning" text="進階" /> {#interview-10-6}
 
 ::: details 標準答案與過程
 風險：惡意套件、維護者帳號被盜後發布惡意版本、typosquatting（名字很像的假套件）、postinstall 腳本執行任意程式。
@@ -118,7 +118,7 @@ Content-Security-Policy:
 
 **相關筆記**：[1-19-3 XZ Utils 後門（供應鏈攻擊）](./1-19-3.md#1-19-3-2)、[1-22-3 開源專案怎麼選](./1-22-3.md#1-22-3-3)
 
-### Q7. 個資要在前端遮罩嗎？ <Badge type="tip" text="高頻" /> {#21-10-7}
+### Q7. 個資要在前端遮罩嗎？ <Badge type="tip" text="高頻" /> {#interview-10-7}
 
 ::: details 標準答案與過程
 遮罩要在**伺服器**做。如果 API 回傳完整身分證號，前端只用 CSS 或字串處理遮住，使用者打開 DevTools Network 就看得到。
@@ -132,7 +132,7 @@ Content-Security-Policy:
 
 **相關筆記**：[1-19-6 資料遮罩 / 去識別化](./1-19-6.md#1-19-6-2)
 
-### Q8. 前端要產生不可猜的 ID 或 token，用 `Math.random()` 可以嗎？ <Badge type="tip" text="基礎" /> {#21-10-8}
+### Q8. 前端要產生不可猜的 ID 或 token，用 `Math.random()` 可以嗎？ <Badge type="tip" text="基礎" /> {#interview-10-8}
 
 ::: details 標準答案與過程
 不行。`Math.random()` 是一般的偽隨機數，不保證不可預測。安全用途要用密碼學安全的亂數：
