@@ -204,6 +204,10 @@ export const sidebar = [
           {
             "text": "1-6-12 前端實戰案例 🆕",
             "link": "/1-6-12"
+          },
+          {
+            "text": "1-6-13 企業後台常用程式片段 🆕",
+            "link": "/1-6-13"
           }
         ],
         "collapsed": true
@@ -390,6 +394,10 @@ export const sidebar = [
           {
             "text": "1-16-6 嵌入式入口 ESP32 與學習資源 🆕",
             "link": "/1-16-6"
+          },
+          {
+            "text": "1-16-7 從 Shell 指令到 Kernel 🆕",
+            "link": "/1-16-7"
           }
         ],
         "collapsed": true
@@ -587,6 +595,91 @@ export const sidebar = [
           {
             "text": "1-22-10 架構案例、學習路線與參考資源 🆕",
             "link": "/1-22-10"
+          }
+        ]
+      },
+      {
+        "text": "1-23 Node.js 執行環境 🆕",
+        "link": "/1-23",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "1-23-1 架構、運行機制與學習地圖 🆕",
+            "link": "/1-23-1"
+          },
+          {
+            "text": "1-23-2 模組系統 🆕",
+            "link": "/1-23-2"
+          },
+          {
+            "text": "1-23-3 記憶體控制 🆕",
+            "link": "/1-23-3"
+          },
+          {
+            "text": "1-23-4 多程序與多執行緒 🆕",
+            "link": "/1-23-4"
+          },
+          {
+            "text": "1-23-5 除錯與測試 🆕",
+            "link": "/1-23-5"
+          },
+          {
+            "text": "1-23-6 JavaScript 的能力邊界 🆕",
+            "link": "/1-23-6"
+          }
+        ]
+      },
+      {
+        "text": "1-24 工程師的成長與職涯 🆕",
+        "link": "/1-24",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "1-24-1 從工程師到架構師 🆕",
+            "link": "/1-24-1"
+          },
+          {
+            "text": "1-24-2 判斷工作、職缺與產業生態 🆕",
+            "link": "/1-24-2"
+          },
+          {
+            "text": "1-24-3 學習策略與知識沉澱 🆕",
+            "link": "/1-24-3"
+          },
+          {
+            "text": "1-24-4 需求訪談與範疇控制 🆕",
+            "link": "/1-24-4"
+          }
+        ]
+      },
+      {
+        "text": "1-25 TypeScript 與物件導向 🆕",
+        "link": "/1-25",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "1-25-1 型別系統的核心觀念 🆕",
+            "link": "/1-25-1"
+          },
+          {
+            "text": "1-25-2 讀懂 TypeScript 程式碼 🆕",
+            "link": "/1-25-2"
+          },
+          {
+            "text": "1-25-3 TypeScript 開發原則 🆕",
+            "link": "/1-25-3"
+          },
+          {
+            "text": "1-25-4 TypeScript 的物件導向語法 🆕",
+            "link": "/1-25-4"
+          },
+          {
+            "text": "1-25-5 物件導向設計原則與常見模式 🆕",
+            "link": "/1-25-5"
+          },
+          {
+            "text": "1-25-6 從 TypeScript 看懂 Java 🆕",
+            "link": "/1-25-6"
           }
         ]
       }
@@ -1637,59 +1730,59 @@ export const sidebar = [
     "collapsed": true
   },
   {
-    "text": "Chapter 21 模擬面試 🆕",
+    "text": "模擬面試 🆕",
     "items": [
       {
-        "text": "21-1 職缺分析與面試題地圖 🆕",
-        "link": "/21-1"
+        "text": "職缺分析與面試題地圖 🆕",
+        "link": "/interview-1"
       },
       {
-        "text": "21-2 HTML、CSS、RWD 與相容性 🆕",
-        "link": "/21-2"
+        "text": "HTML、CSS、RWD 與相容性 🆕",
+        "link": "/interview-2"
       },
       {
-        "text": "21-3 JavaScript 核心 🆕",
-        "link": "/21-3"
+        "text": "JavaScript 核心 🆕",
+        "link": "/interview-3"
       },
       {
-        "text": "21-4 TypeScript 🆕",
-        "link": "/21-4"
+        "text": "TypeScript 🆕",
+        "link": "/interview-4"
       },
       {
-        "text": "21-5 Vue 🆕",
-        "link": "/21-5"
+        "text": "Vue 🆕",
+        "link": "/interview-5"
       },
       {
-        "text": "21-6 React 與 Next.js 🆕",
-        "link": "/21-6"
+        "text": "React 與 Next.js 🆕",
+        "link": "/interview-6"
       },
       {
-        "text": "21-7 Angular 與 RxJS 🆕",
-        "link": "/21-7"
+        "text": "Angular 與 RxJS 🆕",
+        "link": "/interview-7"
       },
       {
-        "text": "21-8 效能優化 🆕",
-        "link": "/21-8"
+        "text": "效能優化 🆕",
+        "link": "/interview-8"
       },
       {
-        "text": "21-9 網路、API 與認證 🆕",
-        "link": "/21-9"
+        "text": "網路、API 與認證 🆕",
+        "link": "/interview-9"
       },
       {
-        "text": "21-10 前端資安 🆕",
-        "link": "/21-10"
+        "text": "前端資安 🆕",
+        "link": "/interview-10"
       },
       {
-        "text": "21-11 工程化、測試與部署 🆕",
-        "link": "/21-11"
+        "text": "工程化、測試與部署 🆕",
+        "link": "/interview-11"
       },
       {
-        "text": "21-12 手寫程式題 🆕",
-        "link": "/21-12"
+        "text": "手寫程式題 🆕",
+        "link": "/interview-12"
       },
       {
-        "text": "21-13 架構、系統設計與行為面試 🆕",
-        "link": "/21-13"
+        "text": "架構、系統設計與行為面試 🆕",
+        "link": "/interview-13"
       }
     ],
     "collapsed": true

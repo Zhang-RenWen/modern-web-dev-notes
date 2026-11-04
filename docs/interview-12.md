@@ -1,10 +1,10 @@
-# 21-12 手寫程式題 {#21-12}
+# 模擬面試 12：手寫程式題 {#interview-12}
 
 ::: info 新增（2026-11）
 台灣前端面試常見的白板／線上手寫題。寫完記得口頭說明邊界情況與時間複雜度。舊有題目另見 [1-20 LazyMan](./1-20.md)、[1-2-3 實作 API](./1-2-3.md)、[1-2-6 Promise 深入解析](./1-2-6.md)。
 :::
 
-### Q1. 實作 debounce <Badge type="tip" text="高頻" /> {#21-12-1}
+### Q1. 實作 debounce <Badge type="tip" text="高頻" /> {#interview-12-1}
 
 ::: details 解題思路
 用閉包保存 timer；每次呼叫先清掉上一個 timer 再重設。注意保留 `this` 與參數，進階題會要 `immediate` 與 `cancel`。
@@ -37,9 +37,9 @@ input.addEventListener('input', (e) => onSearch(e.target.value))
 延伸：元件卸載時要呼叫 `cancel()`，否則延遲的 callback 可能在卸載後執行。
 :::
 
-**相關筆記**：[21-8 Q7 debounce 與 throttle](./21-8.md#21-8-7)、[1-2-2 閉包](./1-2-2.md)
+**相關筆記**：[模擬面試 8 Q7 debounce 與 throttle](./interview-8.md#interview-8-7)、[1-2-2 閉包](./1-2-2.md)
 
-### Q2. 實作 throttle <Badge type="tip" text="高頻" /> {#21-12-2}
+### Q2. 實作 throttle <Badge type="tip" text="高頻" /> {#interview-12-2}
 
 ::: details 標準答案與過程
 時間戳版（第一次立即執行）＋ 尾端補一次（確保最後一次觸發不會遺失）：
@@ -70,7 +70,7 @@ function throttle(fn, wait = 200) {
 ```
 :::
 
-### Q3. 實作深拷貝（處理循環參考） <Badge type="tip" text="高頻" /> {#21-12-3}
+### Q3. 實作深拷貝（處理循環參考） <Badge type="tip" text="高頻" /> {#interview-12-3}
 
 ::: details 解題思路
 1. 原始型別直接回傳。
@@ -119,9 +119,9 @@ b.self === b // true
 實務上直接用 `structuredClone`，手寫是為了展示對型別、遞迴與 WeakMap 的理解。
 :::
 
-**相關筆記**：[21-3 Q9 深拷貝和淺拷貝](./21-3.md#21-3-9)、[5-2 弱映射](./5-2.md)
+**相關筆記**：[模擬面試 3 Q9 深拷貝和淺拷貝](./interview-3.md#interview-3-9)、[5-2 弱映射](./5-2.md)
 
-### Q4. 實作 Promise.all <Badge type="tip" text="高頻" /> {#21-12-4}
+### Q4. 實作 Promise.all <Badge type="tip" text="高頻" /> {#interview-12-4}
 
 ::: details 解題思路
 重點：結果順序要和輸入一致（不是完成順序）；任一 reject 就 reject；空陣列直接 resolve；輸入可能不是 Promise（用 `Promise.resolve` 包）。
@@ -160,9 +160,9 @@ function promiseAllSettled(iterable) {
 ```
 :::
 
-**相關筆記**：[1-2-6 Promise 靜態方法實現](./1-2-6.md)、[21-3 Q8](./21-3.md#21-3-8)
+**相關筆記**：[1-2-6 Promise 靜態方法實現](./1-2-6.md)、[模擬面試 3 Q8](./interview-3.md#interview-3-8)
 
-### Q5. 實作並發數量限制的請求池 <Badge type="tip" text="高頻" /> {#21-12-5}
+### Q5. 實作並發數量限制的請求池 <Badge type="tip" text="高頻" /> {#interview-12-5}
 
 **題目**：有 100 個上傳任務，同時最多執行 3 個，全部完成後回傳結果（順序與輸入一致）。
 
@@ -199,7 +199,7 @@ const results = await runWithLimit(tasks, 3)
 
 **相關筆記**：[1-2-5 實作非同步流程](./1-2-5.md)
 
-### Q6. 實作 call、apply、bind <Badge type="tip" text="高頻" /> {#21-12-6}
+### Q6. 實作 call、apply、bind <Badge type="tip" text="高頻" /> {#interview-12-6}
 
 ::: details 標準答案與過程
 ```js
@@ -234,7 +234,7 @@ Function.prototype.myBind = function (ctx, ...preset) {
 
 **相關筆記**：[1-2-3 apply、bind 進階實作](./1-2-3.md)、[1-2-1 this](./1-2-1.md)
 
-### Q7. 實作 EventEmitter <Badge type="tip" text="高頻" /> {#21-12-7}
+### Q7. 實作 EventEmitter <Badge type="tip" text="高頻" /> {#interview-12-7}
 
 ::: details 標準答案與過程
 ```js
@@ -271,7 +271,7 @@ class EventEmitter {
 
 **相關筆記**：[1-6-1 發佈／訂閱模式簡單應用](./1-6-1.md)、[16-9 私有屬性](./16-9.md)
 
-### Q8. 實作 curry <Badge type="tip" text="基礎" /> {#21-12-8}
+### Q8. 實作 curry <Badge type="tip" text="基礎" /> {#interview-12-8}
 
 ::: details 標準答案與過程
 ```js
@@ -294,7 +294,7 @@ curriedAdd(1, 2)(3) // 6
 
 **相關筆記**：[1-5-6 柯里化分析](./1-5-6.md)
 
-### Q9. 陣列扁平化 <Badge type="tip" text="基礎" /> {#21-12-9}
+### Q9. 陣列扁平化 <Badge type="tip" text="基礎" /> {#interview-12-9}
 
 ::: details 標準答案與過程
 ```js
@@ -323,7 +323,7 @@ function flattenIter(arr) {
 
 **相關筆記**：[13-1 Array.prototype.flat](./13-1.md)
 
-### Q10. 實作 LRU Cache <Badge type="warning" text="進階" /> {#21-12-10}
+### Q10. 實作 LRU Cache <Badge type="warning" text="進階" /> {#interview-12-10}
 
 **題目**：容量固定，`get` 和 `put` 都要 O(1)，超過容量時淘汰最久沒用的。
 
@@ -362,7 +362,7 @@ class LRUCache {
 
 **相關筆記**：[1-10-5 資料結構](./1-10-5.md)、[1-10-6 資料結構與系統設計用途](./1-10-6.md#1-10-6-1)、[5-1 ES6 的映射](./5-1.md)
 
-### Q11. 扁平陣列轉成樹（選單、組織架構） <Badge type="tip" text="高頻" /> {#21-12-11}
+### Q11. 扁平陣列轉成樹（選單、組織架構） <Badge type="tip" text="高頻" /> {#interview-12-11}
 
 **題目**：後端回傳 `{ id, parentId, name }` 的扁平陣列，轉成巢狀的選單樹，要求 O(n)。
 
@@ -397,9 +397,9 @@ listToTree(menus)
 延伸：反過來「樹轉扁平」用 DFS；依權限過濾樹時，子節點有權限就要保留父節點。
 :::
 
-**相關筆記**：[1-10-6 資料結構與演算法速查](./1-10-6.md)、[21-5 Q9 動態路由](./21-5.md#21-5-9)
+**相關筆記**：[1-10-6 資料結構與演算法速查](./1-10-6.md)、[模擬面試 5 Q9 動態路由](./interview-5.md#interview-5-9)
 
-### Q12. LazyMan（鏈式呼叫 + 任務佇列） <Badge type="warning" text="進階" /> {#21-12-12}
+### Q12. LazyMan（鏈式呼叫 + 任務佇列） <Badge type="warning" text="進階" /> {#interview-12-12}
 
 ::: details 解題思路
 每個方法只把任務放進佇列並回傳 `this`；建構時用 `setTimeout` 延後啟動，等鏈式呼叫全部登記完再依序執行。`sleepFirst` 插到佇列最前面。
@@ -433,7 +433,7 @@ LazyMan('Hank').sleepFirst(5).eat('supper')
 
 **相關筆記**：[1-20 常見面試題（LazyMan 完整分析）](./1-20.md)
 
-### Q13. 帶指數退避的重試 <Badge type="tip" text="基礎" /> {#21-12-13}
+### Q13. 帶指數退避的重試 <Badge type="tip" text="基礎" /> {#interview-12-13}
 
 ::: details 標準答案與過程
 ```js
@@ -457,4 +457,4 @@ await retry(() => fetchQuote(symbol), {
 注意：只重試冪等的請求；非冪等請求（下單、付款）要帶 Idempotency-Key。
 :::
 
-**相關筆記**：[21-9 Q10 錯誤、重試、取消與競態](./21-9.md#21-9-10)、[21-9 Q7 冪等](./21-9.md#21-9-7)
+**相關筆記**：[模擬面試 9 Q10 錯誤、重試、取消與競態](./interview-9.md#interview-9-10)、[模擬面試 9 Q7 冪等](./interview-9.md#interview-9-7)

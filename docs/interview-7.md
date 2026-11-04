@@ -1,10 +1,10 @@
-# 21-7 Angular 與 RxJS {#21-7}
+# 模擬面試 7：Angular 與 RxJS {#interview-7}
 
 ::: info 新增（2026-11）
 對應職缺：台達電數位設計中心（Angular 13+、NgRx）、國泰 DDT（Angular 為佳）、國泰前端工程師（Angular + React）。本站其他章節沒有 Angular 專章，這頁以面試必備觀念為主。
 :::
 
-### Q1. Angular 的架構由哪些部分組成？ <Badge type="tip" text="基礎" /> {#21-7-1}
+### Q1. Angular 的架構由哪些部分組成？ <Badge type="tip" text="基礎" /> {#interview-7-1}
 
 ::: details 標準答案與過程
 - **Component**：模板 + 類別 + 樣式。Angular 14 起支援 standalone component，17 起新專案預設 standalone，不再需要 `NgModule`。
@@ -17,7 +17,7 @@
 和 Vue／React 最大差別：Angular 是「完整框架」，路由、表單、HTTP、DI、測試都內建，團隊寫法比較一致，適合大型企業專案。
 :::
 
-### Q2. 依賴注入（DI）是什麼？有什麼好處？ <Badge type="tip" text="高頻" /> {#21-7-2}
+### Q2. 依賴注入（DI）是什麼？有什麼好處？ <Badge type="tip" text="高頻" /> {#interview-7-2}
 
 ::: details 標準答案與過程
 DI 是「物件不自己建立依賴，而是由外部（Injector）提供」。
@@ -45,7 +45,7 @@ Injector 是階層式的：元件 → 父元件 → 模組／環境 → root，�
 
 **相關筆記**：[1-21 Java 與 OOP（interface + composition + DI）](./1-21.md#1-21-5)
 
-### Q3. Angular 的變更偵測怎麼運作？OnPush 和 Signals 解決什麼？ <Badge type="tip" text="高頻" /> {#21-7-3}
+### Q3. Angular 的變更偵測怎麼運作？OnPush 和 Signals 解決什麼？ <Badge type="tip" text="高頻" /> {#interview-7-3}
 
 ::: details 標準答案與過程
 **預設策略（Default）**：Zone.js 攔截所有非同步事件（點擊、HTTP、setTimeout），事件結束後從根元件往下檢查**整棵樹**的綁定是否改變。簡單但元件多時成本高。
@@ -69,7 +69,7 @@ increment() { this.count.update(v => v + 1) }
 
 **相關筆記**：[1-6-1 響應式架構設計](./1-6-1.md)
 
-### Q4. Observable 和 Promise 差在哪？`switchMap`、`mergeMap`、`concatMap`、`exhaustMap` 怎麼選？ <Badge type="tip" text="高頻" /> {#21-7-4}
+### Q4. Observable 和 Promise 差在哪？`switchMap`、`mergeMap`、`concatMap`、`exhaustMap` 怎麼選？ <Badge type="tip" text="高頻" /> {#interview-7-4}
 
 ::: details 標準答案與過程
 | | Promise | Observable |
@@ -100,7 +100,7 @@ this.results$ = this.searchControl.valueChanges.pipe(
 
 **相關筆記**：[4-1 Promise](./4-1.md)、[4-5 非同步迭代](./4-5.md)
 
-### Q5. 怎麼避免 RxJS 訂閱造成記憶體洩漏？ <Badge type="tip" text="高頻" /> {#21-7-5}
+### Q5. 怎麼避免 RxJS 訂閱造成記憶體洩漏？ <Badge type="tip" text="高頻" /> {#interview-7-5}
 
 ::: details 標準答案與過程
 HttpClient 的請求完成後會自動 complete，但 `valueChanges`、Router events、`interval`、自建的 Subject 不會。
@@ -121,9 +121,9 @@ constructor() {
 ```
 :::
 
-**相關筆記**：[21-3 Q10 記憶體洩漏](./21-3.md#21-3-10)
+**相關筆記**：[模擬面試 3 Q10 記憶體洩漏](./interview-3.md#interview-3-10)
 
-### Q6. Vue 開發者怎麼快速對應 Angular 的概念？ <Badge type="tip" text="基礎" /> {#21-7-6}
+### Q6. Vue 開發者怎麼快速對應 Angular 的概念？ <Badge type="tip" text="基礎" /> {#interview-7-6}
 
 ::: details 標準答案與過程
 | Vue | Angular |
@@ -142,7 +142,7 @@ constructor() {
 面試回答方式：「我主要用 Vue，但核心觀念相通：元件通訊、響應式、DI、路由守衛、狀態管理。Angular 我會從 Signals 與 standalone component 切入，第一週就能讀懂既有專案。」再用一個小 Demo 證明。
 :::
 
-### Q7. NgRx 的資料流是什麼？什麼時候需要它？ <Badge type="warning" text="進階" /> {#21-7-7}
+### Q7. NgRx 的資料流是什麼？什麼時候需要它？ <Badge type="warning" text="進階" /> {#interview-7-7}
 
 ::: details 標準答案與過程
 NgRx 是 Redux 模式：

@@ -1,10 +1,10 @@
-# 21-9 網路、API 與認證 {#21-9}
+# 模擬面試 9：網路、API 與認證 {#interview-9}
 
 ::: info 新增（2026-11）
 對應職缺：RESTful API 串接（7 個職缺）、BFF 架構（國泰 DDT）、JWT／OAuth／SSO（台達電）、讀後端程式並跨端除錯。
 :::
 
-### Q1. 從輸入網址到畫面出現，中間發生什麼？ <Badge type="tip" text="高頻" /> {#21-9-1}
+### Q1. 從輸入網址到畫面出現，中間發生什麼？ <Badge type="tip" text="高頻" /> {#interview-9-1}
 
 ::: details 解題思路
 分「網路段」和「渲染段」，每段講 3～5 步，最後點出可以優化的地方，讓答案和效能、快取串起來。
@@ -29,7 +29,7 @@
 
 **相關筆記**：[1-18-18 從輸入網址到收到回應](./1-18-18.md)、[1-3-3 瀏覽器渲染流程與除錯](./1-3-3.md)
 
-### Q2. 常見 HTTP 狀態碼？401 和 403、502 和 504 差在哪？ <Badge type="tip" text="基礎" /> {#21-9-2}
+### Q2. 常見 HTTP 狀態碼？401 和 403、502 和 504 差在哪？ <Badge type="tip" text="基礎" /> {#interview-9-2}
 
 ::: details 標準答案與過程
 - **401 Unauthorized**：還沒證明你是誰（沒帶 token、token 過期）→ 前端導向登入或用 refresh token 換新。
@@ -43,7 +43,7 @@
 
 **相關筆記**：[1-18-18 HTTP 必背對照](./1-18-18.md#1-18-18-2)
 
-### Q3. HTTP/1.1、HTTP/2、HTTP/3 差在哪？ <Badge type="tip" text="高頻" /> {#21-9-3}
+### Q3. HTTP/1.1、HTTP/2、HTTP/3 差在哪？ <Badge type="tip" text="高頻" /> {#interview-9-3}
 
 ::: details 標準答案與過程
 | | HTTP/1.1 | HTTP/2 | HTTP/3 |
@@ -61,7 +61,7 @@
 
 **相關筆記**：[1-18-12 HTTP-1.x](./1-18-12.md)、[1-18-13 HTTP-2.0](./1-18-13.md)、[1-18-1 TCP／UDP／QUIC](./1-18-1.md#1-18-1-2)
 
-### Q4. CORS 是什麼？什麼時候會有 preflight？怎麼解決？ <Badge type="tip" text="高頻" /> {#21-9-4}
+### Q4. CORS 是什麼？什麼時候會有 preflight？怎麼解決？ <Badge type="tip" text="高頻" /> {#interview-9-4}
 
 ::: details 標準答案與過程
 **同源政策**：協定、網域、port 三者相同才是同源。瀏覽器預設不讓 JS 讀取跨源請求的回應。CORS 是**伺服器**用回應標頭告訴瀏覽器「允許哪些來源讀取」。
@@ -90,9 +90,9 @@ Access-Control-Max-Age: 600
 觀念：CORS 是瀏覽器保護使用者的機制，**不是伺服器的防護**，Postman、curl 不受限制；它也不能防 CSRF。
 :::
 
-**相關筆記**：[21-10 Q2 CSRF](./21-10.md#21-10-2)
+**相關筆記**：[模擬面試 10 Q2 CSRF](./interview-10.md#interview-10-2)
 
-### Q5. Cookie、Session、JWT 差在哪？Token 應該存哪？ <Badge type="tip" text="高頻" /> {#21-9-5}
+### Q5. Cookie、Session、JWT 差在哪？Token 應該存哪？ <Badge type="tip" text="高頻" /> {#interview-9-5}
 
 ::: details 標準答案與過程
 - **Cookie** 是瀏覽器端的傳輸容器，會自動附在同網域請求上。
@@ -112,7 +112,7 @@ Access-Control-Max-Age: 600
 
 **相關筆記**：[1-19-4 隨機數與 Token 儲存](./1-19-4.md#1-19-4-2)、[1-19-2 JWT 登入](./1-19-2.md)
 
-### Q6. OAuth 2.0、OIDC、SSO、PKCE 是什麼關係？畫出登入流程 <Badge type="tip" text="高頻" /> {#21-9-6}
+### Q6. OAuth 2.0、OIDC、SSO、PKCE 是什麼關係？畫出登入流程 <Badge type="tip" text="高頻" /> {#interview-9-6}
 
 ::: details 解題思路
 先釐清名詞：OAuth 2.0 是**授權**，OIDC 是在 OAuth 上加**身分**，SSO 是使用情境，PKCE 是保護授權碼的機制。再畫 Authorization Code + PKCE。
@@ -140,7 +140,7 @@ Access-Control-Max-Age: 600
 
 **相關筆記**：[1-22-6 認證與身份](./1-22-6.md#1-22-6-4)、[1-19-5 登入、MFA 與信任裝置](./1-19-5.md#1-19-5-1)
 
-### Q7. RESTful API 怎麼設計？什麼是冪等？ <Badge type="tip" text="高頻" /> {#21-9-7}
+### Q7. RESTful API 怎麼設計？什麼是冪等？ <Badge type="tip" text="高頻" /> {#interview-9-7}
 
 ::: details 標準答案與過程
 原則：
@@ -170,7 +170,7 @@ await fetch('/api/payments', {
 
 **相關筆記**：[1-22-6 REST API 與設計有效且安全的 API](./1-22-6.md#1-22-6-1)、[1-19-6 寫入 API 防護](./1-19-6.md#1-19-6-1)
 
-### Q8. 什麼是 BFF？什麼時候需要？ <Badge type="tip" text="高頻" /> {#21-9-8}
+### Q8. 什麼是 BFF？什麼時候需要？ <Badge type="tip" text="高頻" /> {#interview-9-8}
 
 **考點**：國泰 DDT 必要條件「有後端 API 串接與 BFF 架構經驗」。
 
@@ -193,7 +193,7 @@ BFF（Backend For Frontend）是專門服務某一個前端的後端層，由前
 
 **相關筆記**：[1-22-6 BFF](./1-22-6.md#1-22-6-3)
 
-### Q9. 即時資料要用輪詢、SSE 還是 WebSocket？ <Badge type="tip" text="高頻" /> {#21-9-9}
+### Q9. 即時資料要用輪詢、SSE 還是 WebSocket？ <Badge type="tip" text="高頻" /> {#interview-9-9}
 
 ::: details 標準答案與過程
 | 方式 | 方向 | 特性 | 適合 |
@@ -208,7 +208,7 @@ WebSocket 實務要處理：斷線重連（指數退避）、心跳偵測、重�
 
 **相關筆記**：[1-18-15 伺服器發送事件（SSE）](./1-18-15.md)、[1-18-16 WebSocket](./1-18-16.md)、[1-18-18 即時通訊](./1-18-18.md#1-18-18-4)
 
-### Q10. API 請求怎麼處理錯誤、重試、取消與競態？ <Badge type="warning" text="進階" /> {#21-9-10}
+### Q10. API 請求怎麼處理錯誤、重試、取消與競態？ <Badge type="warning" text="進階" /> {#interview-9-10}
 
 ::: details 標準答案與過程
 用一層統一的 HTTP client 處理：
@@ -230,4 +230,4 @@ async function search(q) {
 ```
 :::
 
-**相關筆記**：[21-12 Q13 帶指數退避的重試](./21-12.md#21-12-13)、[1-22-6 API 效能基本功](./1-22-6.md#1-22-6-2)
+**相關筆記**：[模擬面試 12 Q13 帶指數退避的重試](./interview-12.md#interview-12-13)、[1-22-6 API 效能基本功](./1-22-6.md#1-22-6-2)

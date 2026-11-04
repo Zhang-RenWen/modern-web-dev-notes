@@ -1,10 +1,12 @@
-# 21-4 TypeScript {#21-4}
+# 模擬面試 4：TypeScript {#interview-4}
 
 ::: info 新增（2026-11）
 對應職缺關鍵字：TypeScript「strong proficiency — generics, utility types, modeling complex domain logic」（台達電）、國泰 DDT 必要條件。
 :::
 
-### Q1. `any`、`unknown`、`never` 差在哪？ <Badge type="tip" text="高頻" /> {#21-4-1}
+系統化的觀念整理見 [1-25 TypeScript 與物件導向](./1-25.md)。
+
+### Q1. `any`、`unknown`、`never` 差在哪？ <Badge type="tip" text="高頻" /> {#interview-4-1}
 
 ::: details 標準答案與過程
 - `any`：關掉型別檢查，可以做任何事，會「污染」用到它的地方。
@@ -23,7 +25,7 @@ function parse(input: unknown) {
 
 **相關筆記**：[1-2-8 TypeScript 真正要深挖的](./1-2-8.md#1-2-8-4)
 
-### Q2. `type` 和 `interface` 怎麼選？ <Badge type="tip" text="基礎" /> {#21-4-2}
+### Q2. `type` 和 `interface` 怎麼選？ <Badge type="tip" text="基礎" /> {#interview-4-2}
 
 ::: details 標準答案與過程
 | | interface | type |
@@ -36,7 +38,7 @@ function parse(input: unknown) {
 選擇：要被外部擴充的公開 API（例如擴充 `Window`、套件的設定型別）用 `interface`；其餘團隊統一一種即可，需要 union 或運算時用 `type`。重點是團隊一致。
 :::
 
-### Q3. 泛型是什麼？寫一個安全取物件屬性的函式 <Badge type="tip" text="高頻" /> {#21-4-3}
+### Q3. 泛型是什麼？寫一個安全取物件屬性的函式 <Badge type="tip" text="高頻" /> {#interview-4-3}
 
 ::: details 解題思路
 泛型＝型別的參數。關鍵是 `K extends keyof T` 限制 key，回傳型別用索引存取 `T[K]`。
@@ -73,7 +75,7 @@ const { data } = await request<{ id: number; title: string }[]>('/api/posts')
 `extends` 在泛型裡是**約束**：`<T extends { id: number }>` 表示 T 至少要有 `id`。
 :::
 
-### Q4. 手寫 `Partial`、`Pick`、`Omit`、`ReturnType` <Badge type="tip" text="高頻" /> {#21-4-4}
+### Q4. 手寫 `Partial`、`Pick`、`Omit`、`ReturnType` <Badge type="tip" text="高頻" /> {#interview-4-4}
 
 ::: details 標準答案與過程
 ```ts
@@ -95,7 +97,7 @@ type DeepPartial<T> = { [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]>
 實務：表單編輯用 `Partial<User>`、列表只顯示部分欄位用 `Pick`、建立資料時去掉 `id` 用 `Omit<User, 'id'>`。
 :::
 
-### Q5. 有哪些縮小型別（narrowing）的方式？怎麼做窮舉檢查？ <Badge type="tip" text="高頻" /> {#21-4-5}
+### Q5. 有哪些縮小型別（narrowing）的方式？怎麼做窮舉檢查？ <Badge type="tip" text="高頻" /> {#interview-4-5}
 
 ::: details 標準答案與過程
 方式：`typeof`、`instanceof`、`in`、相等比較、**可辨識聯合（discriminated union）**、自訂 type guard（`x is T`）、assertion function（`asserts x is T`）。
@@ -130,7 +132,7 @@ function isApiError(e: unknown): e is { code: number; message: string } {
 
 **相關筆記**：[1-22-4 資料庫與資料設計（狀態要分開建模）](./1-22-4.md)
 
-### Q6. `satisfies` 和 `as` 差在哪？ <Badge type="warning" text="進階" /> {#21-4-6}
+### Q6. `satisfies` 和 `as` 差在哪？ <Badge type="warning" text="進階" /> {#interview-4-6}
 
 ::: details 標準答案與過程
 - `as` 是**斷言**：告訴編譯器「相信我」，型別不符也可能通過，會隱藏錯誤。
@@ -151,7 +153,7 @@ routes.typo        // ❌ 編譯錯誤；若寫成 `: Record<string, Route>` 就
 原則：能用 narrowing 或 `satisfies` 就不要用 `as`；`as` 不用 `<T>value` 寫法（和 JSX 衝突）。
 :::
 
-### Q7. `enum`、union literal、`as const` 怎麼選？ <Badge type="tip" text="基礎" /> {#21-4-7}
+### Q7. `enum`、union literal、`as const` 怎麼選？ <Badge type="tip" text="基礎" /> {#interview-4-7}
 
 ::: details 標準答案與過程
 - `enum` 會產生執行期程式碼；數字 enum 允許任何數字賦值（型別不夠嚴）；`const enum` 在某些建置工具（isolatedModules）有限制。
@@ -170,7 +172,7 @@ export type OrderStatus = (typeof ORDER_STATUS)[keyof typeof ORDER_STATUS]
 ```
 :::
 
-### Q8. 怎麼用型別建模複雜的業務規則？ <Badge type="warning" text="進階" /> {#21-4-8}
+### Q8. 怎麼用型別建模複雜的業務規則？ <Badge type="warning" text="進階" /> {#interview-4-8}
 
 **考點**：職缺明列「modeling complex domain logic」。
 
@@ -204,7 +206,7 @@ const policy = Policy.parse(await res.json())
 
 **相關筆記**：[1-6-11 去框架化的前端架構（API 資料只做一次 mapping）](./1-6-11.md#1-6-11-1)
 
-### Q9. tsconfig 你會開哪些嚴格選項？ <Badge type="tip" text="基礎" /> {#21-4-9}
+### Q9. tsconfig 你會開哪些嚴格選項？ <Badge type="tip" text="基礎" /> {#interview-4-9}
 
 ::: details 標準答案與過程
 - `strict: true`：包含 `strictNullChecks`、`noImplicitAny`、`strictFunctionTypes` 等。
