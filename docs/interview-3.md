@@ -1,7 +1,7 @@
 # 模擬面試 3：JavaScript 核心 {#interview-3}
 
 ::: info 新增（2026-11）
-所有職缺都要求熟悉 JavaScript（ES6+），這些是一面最常出現的觀念題。手寫實作題另見 [模擬面試 12](./interview-12.md)。
+JavaScript（ES6+）一面最常出現的觀念題。手寫實作題另見 [模擬面試 12](./interview-12.md)。
 :::
 
 ### Q1. JavaScript 有哪些型別？怎麼準確判斷？ <Badge type="tip" text="基礎" /> {#interview-3-1}
@@ -68,7 +68,7 @@ let b = 2
 
 **相關筆記**：[2-6 let 和 const 敘述](./2-6.md)、[9-1 變數宣告](./9-1.md)
 
-### Q4. 什麼是閉包？下面程式輸出什麼？ <Badge type="tip" text="高頻" /> {#interview-3-4}
+### Q4. 什麼是閉包？下面程式輸出什麼？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-3-4}
 
 ```js
 for (var i = 0; i < 3; i++) {
@@ -102,9 +102,11 @@ for (var i = 0; i < 3; i++) ((j) => setTimeout(() => console.log(j), 0))(i)
 風險：閉包會讓外層變數持續被引用，若長期掛在全域或事件上，可能造成記憶體洩漏。
 :::
 
+<ClosureLoopAnim />
+
 **相關筆記**：[1-3-2 閉包](./1-3-2.md)、[1-3-10 JS／TS 面試核心](./1-3-10.md#1-3-10-2)
 
-### Q5. `this` 怎麼決定？ <Badge type="tip" text="高頻" /> {#interview-3-5}
+### Q5. `this` 怎麼決定？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-3-5}
 
 ::: details 解題思路
 `this` 在**呼叫時**決定（箭頭函式例外）。依優先順序背四條規則，再講箭頭函式。
@@ -135,9 +137,11 @@ obj.arrow()  // undefined（取外層模組頂層的 this，也就是 undefined�
 常見坑：把物件方法當 callback 傳出去（`setTimeout(obj.normal)`、事件處理器）會遺失 `this`，用箭頭函式包一層或 `bind`。
 :::
 
+<ThisBindingAnim />
+
 **相關筆記**：[1-3-1 this](./1-3-1.md)、[2-2 箭頭函式](./2-2.md)
 
-### Q6. 原型鏈是什麼？`new` 做了哪些事？ <Badge type="tip" text="高頻" /> {#interview-3-6}
+### Q6. 原型鏈是什麼？`new` 做了哪些事？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-3-6}
 
 ::: details 標準答案與過程
 每個物件有內部連結 `[[Prototype]]`（可用 `Object.getPrototypeOf` 取得），讀取屬性時找不到就沿著原型往上找，直到 `null`，這條鏈就是原型鏈。`class` 只是原型繼承的語法糖。
@@ -158,9 +162,11 @@ function myNew(Ctor, ...args) {
 ```
 :::
 
+<PrototypeChainAnim />
+
 **相關筆記**：[1-3-3 物件導向和原型鏈](./1-3-3.md)、[3-1 類別](./3-1.md)
 
-### Q7. Event Loop：下面程式輸出順序？ <Badge type="tip" text="高頻" /> {#interview-3-7}
+### Q7. Event Loop：下面程式輸出順序？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-3-7}
 
 ```js
 console.log('1')
@@ -194,9 +200,11 @@ console.log('7')
 延伸：瀏覽器在每個 macrotask 之後、清完 microtask 後才有機會渲染，所以 microtask 無限遞迴會讓畫面卡死。
 :::
 
+<EventLoopAnim />
+
 **相關筆記**：[1-3-6 實作非同步流程（巨任務和微任務）](./1-3-6.md)、[1-3-10 JS 單執行緒的真相](./1-3-10.md#1-3-10-1)、[4-4 非同步函式](./4-4.md)
 
-### Q8. `Promise.all`、`allSettled`、`race`、`any` 差在哪？ <Badge type="tip" text="高頻" /> {#interview-3-8}
+### Q8. `Promise.all`、`allSettled`、`race`、`any` 差在哪？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-3-8}
 
 ::: details 標準答案與過程
 | 方法 | 何時 resolve | 何時 reject | 用途 |
@@ -214,6 +222,8 @@ await Promise.race([fetch('/api/quote'), timeout(3000)])
 
 注意：`race` 逾時後原本的請求還在跑，真正取消要用 `AbortController`（`fetch(url, { signal: AbortSignal.timeout(3000) })`）。金融交易類操作不能用 `allSettled` 接受部分成功，要全有全無。
 :::
+
+<PromiseCombinatorAnim />
 
 **相關筆記**：[4-1 Promise](./4-1.md)、[14-1 Promise.allSettled](./14-1.md)、[15-2 Promise.any](./15-2.md)、[1-3-7 Promise 深入解析](./1-3-7.md)
 
@@ -302,4 +312,4 @@ JavaScript 的 number 是 IEEE 754 雙精度浮點數，0.1、0.2 在二進位�
 Node.js 以 `package.json` 的 `"type": "module"` 或副檔名 `.mjs` / `.cjs` 區分。新專案用 ESM。
 :::
 
-**相關筆記**：[1-16-2 Node.js 模組系統（含瀏覽器只認 ESM）](./1-16-2.md#1-16-2-2)、[8-1 CommonJS](./8-1.md)、[8-2 JavaScript 模組](./8-2.md)、[1-9-1 前端模組化發展](./1-9-1.md)、[16-5 頂層 await](./16-5.md)
+**相關筆記**：[8-1 CommonJS](./8-1.md)、[8-2 JavaScript 模組](./8-2.md)、[1-9-1 前端模組化發展](./1-9-1.md)、[16-5 頂層 await](./16-5.md)

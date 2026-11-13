@@ -1,10 +1,10 @@
 # 模擬面試 4：TypeScript {#interview-4}
 
 ::: info 新增（2026-11）
-對應職缺關鍵字：TypeScript「strong proficiency — generics, utility types, modeling complex domain logic」（台達電）、國泰 DDT 必要條件。
+TypeScript：泛型、utility types，以及怎麼用型別建模複雜的業務規則。
 :::
 
-系統化的觀念整理見 [1-4 TypeScript](./1-4.md)，物件導向見 [1-25-5 物件導向設計原則與常見模式](./1-25-5.md)。
+系統化的觀念整理見 [1-4 TypeScript](./1-4.md)。
 
 ### Q1. `any`、`unknown`、`never` 差在哪？ <Badge type="tip" text="高頻" /> {#interview-4-1}
 
@@ -130,8 +130,6 @@ function isApiError(e: unknown): e is { code: number; message: string } {
 這種寫法讓「不合法的狀態無法表示」，例如不可能出現 `status: 'success'` 卻沒有 `txId`。
 :::
 
-**相關筆記**：[1-17-2 資料庫與資料設計（狀態要分開建模）](./1-17-2.md)
-
 ### Q6. `satisfies` 和 `as` 差在哪？ <Badge type="warning" text="進階" /> {#interview-4-6}
 
 ::: details 標準答案與過程
@@ -174,7 +172,7 @@ export type OrderStatus = (typeof ORDER_STATUS)[keyof typeof ORDER_STATUS]
 
 ### Q8. 怎麼用型別建模複雜的業務規則？ <Badge type="warning" text="進階" /> {#interview-4-8}
 
-**考點**：職缺明列「modeling complex domain logic」。
+**考點**：能不能用型別建模複雜的業務邏輯（modeling complex domain logic）。
 
 ::: details 標準答案與過程
 三個常用技巧：

@@ -1,10 +1,10 @@
 # 模擬面試 5：Vue {#interview-5}
 
 ::: info 新增（2026-11）
-對應職缺：凱基人壽（Vue）、台達電 VueJS（Vuex、Vue Router、共用模組）、國泰 DDT、台達全端（Vue 3 或 React）。
+Vue 2／3 的原理與實務：響應式、元件通訊、Vuex／Pinia、Vue Router、共用模組。
 :::
 
-### Q1. Vue 2 和 Vue 3 的響應式原理差在哪？ <Badge type="tip" text="高頻" /> {#interview-5-1}
+### Q1. Vue 2 和 Vue 3 的響應式原理差在哪？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-5-1}
 
 ::: details 解題思路
 分「怎麼攔截」和「怎麼追蹤依賴」兩層。再講 Vue 2 的限制如何被 Proxy 解決。
@@ -49,6 +49,8 @@ function reactive(obj) {
 function effect(fn) { activeEffect = fn; fn(); activeEffect = null }
 ```
 :::
+
+<VueReactivityAnim />
 
 **相關筆記**：[1-7-1 響應式架構設計](./1-7-1.md)、[6-1 代理器初探](./6-1.md)、[5-2 弱映射](./5-2.md)
 
@@ -115,7 +117,7 @@ Composition API 的 hooks：`setup` → `onBeforeMount` → `onMounted` → `onB
 
 **相關筆記**：[1-7-2 元件通訊和封裝](./1-7-2.md)
 
-### Q6. `v-if` 與 `v-show` 差在哪？`v-for` 為什麼要 `key`？ <Badge type="tip" text="基礎" /> {#interview-5-6}
+### Q6. `v-if` 與 `v-show` 差在哪？`v-for` 為什麼要 `key`？ <Badge type="tip" text="基礎" /> <Badge type="info" text="動畫" /> {#interview-5-6}
 
 ::: details 標準答案與過程
 - `v-if`：條件為假時不渲染，切換時會建立／銷毀元件（觸發生命週期）。初始成本低、切換成本高。
@@ -125,6 +127,8 @@ Composition API 的 hooks：`setup` → `onBeforeMount` → `onMounted` → `onB
 
 `v-if` 與 `v-for` 同一元素：Vue 3 中 `v-if` 優先級較高（Vue 2 相反），所以 `v-if` 拿不到迴圈變數。改法：先用 computed 過濾，或把 `v-if` 移到內層／外層 `template`。
 :::
+
+<KeyedDiffAnim />
 
 **相關筆記**：[1-7-2 不是每次加上 Key 都能效能最佳化](./1-7-2.md)、[1-7-5 Vue 3 動靜結合的 DOM diff](./1-7-5.md)
 
@@ -200,7 +204,7 @@ router.beforeEach(async (to) => {
 4. **前端權限只是 UX**，API 必須在後端再驗一次。
 :::
 
-**相關筆記**：[1-8-2 Vue Router 4 動態路由 + 動態 import](./1-8-2.md#1-8-2-6)、[1-15-7 權限模型](./1-15-7.md#1-15-7-2)
+**相關筆記**：[1-8-2 Vue Router 4 動態路由 + 動態 import](./1-8-2.md#1-8-2-6)
 
 ### Q10. `KeepAlive` 是什麼？有什麼坑？ <Badge type="tip" text="基礎" /> {#interview-5-10}
 

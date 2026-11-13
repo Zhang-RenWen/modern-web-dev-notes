@@ -1,7 +1,7 @@
 # 模擬面試 11：工程化、測試與部署 {#interview-11}
 
 ::: info 新增（2026-11）
-對應職缺：Git／Git Flow（全部）、Webpack／Vite（台達電、國泰）、Jest／Cypress／單元測試（國泰、台達電）、Docker／K8s／CI/CD（台達電 3 個缺、國泰）、Storybook、Design System、Micro-Frontends、i18n。
+Git／Git Flow、Webpack／Vite、單元與 E2E 測試、Docker／K8s／CI/CD、Storybook、Design System、Micro-Frontends、i18n。
 :::
 
 ### Q1. Webpack 和 Vite 差在哪？ <Badge type="tip" text="高頻" /> {#interview-11-1}
@@ -90,8 +90,6 @@ packages/
 - 已上線的錯誤 commit 用 `git revert`（新增反向 commit），不要 `reset` 後強推。
 :::
 
-**相關筆記**：[1-21-1 Git 心智模型與團隊實務](./1-21-1.md)、[1-21-2 Git 情境速查](./1-21-2.md)
-
 ### Q6. 前端測試怎麼規劃？什麼該測？ <Badge type="tip" text="高頻" /> {#interview-11-6}
 
 ::: details 標準答案與過程
@@ -135,8 +133,6 @@ PR 階段：install（npm ci）→ lint / type-check → unit test → build →
 4. 版本號與 commit SHA 寫進產物，錯誤監控能對應版本。
 :::
 
-**相關筆記**：[1-22-1 工程交付流程](./1-22-1.md#1-22-1-3)
-
 ### Q8. 前端 SPA 怎麼用 Docker 部署？ <Badge type="tip" text="高頻" /> {#interview-11-8}
 
 ::: details 標準答案與過程
@@ -177,11 +173,11 @@ server {
 除錯指令：`docker build -t web .`、`docker run -p 8080:80 web`、`docker logs <id>`、`docker exec -it <id> sh`。
 :::
 
-**相關筆記**：[1-22-2 Container：Docker 與 Kubernetes](./1-22-2.md)、[模擬面試 8 Q6 快取策略](./interview-8.md#interview-8-6)
+**相關筆記**：[模擬面試 8 Q6 快取策略](./interview-8.md#interview-8-6)
 
 ### Q9. Kubernetes 你需要知道哪些？ <Badge type="tip" text="基礎" /> {#interview-11-9}
 
-**考點**：台達電「basic Kubernetes (reading yaml, running kubectl)」。
+**考點**：基本的 Kubernetes 能力：看得懂 YAML、會用 kubectl 查狀態與 log。
 
 ::: details 標準答案與過程
 一個前端服務通常是 **Deployment + Service + Ingress**：
@@ -207,8 +203,6 @@ kubectl port-forward svc/web 8080:80 -n web
 常見狀態：`ImagePullBackOff`（映像名稱或權限錯）、`CrashLoopBackOff`（程式啟動就掛，看 logs）、`OOMKilled`（記憶體限制太小）。
 :::
 
-**相關筆記**：[1-22-2 Container：Docker 與 Kubernetes](./1-22-2.md)
-
 ### Q10. Micro-Frontends 有哪些做法？什麼時候該用？ <Badge type="warning" text="進階" /> {#interview-11-10}
 
 ::: details 標準答案與過程
@@ -227,7 +221,7 @@ Micro-Frontends 是把大型前端依業務拆成可**獨立開發、獨立部�
 不該用：單一團隊、產品規模不大。它解決的是**組織問題**，代價是共享依賴、樣式衝突、跨應用通訊、整體效能、端對端測試都變複雜。
 :::
 
-**相關筆記**：[1-1-2 未來趨勢：Web components](./1-1-2.md)、[1-17-1 Strangler Pattern](./1-17-1.md#1-17-1-6)
+**相關筆記**：[1-1-2 未來趨勢：Web components](./1-1-2.md)
 
 ### Q11. 怎麼建立共用元件庫和 Design System？ <Badge type="tip" text="高頻" /> {#interview-11-11}
 
@@ -267,7 +261,7 @@ new Intl.RelativeTimeFormat('zh-TW', { numeric: 'auto' }).format(-1, 'day') // �
 
 ### Q13. 線上出問題，你怎麼跨前後端排查？ <Badge type="tip" text="高頻" /> {#interview-11-13}
 
-**考點**：台達電「production incident response — read logs, triage issues across frontend, backend, and infrastructure」。
+**考點**：線上事故處理：讀 log，在前端、後端、基礎設施之間定位問題。
 
 ::: details 標準答案與過程
 1. **止血優先**：影響範圍多大？能否 rollback 或關閉 feature flag？先恢復服務再找根因。
@@ -286,11 +280,9 @@ curl -sv https://api.example.com/health
 4. **事後**：寫 postmortem（時間線、根因、為什麼沒被測到、預防措施），把預防措施變成測試、告警或 CI 檢查。
 :::
 
-**相關筆記**：[1-20-2 Linux 指令與排查](./1-20-2.md)、[1-22-3 Observability](./1-22-3.md#1-22-3-3)
-
 ### Q14. 你怎麼使用 AI 工具開發？怎麼確保品質？ <Badge type="tip" text="基礎" /> {#interview-11-14}
 
-**考點**：台達電明列「AI Fluency」。
+**考點**：會用 AI 工具提升效率，同時確保品質（AI Fluency）。
 
 ::: details 標準答案與過程
 用途：
@@ -306,5 +298,3 @@ curl -sv https://api.example.com/health
 
 回答時舉一個具體例子：用 AI 做了什麼、你發現了它哪裡錯、怎麼修正。
 :::
-
-**相關筆記**：[1-19-1 AI 應用架構](./1-19-1.md)

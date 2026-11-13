@@ -1,7 +1,7 @@
 # 模擬面試 8：效能優化 {#interview-8}
 
 ::: info 新增（2026-11）
-對應職缺：Core Web Vitals、SSR／ISR 策略（台達電）、優化頁面操作流程與效能（台達電 DDC、VueJS）、前端效能與跨瀏覽器（國泰 DDT）。資深面試一定會追問「怎麼量測」與「改善了多少」。
+Core Web Vitals、SSR／ISR 策略、頁面操作流程與大量資料的效能。資深面試一定會追問「怎麼量測」與「改善了多少」。
 :::
 
 ### Q1. Core Web Vitals 有哪些指標？標準是多少？怎麼改善？ <Badge type="tip" text="高頻" /> {#interview-8-1}
@@ -26,7 +26,7 @@ onLCP(report); onINP(report); onCLS(report)
 ```
 :::
 
-**相關筆記**：[1-6-1 效能監控和錯誤收集與回報](./1-6-1.md)、[1-13-3 HTTP-網頁效能入門](./1-13-3.md)
+**相關筆記**：[1-6-1 效能監控和錯誤收集與回報](./1-6-1.md)、[1-6-4 HTTP-網頁效能入門](./1-6-4.md)
 
 ### Q2. 使用者說頁面很慢，你怎麼排查？ <Badge type="tip" text="高頻" /> {#interview-8-2}
 
@@ -51,11 +51,11 @@ onLCP(report); onINP(report); onCLS(report)
 4. **改善後再量一次**，留下前後數據，加入效能預算（bundle 大小、LCP）到 CI 防止退步。
 :::
 
-**相關筆記**：[1-5-1 瀏覽器渲染流程與除錯](./1-5-1.md)、[1-17-2 效能診斷順序](./1-17-2.md#1-17-2-5)
+**相關筆記**：[1-5-3 瀏覽器渲染流程與除錯](./1-5-3.md)
 
 ### Q3. 前端要顯示 10 萬筆資料，怎麼做？ <Badge type="tip" text="高頻" /> {#interview-8-3}
 
-**考點**：職缺明列「大數據量渲染與複雜計算處理（Virtual Scroll、Web Worker、Wasm）」。
+**考點**：大數據量渲染與複雜計算處理（Virtual Scroll、Web Worker、Wasm）。
 
 ::: details 解題思路
 先問需求：真的要一次看到 10 萬筆嗎？能不能伺服器分頁或彙總？然後依瓶頸（DOM、計算、傳輸）分別處理。
@@ -111,7 +111,7 @@ function visibleRange(scrollTop, viewportHeight, total) {
 
 **相關筆記**：[1-6-2 效能最佳化（WebP、隨選載入）](./1-6-2.md)
 
-### Q6. 瀏覽器快取策略怎麼設計？ <Badge type="tip" text="高頻" /> {#interview-8-6}
+### Q6. 瀏覽器快取策略怎麼設計？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-8-6}
 
 ::: details 標準答案與過程
 | 類型 | Header | 行為 |
@@ -129,9 +129,11 @@ SPA 部署的標準配置：
 注意：部署新版時，舊版 `index.html` 引用的 chunk 若已刪除，使用者切頁會 404（ChunkLoadError）。解法：保留前一版資源一段時間，或捕捉錯誤後提示重新整理。
 :::
 
+<HttpCacheAnim />
+
 **相關筆記**：[1-6-3 快取政策](./1-6-3.md)
 
-### Q7. debounce 和 throttle 差在哪？各用在哪？ <Badge type="tip" text="高頻" /> {#interview-8-7}
+### Q7. debounce 和 throttle 差在哪？各用在哪？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-8-7}
 
 ::: details 標準答案與過程
 - **debounce（防抖）**：停止觸發一段時間後才執行最後一次。適合搜尋輸入、視窗 resize 結束後重算、自動儲存。
@@ -141,6 +143,8 @@ SPA 部署的標準配置：
 
 手寫實作見 [模擬面試 12 Q1、Q2](./interview-12.md#interview-12-1)。
 :::
+
+<DebounceThrottleAnim />
 
 **相關筆記**：[1-3-10 面試四題（Closure）](./1-3-10.md#1-3-10-2)
 

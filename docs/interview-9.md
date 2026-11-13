@@ -1,10 +1,10 @@
 # 模擬面試 9：網路、API 與認證 {#interview-9}
 
 ::: info 新增（2026-11）
-對應職缺：RESTful API 串接（7 個職缺）、BFF 架構（國泰 DDT）、JWT／OAuth／SSO（台達電）、讀後端程式並跨端除錯。
+RESTful API 串接、BFF 架構、JWT／OAuth／SSO，以及讀後端程式並跨端除錯。
 :::
 
-### Q1. 從輸入網址到畫面出現，中間發生什麼？ <Badge type="tip" text="高頻" /> {#interview-9-1}
+### Q1. 從輸入網址到畫面出現，中間發生什麼？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-9-1}
 
 ::: details 解題思路
 分「網路段」和「渲染段」，每段講 3～5 步，最後點出可以優化的地方，讓答案和效能、快取串起來。
@@ -27,7 +27,9 @@
 **可優化點**：DNS 預解析（`dns-prefetch`）、`preconnect`、CDN、HTTP/2+、快取、減少阻塞資源、關鍵 CSS、SSR／SSG。
 :::
 
-**相關筆記**：[1-11-7 從輸入網址到收到回應](./1-11-7.md)、[1-5-1 瀏覽器渲染流程與除錯](./1-5-1.md)
+<UrlToPixelAnim />
+
+**相關筆記**：[1-5-3 瀏覽器渲染流程與除錯](./1-5-3.md)
 
 ### Q2. 常見 HTTP 狀態碼？401 和 403、502 和 504 差在哪？ <Badge type="tip" text="基礎" /> {#interview-9-2}
 
@@ -40,8 +42,6 @@
 
 其他常考：200、201（已建立）、204（無內容）、301／302（導向）、304（快取有效）、400（請求格式錯）、404、409（衝突，例如版本不符）、422（驗證失敗）、429（請求太多，看 `Retry-After`）、500。
 :::
-
-**相關筆記**：[1-11-7 HTTP 必背對照](./1-11-7.md#1-11-7-2)
 
 ### Q3. HTTP/1.1、HTTP/2、HTTP/3 差在哪？ <Badge type="tip" text="高頻" /> {#interview-9-3}
 
@@ -59,9 +59,7 @@
 對前端的影響：HTTP/2 之後，「合併檔案、雪碧圖、網域分片」這些 HTTP/1.1 時代的技巧不再必要，甚至有反效果（快取粒度變粗）。
 :::
 
-**相關筆記**：[1-13-4 HTTP-1.x](./1-13-4.md)、[1-13-5 HTTP-2.0](./1-13-5.md)、[1-11-1 TCP／UDP／QUIC](./1-11-1.md#1-11-1-2)
-
-### Q4. CORS 是什麼？什麼時候會有 preflight？怎麼解決？ <Badge type="tip" text="高頻" /> {#interview-9-4}
+### Q4. CORS 是什麼？什麼時候會有 preflight？怎麼解決？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-9-4}
 
 ::: details 標準答案與過程
 **同源政策**：協定、網域、port 三者相同才是同源。瀏覽器預設不讓 JS 讀取跨源請求的回應。CORS 是**伺服器**用回應標頭告訴瀏覽器「允許哪些來源讀取」。
@@ -90,6 +88,8 @@ Access-Control-Max-Age: 600
 觀念：CORS 是瀏覽器保護使用者的機制，**不是伺服器的防護**，Postman、curl 不受限制；它也不能防 CSRF。
 :::
 
+<CorsPreflightAnim />
+
 **相關筆記**：[模擬面試 10 Q2 CSRF](./interview-10.md#interview-10-2)
 
 ### Q5. Cookie、Session、JWT 差在哪？Token 應該存哪？ <Badge type="tip" text="高頻" /> {#interview-9-5}
@@ -110,7 +110,7 @@ Access-Control-Max-Age: 600
 推薦組合：access token 短效放記憶體；refresh token 放 HttpOnly Cookie 並做 rotation。高安全需求（金融）用 **BFF**：瀏覽器只拿 session cookie，token 留在伺服器。
 :::
 
-**相關筆記**：[1-15-5 隨機數與 Token 儲存](./1-15-5.md#1-15-5-2)、[1-15-6 JWT 登入](./1-15-6.md)
+**相關筆記**：[1-12-3 隨機數與 Token 儲存](./1-12-3.md#1-12-3-2)、[1-12-4 JWT 登入](./1-12-4.md)
 
 ### Q6. OAuth 2.0、OIDC、SSO、PKCE 是什麼關係？畫出登入流程 <Badge type="tip" text="高頻" /> {#interview-9-6}
 
@@ -138,7 +138,6 @@ Access-Control-Max-Age: 600
 不要再用 Implicit Flow（token 放在 URL fragment）和 Password Grant。
 :::
 
-**相關筆記**：[1-17-1 認證與身份](./1-17-1.md#1-17-1-4)、[1-15-7 登入、MFA 與信任裝置](./1-15-7.md#1-15-7-1)
 
 ### Q7. RESTful API 怎麼設計？什麼是冪等？ <Badge type="tip" text="高頻" /> {#interview-9-7}
 
@@ -168,11 +167,9 @@ await fetch('/api/payments', {
 後端記錄 key 與結果，重複的 key 直接回傳第一次的結果，不重複扣款。
 :::
 
-**相關筆記**：[1-17-1 REST API 與設計有效且安全的 API](./1-17-1.md#1-17-1-1)、[1-15-4 寫入 API 防護](./1-15-4.md#1-15-4-1)
-
 ### Q8. 什麼是 BFF？什麼時候需要？ <Badge type="tip" text="高頻" /> {#interview-9-8}
 
-**考點**：國泰 DDT 必要條件「有後端 API 串接與 BFF 架構經驗」。
+**考點**：後端 API 串接與 BFF 架構經驗。
 
 ::: details 標準答案與過程
 BFF（Backend For Frontend）是專門服務某一個前端的後端層，由前端團隊擁有。
@@ -191,8 +188,6 @@ BFF（Backend For Frontend）是專門服務某一個前端的後端層，由前
 常見實作：Node.js（Fastify、NestJS）、Next.js Route Handlers；GraphQL 也是一種 BFF 形式。
 :::
 
-**相關筆記**：[1-17-1 BFF](./1-17-1.md#1-17-1-3)
-
 ### Q9. 即時資料要用輪詢、SSE 還是 WebSocket？ <Badge type="tip" text="高頻" /> {#interview-9-9}
 
 ::: details 標準答案與過程
@@ -206,7 +201,7 @@ BFF（Backend For Frontend）是專門服務某一個前端的後端層，由前
 WebSocket 實務要處理：斷線重連（指數退避）、心跳偵測、重連後補資料（帶最後序號）、訊息順序與去重、背壓（訊息太多時節流畫面更新，例如用 `requestAnimationFrame` 合併）、認證（連線時帶 token，過期要重新驗證）。
 :::
 
-**相關筆記**：[1-14-3 伺服器發送事件（SSE）](./1-14-3.md)、[1-14-4 WebSocket](./1-14-4.md)、[1-11-7 即時通訊](./1-11-7.md#1-11-7-4)
+**相關筆記**：[1-11-3 伺服器發送事件（SSE）](./1-11-3.md)、[1-11-4 WebSocket](./1-11-4.md)
 
 ### Q10. API 請求怎麼處理錯誤、重試、取消與競態？ <Badge type="warning" text="進階" /> {#interview-9-10}
 
@@ -230,4 +225,4 @@ async function search(q) {
 ```
 :::
 
-**相關筆記**：[模擬面試 12 Q13 帶指數退避的重試](./interview-12.md#interview-12-13)、[1-17-1 API 效能基本功](./1-17-1.md#1-17-1-2)
+**相關筆記**：[模擬面試 12 Q13 帶指數退避的重試](./interview-12.md#interview-12-13)

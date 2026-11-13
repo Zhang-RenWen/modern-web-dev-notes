@@ -7,7 +7,7 @@ export const sidebar = [
         "link": "/1-1",
         "items": [
           {
-            "text": "1-1-1 HTML 語義化",
+            "text": "1-1-1 HTML 語意化",
             "link": "/1-1-1"
           },
           {
@@ -26,7 +26,7 @@ export const sidebar = [
         "link": "/1-2",
         "items": [
           {
-            "text": "1-2-1 BFC 版面配置",
+            "text": "1-2-1 版面配置",
             "link": "/1-2-1"
           },
           {
@@ -40,6 +40,10 @@ export const sidebar = [
           {
             "text": "1-2-4 CSS 精華觀念 🆕",
             "link": "/1-2-4"
+          },
+          {
+            "text": "1-2-5 RWD、相容性與版面驗證 🆕",
+            "link": "/1-2-5"
           }
         ],
         "collapsed": true
@@ -81,12 +85,16 @@ export const sidebar = [
             "link": "/1-3-8"
           },
           {
-            "text": "1-3-9 通用正則表達式（新增 Regex 速查 🆕）",
+            "text": "1-3-9 通用正則表達式",
             "link": "/1-3-9"
           },
           {
             "text": "1-3-10 JS 面試核心與語法陷阱 🆕",
             "link": "/1-3-10"
+          },
+          {
+            "text": "1-3-11 函數式程式設計",
+            "link": "/1-3-11"
           }
         ],
         "collapsed": true
@@ -96,7 +104,7 @@ export const sidebar = [
         "link": "/1-4",
         "items": [
           {
-            "text": "1-4-1 型別系統的核心觀念 🆕",
+            "text": "1-4-1 TypeScript 型別系統的核心觀念 🆕",
             "link": "/1-4-1"
           },
           {
@@ -115,16 +123,52 @@ export const sidebar = [
         "collapsed": true
       },
       {
-        "text": "1-5 瀏覽器運作 🚧",
+        "text": "1-5 瀏覽器原理 🆕",
         "link": "/1-5",
         "items": [
           {
-            "text": "1-5-1 瀏覽器渲染流程與除錯 🆕",
+            "text": "1-5-1 瀏覽器架構：引擎與多進程 🆕",
             "link": "/1-5-1"
           },
           {
-            "text": "1-5-2 window 物件",
+            "text": "1-5-2 導航與網路：從輸入 URL 到收到回應 🆕",
             "link": "/1-5-2"
+          },
+          {
+            "text": "1-5-3 渲染管線 Critical Rendering Path 🆕",
+            "link": "/1-5-3"
+          },
+          {
+            "text": "1-5-4 JavaScript 引擎、Event Loop 與 WebAssembly 🆕",
+            "link": "/1-5-4"
+          },
+          {
+            "text": "1-5-5 安全模型與儲存 🆕",
+            "link": "/1-5-5"
+          },
+          {
+            "text": "1-5-6 同源政策與 CORS 🆕",
+            "link": "/1-5-6"
+          },
+          {
+            "text": "1-5-7 瀏覽器差異比較（引擎、市佔、殼） 🆕",
+            "link": "/1-5-7"
+          },
+          {
+            "text": "1-5-8 2026 年新趨勢（AI 瀏覽器、Ladybird、新標準） 🆕",
+            "link": "/1-5-8"
+          },
+          {
+            "text": "1-5-9 Web 檢測與 DevTools 🆕",
+            "link": "/1-5-9"
+          },
+          {
+            "text": "1-5-10 window 物件",
+            "link": "/1-5-10"
+          },
+          {
+            "text": "1-5-11 JavaScript 的能力邊界 🆕",
+            "link": "/1-5-11"
           }
         ],
         "collapsed": true
@@ -144,6 +188,14 @@ export const sidebar = [
           {
             "text": "1-6-3 快取政策",
             "link": "/1-6-3"
+          },
+          {
+            "text": "1-6-4 網頁效能入門",
+            "link": "/1-6-4"
+          },
+          {
+            "text": "1-6-5 應用程式傳輸最佳化",
+            "link": "/1-6-5"
           }
         ],
         "collapsed": true
@@ -204,6 +256,14 @@ export const sidebar = [
           {
             "text": "1-8-3 企業後台常用程式片段 🆕",
             "link": "/1-8-3"
+          },
+          {
+            "text": "1-8-4 多語系 i18n 🆕",
+            "link": "/1-8-4"
+          },
+          {
+            "text": "1-8-5 瀏覽器擴充功能開發（MV3） 🆕",
+            "link": "/1-8-5"
           }
         ],
         "collapsed": true
@@ -227,6 +287,10 @@ export const sidebar = [
           {
             "text": "1-9-4 標準化工具管理團隊",
             "link": "/1-9-4"
+          },
+          {
+            "text": "1-9-5 Vite 建置與靜態發佈實戰 🆕",
+            "link": "/1-9-5"
           }
         ],
         "collapsed": true
@@ -242,6 +306,14 @@ export const sidebar = [
           {
             "text": "1-10-2 把概念變成視覺與所需數學 🆕",
             "link": "/1-10-2"
+          },
+          {
+            "text": "1-10-3 金融圖表與 Three.js 開發原則 🆕",
+            "link": "/1-10-3"
+          },
+          {
+            "text": "1-10-4 效能測試工具：3D 與動畫網頁 🆕",
+            "link": "/1-10-4"
           }
         ],
         "collapsed": true
@@ -250,565 +322,54 @@ export const sidebar = [
     "collapsed": true
   },
   {
-    "text": "網路與資安",
+    "text": "瀏覽器網路與前端資安",
     "items": [
       {
-        "text": "1-11 網路基礎 🚧",
+        "text": "1-11 瀏覽器網路 API 與即時通訊",
         "link": "/1-11",
         "items": [
           {
-            "text": "1-11-1 TCP/IP 四層架構& OSI七層架構 🆕",
+            "text": "1-11-1 瀏覽器網路通訊入門",
             "link": "/1-11-1"
           },
           {
-            "text": "1-11-2 網路通訊基礎-「延遲」「頻寬」",
+            "text": "1-11-2 XMLHttpRequest",
             "link": "/1-11-2"
           },
           {
-            "text": "1-11-3 網路通訊基礎-TCP",
+            "text": "1-11-3 伺服器發送事件（SSE）",
             "link": "/1-11-3"
           },
           {
-            "text": "1-11-4 網路通訊基礎-UDP",
+            "text": "1-11-4 WebSocket",
             "link": "/1-11-4"
           },
           {
-            "text": "1-11-5 網路通訊基礎-傳輸層安全性 TLS",
+            "text": "1-11-5 WebRTC",
             "link": "/1-11-5"
-          },
-          {
-            "text": "1-11-6 Port 與流量分層 🆕",
-            "link": "/1-11-6"
-          },
-          {
-            "text": "1-11-7 從輸入網址到收到回應 🆕",
-            "link": "/1-11-7"
-          },
-          {
-            "text": "1-11-8 SSH 與內網連線 🆕",
-            "link": "/1-11-8"
           }
         ],
         "collapsed": true
       },
       {
-        "text": "1-12 無線網路效能",
+        "text": "1-12 前端資安 🚧",
         "link": "/1-12",
         "items": [
           {
-            "text": "1-12-1 無線網路效能-簡介無線網路",
+            "text": "1-12-1 資安實作建議",
             "link": "/1-12-1"
           },
           {
-            "text": "1-12-2 無線網路效能-WiFi",
+            "text": "1-12-2 傳輸層與 HTTP Security Headers 🆕",
             "link": "/1-12-2"
           },
           {
-            "text": "1-12-3 無線網路效能-行動網路",
+            "text": "1-12-3 隨機數與 Token 儲存 🆕",
             "link": "/1-12-3"
           },
           {
-            "text": "1-12-4 無線網路效能-行動網路最佳化",
+            "text": "1-12-4 JWT 登入",
             "link": "/1-12-4"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-13 HTTP",
-        "link": "/1-13",
-        "items": [
-          {
-            "text": "1-13-1 HTTP-概述",
-            "link": "/1-13-1"
-          },
-          {
-            "text": "1-13-2 HTTP-發展史",
-            "link": "/1-13-2"
-          },
-          {
-            "text": "1-13-3 HTTP-網頁效能入門",
-            "link": "/1-13-3"
-          },
-          {
-            "text": "1-13-4 HTTP-1.x",
-            "link": "/1-13-4"
-          },
-          {
-            "text": "1-13-5 HTTP-2.0",
-            "link": "/1-13-5"
-          },
-          {
-            "text": "1-13-6 HTTP-應用程式傳輸最佳化",
-            "link": "/1-13-6"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-14 瀏覽器網路 API 與即時通訊",
-        "link": "/1-14",
-        "items": [
-          {
-            "text": "1-14-1 瀏覽器網路通訊入門",
-            "link": "/1-14-1"
-          },
-          {
-            "text": "1-14-2 XMLHttpRequest",
-            "link": "/1-14-2"
-          },
-          {
-            "text": "1-14-3 伺服器發送事件（SSE）",
-            "link": "/1-14-3"
-          },
-          {
-            "text": "1-14-4 WebSocket",
-            "link": "/1-14-4"
-          },
-          {
-            "text": "1-14-5 WebRTC",
-            "link": "/1-14-5"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-15 資安議題 🚧",
-        "link": "/1-15",
-        "items": [
-          {
-            "text": "1-15-1 資安原則與真實案例 🆕",
-            "link": "/1-15-1"
-          },
-          {
-            "text": "1-15-2 資安實作建議",
-            "link": "/1-15-2"
-          },
-          {
-            "text": "1-15-3 傳輸層與 HTTP Security Headers 🆕",
-            "link": "/1-15-3"
-          },
-          {
-            "text": "1-15-4 寫入 API 防護與資料遮罩 🆕",
-            "link": "/1-15-4"
-          },
-          {
-            "text": "1-15-5 隨機數與 Token 儲存 🆕",
-            "link": "/1-15-5"
-          },
-          {
-            "text": "1-15-6 JWT 登入",
-            "link": "/1-15-6"
-          },
-          {
-            "text": "1-15-7 登入、MFA 與權限模型 🆕",
-            "link": "/1-15-7"
-          }
-        ],
-        "collapsed": true
-      }
-    ],
-    "collapsed": true
-  },
-  {
-    "text": "後端與系統設計",
-    "items": [
-      {
-        "text": "1-16 Node.js 執行環境 🆕",
-        "link": "/1-16",
-        "items": [
-          {
-            "text": "1-16-1 架構、運行機制與學習地圖 🆕",
-            "link": "/1-16-1"
-          },
-          {
-            "text": "1-16-2 模組系統 🆕",
-            "link": "/1-16-2"
-          },
-          {
-            "text": "1-16-3 記憶體控制 🆕",
-            "link": "/1-16-3"
-          },
-          {
-            "text": "1-16-4 多程序與多執行緒 🆕",
-            "link": "/1-16-4"
-          },
-          {
-            "text": "1-16-5 除錯與測試 🆕",
-            "link": "/1-16-5"
-          },
-          {
-            "text": "1-16-6 JavaScript 的能力邊界 🆕",
-            "link": "/1-16-6"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-17 後端與資料 🆕",
-        "link": "/1-17",
-        "items": [
-          {
-            "text": "1-17-1 API 與後端 🆕",
-            "link": "/1-17-1"
-          },
-          {
-            "text": "1-17-2 資料庫與資料設計 🆕",
-            "link": "/1-17-2"
-          },
-          {
-            "text": "1-17-3 資料管線 Data Pipeline 🆕",
-            "link": "/1-17-3"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-18 系統設計與架構 🆕",
-        "link": "/1-18",
-        "items": [
-          {
-            "text": "1-18-1 架構決策框架 🆕",
-            "link": "/1-18-1"
-          },
-          {
-            "text": "1-18-2 大道至簡：反過度設計 🆕",
-            "link": "/1-18-2"
-          },
-          {
-            "text": "1-18-3 依賴與耦合 🆕",
-            "link": "/1-18-3"
-          },
-          {
-            "text": "1-18-4 分散式系統基礎 🆕",
-            "link": "/1-18-4"
-          },
-          {
-            "text": "1-18-5 系統設計面試套路 🆕",
-            "link": "/1-18-5"
-          },
-          {
-            "text": "1-18-6 架構案例、學習路線與參考資源 🆕",
-            "link": "/1-18-6"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-19 AI 與機器學習 🆕",
-        "link": "/1-19",
-        "items": [
-          {
-            "text": "1-19-1 AI 應用架構 🆕",
-            "link": "/1-19-1"
-          },
-          {
-            "text": "1-19-2 傳統機器學習模型地圖 🆕",
-            "link": "/1-19-2"
-          }
-        ],
-        "collapsed": true
-      }
-    ],
-    "collapsed": true
-  },
-  {
-    "text": "開發工具與維運",
-    "items": [
-      {
-        "text": "1-20 Linux、終端與開發環境 🆕",
-        "link": "/1-20",
-        "items": [
-          {
-            "text": "1-20-1 Linux 發行版與 CLI 🆕",
-            "link": "/1-20-1"
-          },
-          {
-            "text": "1-20-2 Linux 指令與排查 🆕",
-            "link": "/1-20-2"
-          },
-          {
-            "text": "1-20-3 Cron 排程 🆕",
-            "link": "/1-20-3"
-          },
-          {
-            "text": "1-20-4 本機環境與工具速查 🆕",
-            "link": "/1-20-4"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-21 Git 版本控制 🆕",
-        "link": "/1-21",
-        "items": [
-          {
-            "text": "1-21-1 Git 心智模型與團隊實務 🆕",
-            "link": "/1-21-1"
-          },
-          {
-            "text": "1-21-2 Git 情境速查 🆕",
-            "link": "/1-21-2"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-22 程式部署與 DevOps 🆕",
-        "link": "/1-22",
-        "items": [
-          {
-            "text": "1-22-1 工程交付流程與學習原則 🆕",
-            "link": "/1-22-1"
-          },
-          {
-            "text": "1-22-2 Container：Docker 與 Kubernetes 🆕",
-            "link": "/1-22-2"
-          },
-          {
-            "text": "1-22-3 Cloud、IaC 與 Observability 🆕",
-            "link": "/1-22-3"
-          }
-        ],
-        "collapsed": true
-      }
-    ],
-    "collapsed": true
-  },
-  {
-    "text": "電腦科學基礎",
-    "items": [
-      {
-        "text": "1-23 電腦及作業系統 🆕",
-        "link": "/1-23",
-        "items": [
-          {
-            "text": "1-23-1 從電晶體到程式 🆕",
-            "link": "/1-23-1"
-          },
-          {
-            "text": "1-23-2 記憶體與儲存 🆕",
-            "link": "/1-23-2"
-          },
-          {
-            "text": "1-23-3 軟體到硬體的分層 🆕",
-            "link": "/1-23-3"
-          },
-          {
-            "text": "1-23-4 並行：Async vs Multi-thread 🆕",
-            "link": "/1-23-4"
-          },
-          {
-            "text": "1-23-5 從 Shell 指令到 Kernel 🆕",
-            "link": "/1-23-5"
-          },
-          {
-            "text": "1-23-6 嵌入式入口 ESP32 與學習資源 🆕",
-            "link": "/1-23-6"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-24 資料結構和演算法",
-        "link": "/1-24",
-        "items": [
-          {
-            "text": "1-24-1 Complexity and Big O Notation",
-            "link": "/1-24-1"
-          },
-          {
-            "text": "1-24-2 演算法設計",
-            "link": "/1-24-2"
-          },
-          {
-            "text": "1-24-3 Sorting Algorithms 排序演算法 初階",
-            "link": "/1-24-3"
-          },
-          {
-            "text": "1-24-4 Sorting Algorithms 排序演算法 進階",
-            "link": "/1-24-4"
-          },
-          {
-            "text": "1-24-5 資料結構",
-            "link": "/1-24-5"
-          },
-          {
-            "text": "1-24-6 資料結構與演算法速查 🆕",
-            "link": "/1-24-6"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-25 設計模式與程式設計範式 🚧",
-        "link": "/1-25",
-        "items": [
-          {
-            "text": "1-25-1 設計模式導論",
-            "link": "/1-25-1"
-          },
-          {
-            "text": "1-25-2 建立型模式 🚧",
-            "link": "/1-25-2"
-          },
-          {
-            "text": "1-25-3 結構型模式 🚧",
-            "link": "/1-25-3"
-          },
-          {
-            "text": "1-25-4 行為型模式 🚧",
-            "link": "/1-25-4"
-          },
-          {
-            "text": "1-25-5 物件導向設計原則與常見模式 🆕",
-            "link": "/1-25-5"
-          },
-          {
-            "text": "1-25-6 函數式程式設計",
-            "link": "/1-25-6"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-26 程式語言 🆕",
-        "link": "/1-26",
-        "items": [
-          {
-            "text": "1-26-1 程式語言概觀 🆕",
-            "link": "/1-26-1"
-          },
-          {
-            "text": "1-26-2 C++ 與 Rust：系統程式語言 🆕",
-            "link": "/1-26-2"
-          },
-          {
-            "text": "1-26-3 從 TypeScript 看懂 Java 🆕",
-            "link": "/1-26-3"
-          }
-        ],
-        "collapsed": true
-      }
-    ],
-    "collapsed": true
-  },
-  {
-    "text": "數學",
-    "items": [
-      {
-        "text": "1-27 離散數學 🚧",
-        "link": "/1-27",
-        "items": [
-          {
-            "text": "1-27-1 Formal Logic",
-            "link": "/1-27-1"
-          },
-          {
-            "text": "1-27-2 Predicates and Quantifiers",
-            "link": "/1-27-2"
-          },
-          {
-            "text": "1-27-3 Translation",
-            "link": "/1-27-3"
-          },
-          {
-            "text": "1-27-4 Negation of Expression",
-            "link": "/1-27-4"
-          },
-          {
-            "text": "1-27-5 Predicates Logic",
-            "link": "/1-27-5"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-28 線性代數 🚧",
-        "link": "/1-28",
-        "items": [
-          {
-            "text": "1-28-1 Linear Equation 線性方程式",
-            "link": "/1-28-1"
-          },
-          {
-            "text": "1-28-2 矩陣求解",
-            "link": "/1-28-2"
-          },
-          {
-            "text": "1-28-3 Vector 向量",
-            "link": "/1-28-3"
-          },
-          {
-            "text": "1-28-4 線性代數的幾何直覺 🆕",
-            "link": "/1-28-4"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-29 三角函數 🚧",
-        "link": "/1-29"
-      },
-      {
-        "text": "1-30 微積分 🚧",
-        "link": "/1-30"
-      },
-      {
-        "text": "1-31 數論和密碼學 🚧",
-        "link": "/1-31"
-      },
-      {
-        "text": "1-32 最佳化與博弈論 🆕",
-        "link": "/1-32",
-        "items": [
-          {
-            "text": "1-32-1 Flow 思維與最佳化模型 🆕",
-            "link": "/1-32-1"
-          },
-          {
-            "text": "1-32-2 博弈論：必勝策略與「神之一手」 🆕",
-            "link": "/1-32-2"
-          }
-        ],
-        "collapsed": true
-      }
-    ],
-    "collapsed": true
-  },
-  {
-    "text": "職涯與團隊",
-    "items": [
-      {
-        "text": "1-33 工程師的成長與職涯 🆕",
-        "link": "/1-33",
-        "items": [
-          {
-            "text": "1-33-1 從工程師到架構師 🆕",
-            "link": "/1-33-1"
-          },
-          {
-            "text": "1-33-2 判斷工作、職缺與產業生態 🆕",
-            "link": "/1-33-2"
-          },
-          {
-            "text": "1-33-3 學習策略與知識沉澱 🆕",
-            "link": "/1-33-3"
-          }
-        ],
-        "collapsed": true
-      },
-      {
-        "text": "1-34 團隊協作與需求管理 🆕",
-        "link": "/1-34",
-        "items": [
-          {
-            "text": "1-34-1 需求訪談與範疇控制 🆕",
-            "link": "/1-34-1"
-          },
-          {
-            "text": "1-34-2 Code Review 與 Scrum 🆕",
-            "link": "/1-34-2"
           }
         ],
         "collapsed": true
@@ -1863,7 +1424,7 @@ export const sidebar = [
     "text": "模擬面試 🆕",
     "items": [
       {
-        "text": "職缺分析與面試題地圖 🆕",
+        "text": "面試題地圖與動畫解析 🆕",
         "link": "/interview-1"
       },
       {
