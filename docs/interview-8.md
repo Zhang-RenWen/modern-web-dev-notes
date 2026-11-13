@@ -26,7 +26,7 @@ onLCP(report); onINP(report); onCLS(report)
 ```
 :::
 
-**相關筆記**：[1-4-1 效能監控和錯誤收集與回報](./1-4-1.md)、[1-4-5 HTTP-網頁效能入門](./1-4-5.md)
+**相關筆記**：[1-6-1 效能監控和錯誤收集與回報](./1-6-1.md)、[1-13-3 HTTP-網頁效能入門](./1-13-3.md)
 
 ### Q2. 使用者說頁面很慢，你怎麼排查？ <Badge type="tip" text="高頻" /> {#interview-8-2}
 
@@ -51,7 +51,7 @@ onLCP(report); onINP(report); onCLS(report)
 4. **改善後再量一次**，留下前後數據，加入效能預算（bundle 大小、LCP）到 CI 防止退步。
 :::
 
-**相關筆記**：[1-3-3 瀏覽器渲染流程與除錯](./1-3-3.md)、[1-22-4 效能診斷順序](./1-22-4.md#1-22-4-5)
+**相關筆記**：[1-5-1 瀏覽器渲染流程與除錯](./1-5-1.md)、[1-17-2 效能診斷順序](./1-17-2.md#1-17-2-5)
 
 ### Q3. 前端要顯示 10 萬筆資料，怎麼做？ <Badge type="tip" text="高頻" /> {#interview-8-3}
 
@@ -82,7 +82,7 @@ function visibleRange(scrollTop, viewportHeight, total) {
 7. **WASM**：適合「大量運算、輸出小」的工作；若每幀都要把大量資料搬回 JS，搬運成本可能抵銷優勢。
 :::
 
-**相關筆記**：[1-6-12 WASM 不一定比 JS 快](./1-6-12.md#1-6-12-4)、[1-15-1 渲染技術定位](./1-15-1.md#1-15-1-1)、[模擬面試 5 Q12](./interview-5.md#interview-5-12)
+**相關筆記**：[1-8-2 WASM 不一定比 JS 快](./1-8-2.md#1-8-2-4)、[1-10-1 渲染技術定位](./1-10-1.md#1-10-1-1)、[模擬面試 5 Q12](./interview-5.md#interview-5-12)
 
 ### Q4. Bundle 太大怎麼辦？ <Badge type="tip" text="高頻" /> {#interview-8-4}
 
@@ -96,7 +96,7 @@ function visibleRange(scrollTop, viewportHeight, total) {
 7. **CI 效能預算**：bundle 超過門檻就失敗。
 :::
 
-**相關筆記**：[1-6-8 webpack 前端知識點](./1-6-8.md)、[14-4 動態 import](./14-4.md)、[模擬面試 11 Q2 Tree Shaking](./interview-11.md#interview-11-2)
+**相關筆記**：[1-9-2 webpack 前端知識點](./1-9-2.md)、[14-4 動態 import](./14-4.md)、[模擬面試 11 Q2 Tree Shaking](./interview-11.md#interview-11-2)
 
 ### Q5. 圖片怎麼優化？ <Badge type="tip" text="基礎" /> {#interview-8-5}
 
@@ -109,7 +109,7 @@ function visibleRange(scrollTop, viewportHeight, total) {
 - **解碼**：`decoding="async"`。
 :::
 
-**相關筆記**：[1-4-2 效能最佳化（WebP、隨選載入）](./1-4-2.md)
+**相關筆記**：[1-6-2 效能最佳化（WebP、隨選載入）](./1-6-2.md)
 
 ### Q6. 瀏覽器快取策略怎麼設計？ <Badge type="tip" text="高頻" /> {#interview-8-6}
 
@@ -129,7 +129,7 @@ SPA 部署的標準配置：
 注意：部署新版時，舊版 `index.html` 引用的 chunk 若已刪除，使用者切頁會 404（ChunkLoadError）。解法：保留前一版資源一段時間，或捕捉錯誤後提示重新整理。
 :::
 
-**相關筆記**：[1-4-4 快取政策](./1-4-4.md)
+**相關筆記**：[1-6-3 快取政策](./1-6-3.md)
 
 ### Q7. debounce 和 throttle 差在哪？各用在哪？ <Badge type="tip" text="高頻" /> {#interview-8-7}
 
@@ -142,7 +142,7 @@ SPA 部署的標準配置：
 手寫實作見 [模擬面試 12 Q1、Q2](./interview-12.md#interview-12-1)。
 :::
 
-**相關筆記**：[1-2-8 面試四題（Closure）](./1-2-8.md#1-2-8-2)
+**相關筆記**：[1-3-10 面試四題（Closure）](./1-3-10.md#1-3-10-2)
 
 ### Q8. 怎麼讓 INP 變好？什麼是長任務？ <Badge type="warning" text="進階" /> {#interview-8-8}
 
@@ -171,7 +171,7 @@ async function processInChunks(items, handle) {
 5. **減少第三方腳本**：廣告、追蹤碼常是長任務來源，延後或用 Partytown 移到 Worker。
 :::
 
-**相關筆記**：[1-2-5 巨任務和微任務](./1-2-5.md)
+**相關筆記**：[1-3-6 巨任務和微任務](./1-3-6.md)
 
 ### Q9. SSR 一定比較快嗎？ <Badge type="warning" text="進階" /> {#interview-8-9}
 
@@ -185,7 +185,7 @@ async function processInChunks(items, handle) {
 改善方式：靜態部分 SSG／ISR、串流 SSR（先送外框、資料好了再補）、Server Components 減少 client JS、邊緣快取。選擇看頁面性質，不是一律 SSR。
 :::
 
-**相關筆記**：[模擬面試 6 Q6 CSR／SSR／SSG／ISR](./interview-6.md#interview-6-6)、[1-6-5 同構應用（效能最佳化）](./1-6-5.md)
+**相關筆記**：[模擬面試 6 Q6 CSR／SSR／SSG／ISR](./interview-6.md#interview-6-6)、[1-7-6 同構應用（效能最佳化）](./1-7-6.md)
 
 ### Q10. 前端怎麼做錯誤監控？ <Badge type="tip" text="基礎" /> {#interview-8-10}
 
@@ -201,4 +201,4 @@ async function processInChunks(items, handle) {
 實務：用 Sentry 之類的平台，上傳 source map 還原壓縮後的堆疊（但 source map 不要公開部署）；附上版本號、使用者操作路徑（breadcrumbs）、瀏覽器資訊；過濾雜訊並設告警門檻。跨網域 script 要加 `crossorigin` 才拿得到完整錯誤訊息。
 :::
 
-**相關筆記**：[1-4-1 效能監控和錯誤收集與回報](./1-4-1.md)
+**相關筆記**：[1-6-1 效能監控和錯誤收集與回報](./1-6-1.md)

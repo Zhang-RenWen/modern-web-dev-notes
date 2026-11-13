@@ -24,7 +24,7 @@ XSS 是攻擊者讓惡意腳本在受害者的瀏覽器、以網站的身分執�
 5. **後端驗證與編碼**：前端不是唯一防線。
 :::
 
-**相關筆記**：[1-19-1 資安實作建議](./1-19-1.md)、[1-19-7 HTTP Security Headers](./1-19-7.md)
+**相關筆記**：[1-15-2 資安實作建議](./1-15-2.md)、[1-15-3 HTTP Security Headers](./1-15-3.md)
 
 ### Q2. CSRF 是什麼？SameSite 怎麼幫忙？ <Badge type="tip" text="高頻" /> {#interview-10-2}
 
@@ -42,7 +42,7 @@ CSRF 是攻擊者讓已登入的使用者，在不知情下從**別的網站**�
 CORS 不能防 CSRF：簡單請求（form POST）不會觸發 preflight，請求照樣送到伺服器並執行。
 :::
 
-**相關筆記**：[1-19-6 寫入 API 防護（CSRF）](./1-19-6.md#1-19-6-1)
+**相關筆記**：[1-15-4 寫入 API 防護（CSRF）](./1-15-4.md#1-15-4-1)
 
 ### Q3. CSP 是什麼？怎麼導入不會把網站弄壞？ <Badge type="warning" text="進階" /> {#interview-10-3}
 
@@ -71,7 +71,7 @@ Content-Security-Policy:
 避免：`'unsafe-inline'`、`'unsafe-eval'` 會讓 CSP 對 XSS 幾乎沒有效果。`frame-ancestors` 取代 `X-Frame-Options` 防點擊劫持。
 :::
 
-**相關筆記**：[1-19-7 傳輸層與 HTTP Security Headers](./1-19-7.md)
+**相關筆記**：[1-15-3 傳輸層與 HTTP Security Headers](./1-15-3.md)
 
 ### Q4. 前端可以防止使用者竄改資料或繞過權限嗎？ <Badge type="tip" text="高頻" /> {#interview-10-4}
 
@@ -88,7 +88,7 @@ Content-Security-Policy:
 前端能做的：減少錯誤操作、不在前端放密鑰、不把不該看的資料傳下來（遮罩要在後端做）。
 :::
 
-**相關筆記**：[1-19-3 資安五條底層原則](./1-19-3.md#1-19-3-1)、[1-19-6 寫入 API 防護與資料遮罩](./1-19-6.md)
+**相關筆記**：[1-15-1 資安五條底層原則](./1-15-1.md#1-15-1-1)、[1-15-4 寫入 API 防護與資料遮罩](./1-15-4.md)
 
 ### Q5. 點擊劫持（Clickjacking）是什麼？ <Badge type="tip" text="基礎" /> {#interview-10-5}
 
@@ -98,7 +98,7 @@ Content-Security-Policy:
 防禦：回應標頭 `Content-Security-Policy: frame-ancestors 'none'`（或 `'self'`），舊瀏覽器補 `X-Frame-Options: DENY`。敏感操作加二次確認。
 :::
 
-**相關筆記**：[1-19-7 HTTP Security Headers](./1-19-7.md)
+**相關筆記**：[1-15-3 HTTP Security Headers](./1-15-3.md)
 
 ### Q6. npm 套件的供應鏈風險怎麼管？ <Badge type="warning" text="進階" /> {#interview-10-6}
 
@@ -116,7 +116,7 @@ Content-Security-Policy:
 7. **CI 中第三方 Action 固定 commit SHA**，不要用浮動 tag。
 :::
 
-**相關筆記**：[1-19-3 XZ Utils 後門（供應鏈攻擊）](./1-19-3.md#1-19-3-2)、[1-22-3 開源專案怎麼選](./1-22-3.md#1-22-3-3)
+**相關筆記**：[1-15-1 XZ Utils 後門（供應鏈攻擊）](./1-15-1.md#1-15-1-2)、[1-18-3 開源專案怎麼選](./1-18-3.md#1-18-3-3)
 
 ### Q7. 個資要在前端遮罩嗎？ <Badge type="tip" text="高頻" /> {#interview-10-7}
 
@@ -130,7 +130,7 @@ Content-Security-Policy:
 4. Log 與錯誤回報（Sentry）也要過濾敏感欄位。
 :::
 
-**相關筆記**：[1-19-6 資料遮罩 / 去識別化](./1-19-6.md#1-19-6-2)
+**相關筆記**：[1-15-4 資料遮罩 / 去識別化](./1-15-4.md#1-15-4-2)
 
 ### Q8. 前端要產生不可猜的 ID 或 token，用 `Math.random()` 可以嗎？ <Badge type="tip" text="基礎" /> {#interview-10-8}
 
@@ -145,4 +145,4 @@ crypto.getRandomValues(new Uint8Array(32))      // 256 bits 隨機位元組
 而且真正的安全 token（session、重設密碼連結）應該由**後端**產生。前端產生的值只適合當作冪等鍵、追蹤 ID、PKCE 的 code_verifier 這類用途。
 :::
 
-**相關筆記**：[1-19-4 隨機數](./1-19-4.md#1-19-4-1)
+**相關筆記**：[1-15-5 隨機數](./1-15-5.md#1-15-5-1)

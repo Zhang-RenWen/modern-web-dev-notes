@@ -43,7 +43,7 @@ export class PolicyComponent {
 Injector 是階層式的：元件 → 父元件 → 模組／環境 → root，找不到就往上找。
 :::
 
-**相關筆記**：[1-21 Java 與 OOP（interface + composition + DI）](./1-21.md#1-21-5)
+**相關筆記**：[1-26-3 Java 與 OOP（interface + composition + DI）](./1-26-3.md#1-26-3-7)
 
 ### Q3. Angular 的變更偵測怎麼運作？OnPush 和 Signals 解決什麼？ <Badge type="tip" text="高頻" /> {#interview-7-3}
 
@@ -67,7 +67,7 @@ increment() { this.count.update(v => v + 1) }
 實務：新元件用 OnPush + Signals；大型表格或高頻更新畫面一定要 OnPush。
 :::
 
-**相關筆記**：[1-6-1 響應式架構設計](./1-6-1.md)
+**相關筆記**：[1-7-1 響應式架構設計](./1-7-1.md)
 
 ### Q4. Observable 和 Promise 差在哪？`switchMap`、`mergeMap`、`concatMap`、`exhaustMap` 怎麼選？ <Badge type="tip" text="高頻" /> {#interview-7-4}
 
@@ -162,4 +162,4 @@ Action ──▶ Effect（處理 API 等副作用）──▶ 成功／失敗 Ac
 何時需要：多個頁面共享且頻繁變動的狀態、需要時光回溯除錯、團隊大要嚴格規範資料流。小功能用 Service + Signal 或 `@ngrx/signals` 的 Signal Store 即可，避免樣板程式碼過多。
 :::
 
-**相關筆記**：[1-6-3 Redux 使用方式與優缺點](./1-6-3.md)
+**相關筆記**：[1-7-3 Redux 使用方式與優缺點](./1-7-3.md)

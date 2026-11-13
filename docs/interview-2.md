@@ -24,7 +24,7 @@
 實務原則：能用原生元素就不要用 ARIA 補；一頁一個 `main`；標題 h1→h2→h3 依內容層級，不為字體大小跳級；圖片有 `alt`，表單有 `label`。驗證可用 Lighthouse Accessibility、axe DevTools，並實際用鍵盤 Tab 走一遍。
 :::
 
-**相關筆記**：[1-1-1 HTML 語意化](./1-1-1.md)、[1-1-6 HTML 與無障礙](./1-1-6.md)
+**相關筆記**：[1-1-1 HTML 語意化](./1-1-1.md)、[1-1-3 HTML 與無障礙](./1-1-3.md)
 
 ### Q2. 什麼是 BFC？怎麼觸發？能解決什麼問題？ <Badge type="tip" text="高頻" /> {#interview-2-2}
 
@@ -52,7 +52,7 @@ BFC（Block Formatting Context）是一塊獨立的區塊版面配置區域，�
 ```
 :::
 
-**相關筆記**：[1-1-2 版面配置（BFC）](./1-1-2.md)
+**相關筆記**：[1-2-1 版面配置（BFC）](./1-2-1.md)
 
 ### Q3. 水平垂直置中有哪些方法？ <Badge type="tip" text="基礎" /> {#interview-2-3}
 
@@ -77,7 +77,7 @@ BFC（Block Formatting Context）是一塊獨立的區塊版面配置區域，�
 選擇：一般排版用 Grid／Flex；覆蓋層（Modal）用定位或 `dialog`；行內文字用 `text-align: center` + `line-height`。
 :::
 
-**相關筆記**：[1-1-3 實現置中](./1-1-3.md)
+**相關筆記**：[1-2-2 實現置中](./1-2-2.md)
 
 ### Q4. Box Model 是什麼？`box-sizing` 兩個值差在哪？ <Badge type="tip" text="基礎" /> {#interview-2-4}
 
@@ -96,7 +96,7 @@ BFC（Block Formatting Context）是一塊獨立的區塊版面配置區域，�
 margin 不包含在 `width` 內，相鄰區塊的垂直 margin 可能合併（見 Q2）。
 :::
 
-**相關筆記**：[1-1-7 CSS 精華觀念](./1-1-7.md)
+**相關筆記**：[1-2-4 CSS 精華觀念](./1-2-4.md)
 
 ### Q5. Flex 與 Grid 怎麼選？`flex: 1` 代表什麼？ <Badge type="tip" text="高頻" /> {#interview-2-5}
 
@@ -120,7 +120,7 @@ margin 不包含在 `width` 內，相鄰區塊的垂直 margin 可能合併（�
 常見坑：文字過長撐破 flex item，要加 `min-width: 0`（flex item 預設 `min-width: auto`）。
 :::
 
-**相關筆記**：[1-1-5 現代 CSS 特色](./1-1-5.md)、[1-1-7 CSS 精華觀念](./1-1-7.md)
+**相關筆記**：[1-2-3 現代 CSS 特色](./1-2-3.md)、[1-2-4 CSS 精華觀念](./1-2-4.md)
 
 ### Q6. CSS 優先權（specificity）怎麼算？ <Badge type="tip" text="基礎" /> {#interview-2-6}
 
@@ -137,7 +137,7 @@ margin 不包含在 `width` 內，相鄰區塊的垂直 margin 可能合併（�
 實務：避免靠 ID 與 `!important` 打權重戰，用元件作用域（Vue scoped、CSS Modules）或 `@layer` 管理。
 :::
 
-**相關筆記**：[1-1-7 CSS 精華觀念](./1-1-7.md#1-1-7-2)
+**相關筆記**：[1-2-4 CSS 精華觀念](./1-2-4.md#1-2-4-2)
 
 ### Q7. 你怎麼做 RWD？百分比是相對於誰？ <Badge type="tip" text="高頻" /> {#interview-2-7}
 
@@ -172,7 +172,7 @@ margin 不包含在 `width` 內，相鄰區塊的垂直 margin 可能合併（�
 ```
 :::
 
-**相關筆記**：[1-1-5 現代 CSS 特色（含「% 相對於誰」）](./1-1-5.md)
+**相關筆記**：[1-2-3 現代 CSS 特色（含「% 相對於誰」）](./1-2-3.md)
 
 ### Q8. z-index 設很大卻沒有蓋過去，為什麼？ <Badge type="warning" text="進階" /> {#interview-2-8}
 
@@ -184,7 +184,7 @@ z-index 只在**同一個層疊上下文（stacking context）**內比較。如�
 排查：DevTools 的 Layers 面板，或往上找哪個祖先有上述屬性。解法：把 Modal、Tooltip 用 Teleport（Vue）／Portal（React）掛到 `body`，或使用原生 `dialog` 的 top layer。
 :::
 
-**相關筆記**：[1-1-7 CSS 精華觀念](./1-1-7.md#1-1-7-2)
+**相關筆記**：[1-2-4 CSS 精華觀念](./1-2-4.md#1-2-4-2)
 
 ### Q9. Reflow 與 Repaint 差在哪？怎麼寫出不卡的動畫？ <Badge type="tip" text="高頻" /> {#interview-2-9}
 
@@ -209,7 +209,7 @@ items.forEach((el, i) => { el.style.height = heights[i] + 10 + 'px' })
 ```
 :::
 
-**相關筆記**：[1-3-3 瀏覽器渲染流程與除錯](./1-3-3.md)、[1-4-2 效能最佳化](./1-4-2.md)
+**相關筆記**：[1-5-1 瀏覽器渲染流程與除錯](./1-5-1.md)、[1-6-2 效能最佳化](./1-6-2.md)
 
 ### Q10. 跨瀏覽器相容問題你怎麼處理？ <Badge type="tip" text="高頻" /> {#interview-2-10}
 
@@ -236,4 +236,4 @@ items.forEach((el, i) => { el.style.height = heights[i] + 10 + 'px' })
 - 日期字串 `new Date('2026-11-04 10:00')` 在舊版 Safari 會是 Invalid Date → 用 ISO 格式 `2026-11-04T10:00:00` 或 dayjs。
 :::
 
-**相關筆記**：[1-3-3 瀏覽器渲染流程與除錯（行動裝置除錯）](./1-3-3.md#1-3-3-2)、[1-1-4 現代 HTML5 特色（行動版注意事項）](./1-1-4.md)
+**相關筆記**：[1-5-1 瀏覽器渲染流程與除錯（行動裝置除錯）](./1-5-1.md#1-5-1-2)、[1-1-2 現代 HTML5 特色（行動版注意事項）](./1-1-2.md)
