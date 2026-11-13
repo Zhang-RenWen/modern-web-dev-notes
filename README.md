@@ -27,11 +27,13 @@
 - MathJax（`markdown-it-mathjax3`）：數學式
 - GitHub Actions + GitHub Pages：自動部署
 
+各技術的版本、建置與部署流程、架構圖見 [ARCHITECTURE.md](ARCHITECTURE.md)。
+
 ## 站內搜尋
 
 網站搜尋是純前端做的，不需要伺服器。設定在 `docs/.vitepress/config.mjs` 的 `search: { provider: 'local' }`，`translations` 只是介面文字。
 
-**建置時（`npm run build`）**：VitePress 把每頁 Markdown 渲染成文字，依標題（h1～h6）切成小段，每段記錄標題路徑、內文和網址，再用 [MiniSearch](https://github.com/lucaong/minisearch)（`minisearch@7`）建成倒排索引（「詞 → 出現在哪些段落」的對照表），序列化成 `docs/.vitepress/dist/assets/chunks/@localSearchIndexroot.*.js`（2026-11 約 3.3MB，gzip 前）。
+**建置時（`npm run build`）**：VitePress 把每頁 Markdown 渲染成文字，依標題（h1～h6）切成小段，每段記錄標題路徑、內文和網址，再用 [MiniSearch](https://github.com/lucaong/minisearch)（`minisearch@7`）建成倒排索引（「詞 → 出現在哪些段落」的對照表），序列化成 `docs/.vitepress/dist/assets/chunks/@localSearchIndexroot.*.js`（2026-11 約 3.6MB，gzip 前）。
 
 **瀏覽器端**：索引檔不在首頁載入，按下搜尋框時才動態 `import()`。之後每打一個字都在記憶體裡查索引：
 
@@ -71,6 +73,7 @@ docs/
     ├── sidebar.js        # 側邊欄
     └── theme/            # 主題擴充與自訂樣式
 .github/workflows/deploy.yml  # 部署流程
+ARCHITECTURE.md               # 技術與架構圖
 ```
 
 ## 寫作方式
