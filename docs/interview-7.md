@@ -1,7 +1,7 @@
 # 模擬面試 7：Angular 與 RxJS {#interview-7}
 
 ::: info 新增（2026-11）
-對應職缺：台達電數位設計中心（Angular 13+、NgRx）、國泰 DDT（Angular 為佳）、國泰前端工程師（Angular + React）。本站其他章節沒有 Angular 專章，這頁以面試必備觀念為主。
+Angular（13+、NgRx）與 RxJS。本站其他章節沒有 Angular 專章，這頁以面試必備觀念為主。
 :::
 
 ### Q1. Angular 的架構由哪些部分組成？ <Badge type="tip" text="基礎" /> {#interview-7-1}
@@ -42,8 +42,6 @@ export class PolicyComponent {
 
 Injector 是階層式的：元件 → 父元件 → 模組／環境 → root，找不到就往上找。
 :::
-
-**相關筆記**：[1-26-3 Java 與 OOP（interface + composition + DI）](./1-26-3.md#1-26-3-7)
 
 ### Q3. Angular 的變更偵測怎麼運作？OnPush 和 Signals 解決什麼？ <Badge type="tip" text="高頻" /> {#interview-7-3}
 

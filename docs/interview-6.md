@@ -1,10 +1,10 @@
 # 模擬面試 6：React 與 Next.js {#interview-6}
 
 ::: info 新增（2026-11）
-對應職缺：台達電前端軟體開發（Next.js App Router + Pages Router、SSR／ISR、Core Web Vitals、i18n）、國泰（React + Angular）、台達全端。Next.js 改版頻繁，回答時說清楚你用的版本。
+React 與 Next.js：Hooks、渲染、App Router 與 Pages Router、SSR／ISR、Core Web Vitals、i18n。Next.js 改版頻繁，回答時說清楚你用的版本。
 :::
 
-### Q1. Hooks 為什麼不能放在條件或迴圈裡？ <Badge type="tip" text="高頻" /> {#interview-6-1}
+### Q1. Hooks 為什麼不能放在條件或迴圈裡？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-6-1}
 
 ::: details 解題思路
 從實作講：React 用「呼叫順序」對應每個 hook 的狀態，而不是名稱。
@@ -17,6 +17,8 @@ React 在每個元件的 Fiber 上，用一條依**呼叫順序**排列的鏈結
 
 React 19 的 `use()` 是例外，可以在條件中呼叫。
 :::
+
+<HooksOrderAnim />
 
 **相關筆記**：[1-7-4 顛覆性的 React hook](./1-7-4.md)
 

@@ -1,7 +1,7 @@
 # 模擬面試 2：HTML、CSS、RWD 與相容性 {#interview-2}
 
 ::: info 新增（2026-11）
-對應職缺關鍵字：RWD、跨瀏覽器相容、依設計稿切版、Sass／Tailwind。
+HTML、CSS、RWD 與跨瀏覽器相容，常和依設計稿切版的實作題一起考。
 :::
 
 ### Q1. 什麼是語意化 HTML？跟無障礙有什麼關係？ <Badge type="tip" text="基礎" /> {#interview-2-1}
@@ -79,7 +79,7 @@ BFC（Block Formatting Context）是一塊獨立的區塊版面配置區域，�
 
 **相關筆記**：[1-2-2 實現置中](./1-2-2.md)
 
-### Q4. Box Model 是什麼？`box-sizing` 兩個值差在哪？ <Badge type="tip" text="基礎" /> {#interview-2-4}
+### Q4. Box Model 是什麼？`box-sizing` 兩個值差在哪？ <Badge type="tip" text="基礎" /> <Badge type="info" text="動畫" /> {#interview-2-4}
 
 ::: details 標準答案與過程
 每個元素由 content、padding、border、margin 組成。
@@ -95,6 +95,8 @@ BFC（Block Formatting Context）是一塊獨立的區塊版面配置區域，�
 
 margin 不包含在 `width` 內，相鄰區塊的垂直 margin 可能合併（見 Q2）。
 :::
+
+<BoxModelAnim />
 
 **相關筆記**：[1-2-4 CSS 精華觀念](./1-2-4.md)
 
@@ -186,7 +188,7 @@ z-index 只在**同一個層疊上下文（stacking context）**內比較。如�
 
 **相關筆記**：[1-2-4 CSS 精華觀念](./1-2-4.md#1-2-4-2)
 
-### Q9. Reflow 與 Repaint 差在哪？怎麼寫出不卡的動畫？ <Badge type="tip" text="高頻" /> {#interview-2-9}
+### Q9. Reflow 與 Repaint 差在哪？怎麼寫出不卡的動畫？ <Badge type="tip" text="高頻" /> <Badge type="info" text="動畫" /> {#interview-2-9}
 
 ::: details 標準答案與過程
 - **Reflow（Layout）**：幾何資訊改變（寬高、位置、字級、增刪 DOM），要重新計算版面，成本最高，且可能影響整棵樹。
@@ -209,7 +211,9 @@ items.forEach((el, i) => { el.style.height = heights[i] + 10 + 'px' })
 ```
 :::
 
-**相關筆記**：[1-5-1 瀏覽器渲染流程與除錯](./1-5-1.md)、[1-6-2 效能最佳化](./1-6-2.md)
+<RenderPipelineAnim />
+
+**相關筆記**：[1-5-3 瀏覽器渲染流程與除錯](./1-5-3.md)、[1-6-2 效能最佳化](./1-6-2.md)
 
 ### Q10. 跨瀏覽器相容問題你怎麼處理？ <Badge type="tip" text="高頻" /> {#interview-2-10}
 
@@ -236,4 +240,4 @@ items.forEach((el, i) => { el.style.height = heights[i] + 10 + 'px' })
 - 日期字串 `new Date('2026-11-04 10:00')` 在舊版 Safari 會是 Invalid Date → 用 ISO 格式 `2026-11-04T10:00:00` 或 dayjs。
 :::
 
-**相關筆記**：[1-5-1 瀏覽器渲染流程與除錯（行動裝置除錯）](./1-5-1.md#1-5-1-2)、[1-1-2 現代 HTML5 特色（行動版注意事項）](./1-1-2.md)
+**相關筆記**：[1-5-3 瀏覽器渲染流程與除錯（行動裝置除錯）](./1-5-3.md#1-5-3)、[1-1-2 現代 HTML5 特色（行動版注意事項）](./1-1-2.md)
