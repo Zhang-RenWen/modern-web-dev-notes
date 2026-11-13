@@ -4,7 +4,7 @@
 對應職缺關鍵字：TypeScript「strong proficiency — generics, utility types, modeling complex domain logic」（台達電）、國泰 DDT 必要條件。
 :::
 
-系統化的觀念整理見 [1-25 TypeScript 與物件導向](./1-25.md)。
+系統化的觀念整理見 [1-4 TypeScript](./1-4.md)，物件導向見 [1-25-5 物件導向設計原則與常見模式](./1-25-5.md)。
 
 ### Q1. `any`、`unknown`、`never` 差在哪？ <Badge type="tip" text="高頻" /> {#interview-4-1}
 
@@ -23,7 +23,7 @@ function parse(input: unknown) {
 原則：`明確型別 > unknown > any`；非用 `any` 不可時加註解說明原因。
 :::
 
-**相關筆記**：[1-2-8 TypeScript 真正要深挖的](./1-2-8.md#1-2-8-4)
+**相關筆記**：[1-4-3 TypeScript 真正要深挖的](./1-4-3.md#1-4-3-9)
 
 ### Q2. `type` 和 `interface` 怎麼選？ <Badge type="tip" text="基礎" /> {#interview-4-2}
 
@@ -130,7 +130,7 @@ function isApiError(e: unknown): e is { code: number; message: string } {
 這種寫法讓「不合法的狀態無法表示」，例如不可能出現 `status: 'success'` 卻沒有 `txId`。
 :::
 
-**相關筆記**：[1-22-4 資料庫與資料設計（狀態要分開建模）](./1-22-4.md)
+**相關筆記**：[1-17-2 資料庫與資料設計（狀態要分開建模）](./1-17-2.md)
 
 ### Q6. `satisfies` 和 `as` 差在哪？ <Badge type="warning" text="進階" /> {#interview-4-6}
 
@@ -204,7 +204,7 @@ const policy = Policy.parse(await res.json())
 ```
 :::
 
-**相關筆記**：[1-6-11 去框架化的前端架構（API 資料只做一次 mapping）](./1-6-11.md#1-6-11-1)
+**相關筆記**：[1-8-1 去框架化的前端架構（API 資料只做一次 mapping）](./1-8-1.md#1-8-1-1)
 
 ### Q9. tsconfig 你會開哪些嚴格選項？ <Badge type="tip" text="基礎" /> {#interview-4-9}
 

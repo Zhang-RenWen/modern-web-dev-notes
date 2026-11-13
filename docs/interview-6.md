@@ -18,7 +18,7 @@ React 在每個元件的 Fiber 上，用一條依**呼叫順序**排列的鏈結
 React 19 的 `use()` 是例外，可以在條件中呼叫。
 :::
 
-**相關筆記**：[1-6-4 顛覆性的 React hook](./1-6-4.md)
+**相關筆記**：[1-7-4 顛覆性的 React hook](./1-7-4.md)
 
 ### Q2. `useEffect` 的依賴陣列與 cleanup 怎麼運作？為什麼開發時會執行兩次？ <Badge type="tip" text="高頻" /> {#interview-6-2}
 
@@ -43,7 +43,7 @@ useEffect(() => {
 常見誤用：用 effect 同步衍生狀態（`useEffect(() => setFullName(first + last))`），應該直接在渲染時計算。資料抓取在正式專案建議交給 TanStack Query／SWR 或框架的資料層。
 :::
 
-**相關筆記**：[1-2-8 React 現代主線](./1-2-8.md#1-2-8-5)
+**相關筆記**：[1-7-4 React 現代主線](./1-7-4.md#1-7-4-1)
 
 ### Q3. 元件什麼時候會重新渲染？`memo`、`useMemo`、`useCallback` 何時用？ <Badge type="tip" text="高頻" /> {#interview-6-3}
 
@@ -61,7 +61,7 @@ useEffect(() => {
 React Compiler（2025 年 10 月釋出 1.0）可以自動做記憶化，啟用後大多數手動 `useMemo`/`useCallback` 可省略。
 :::
 
-**相關筆記**：[1-4-3 架構與效能：React](./1-4-3.md)、[1-6-2 單向數據流架構 React 解析](./1-6-2.md)
+**相關筆記**：[1-7-5 架構與效能：React](./1-7-5.md)、[1-7-2 單向數據流架構 React 解析](./1-7-2.md)
 
 ### Q4. 受控元件和非受控元件差在哪？ <Badge type="tip" text="基礎" /> {#interview-6-4}
 
@@ -89,7 +89,7 @@ React Compiler（2025 年 10 月釋出 1.0）可以自動做記憶化，啟用�
 Context 的坑：value 改變時所有消費者都重新渲染，不適合放高頻變動的資料；可拆成多個 Context，或改用 Zustand 的 selector 訂閱。
 :::
 
-**相關筆記**：[1-6-3 React：資料狀態管理](./1-6-3.md)、[1-6-11 狀態先分類，再選工具](./1-6-11.md#1-6-11-3)
+**相關筆記**：[1-7-3 React：資料狀態管理](./1-7-3.md)、[1-8-1 狀態先分類，再選工具](./1-8-1.md#1-8-1-3)
 
 ### Q6. CSR、SSR、SSG、ISR 差在哪？怎麼選？ <Badge type="tip" text="高頻" /> {#interview-6-6}
 
@@ -106,7 +106,7 @@ Context 的坑：value 改變時所有消費者都重新渲染，不適合放高
 注意：SSR 的個人化頁面不能被 CDN 快取，否則會把 A 使用者的資料給 B。
 :::
 
-**相關筆記**：[1-6-5 同構應用](./1-6-5.md)、[1-6-12 SSR（Hydration）的登入](./1-6-12.md#1-6-12-7)
+**相關筆記**：[1-7-6 同構應用](./1-7-6.md)、[1-7-6 SSR（Hydration）的登入](./1-7-6.md#1-7-6-1)
 
 ### Q7. Next.js App Router 和 Pages Router 差在哪？ <Badge type="tip" text="高頻" /> {#interview-6-7}
 
@@ -175,7 +175,7 @@ function LocalTime({ iso }: { iso: string }) {
 或日期在伺服器以固定時區格式化；必要時 `next/dynamic` 搭配 `ssr: false`；確定無害的差異才用 `suppressHydrationWarning`。
 :::
 
-**相關筆記**：[1-6-5 同構應用（注水和脫水）](./1-6-5.md)
+**相關筆記**：[1-7-6 同構應用（注水和脫水）](./1-7-6.md)
 
 ### Q10. Next.js 怎麼做 i18n 與多區域部署？ <Badge type="warning" text="進階" /> {#interview-6-10}
 
@@ -208,7 +208,7 @@ function LocalTime({ iso }: { iso: string }) {
 - 元件內可直接寫 `<title>`、`<meta>`。
 :::
 
-**相關筆記**：[1-6-4 React：新一代特性](./1-6-4.md)
+**相關筆記**：[1-7-4 React：新一代特性](./1-7-4.md)
 
 ### Q12. React 和 Vue 的核心差異？ <Badge type="tip" text="高頻" /> {#interview-6-12}
 
@@ -224,4 +224,4 @@ function LocalTime({ iso }: { iso: string }) {
 兩者都是「資料驅動視圖 + 虛擬 DOM + 元件化」。選型重點不在誰比較好，而是團隊經驗、生態需求（React Native、Next.js）、招募市場。
 :::
 
-**相關筆記**：[1-6-6 前端架構類別庫之間的比較](./1-6-6.md)、[1-6-1 響應式架構設計](./1-6-1.md)
+**相關筆記**：[1-7-7 前端架構類別庫之間的比較](./1-7-7.md)、[1-7-1 響應式架構設計](./1-7-1.md)

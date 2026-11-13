@@ -1,7 +1,7 @@
 # 模擬面試 12：手寫程式題 {#interview-12}
 
 ::: info 新增（2026-11）
-台灣前端面試常見的白板／線上手寫題。寫完記得口頭說明邊界情況與時間複雜度。舊有題目另見 [1-20 LazyMan](./1-20.md)、[1-2-3 實作 API](./1-2-3.md)、[1-2-6 Promise 深入解析](./1-2-6.md)。
+台灣前端面試常見的白板／線上手寫題。寫完記得口頭說明邊界情況與時間複雜度。舊有題目另見 [1-3-8 LazyMan](./1-3-8.md)、[1-3-5 實作 API](./1-3-5.md)、[1-3-7 Promise 深入解析](./1-3-7.md)。
 :::
 
 ### Q1. 實作 debounce <Badge type="tip" text="高頻" /> {#interview-12-1}
@@ -37,7 +37,7 @@ input.addEventListener('input', (e) => onSearch(e.target.value))
 延伸：元件卸載時要呼叫 `cancel()`，否則延遲的 callback 可能在卸載後執行。
 :::
 
-**相關筆記**：[模擬面試 8 Q7 debounce 與 throttle](./interview-8.md#interview-8-7)、[1-2-2 閉包](./1-2-2.md)
+**相關筆記**：[模擬面試 8 Q7 debounce 與 throttle](./interview-8.md#interview-8-7)、[1-3-2 閉包](./1-3-2.md)
 
 ### Q2. 實作 throttle <Badge type="tip" text="高頻" /> {#interview-12-2}
 
@@ -160,7 +160,7 @@ function promiseAllSettled(iterable) {
 ```
 :::
 
-**相關筆記**：[1-2-6 Promise 靜態方法實現](./1-2-6.md)、[模擬面試 3 Q8](./interview-3.md#interview-3-8)
+**相關筆記**：[1-3-7 Promise 靜態方法實現](./1-3-7.md)、[模擬面試 3 Q8](./interview-3.md#interview-3-8)
 
 ### Q5. 實作並發數量限制的請求池 <Badge type="tip" text="高頻" /> {#interview-12-5}
 
@@ -197,7 +197,7 @@ const results = await runWithLimit(tasks, 3)
 ```
 :::
 
-**相關筆記**：[1-2-5 實作非同步流程](./1-2-5.md)
+**相關筆記**：[1-3-6 實作非同步流程](./1-3-6.md)
 
 ### Q6. 實作 call、apply、bind <Badge type="tip" text="高頻" /> {#interview-12-6}
 
@@ -232,7 +232,7 @@ Function.prototype.myBind = function (ctx, ...preset) {
 ```
 :::
 
-**相關筆記**：[1-2-3 apply、bind 進階實作](./1-2-3.md)、[1-2-1 this](./1-2-1.md)
+**相關筆記**：[1-3-5 apply、bind 進階實作](./1-3-5.md)、[1-3-1 this](./1-3-1.md)
 
 ### Q7. 實作 EventEmitter <Badge type="tip" text="高頻" /> {#interview-12-7}
 
@@ -269,7 +269,7 @@ class EventEmitter {
 這就是發布／訂閱模式，也是 Vue 2 Event Bus、Node.js `EventEmitter` 的核心。
 :::
 
-**相關筆記**：[1-6-1 發佈／訂閱模式簡單應用](./1-6-1.md)、[16-9 私有屬性](./16-9.md)
+**相關筆記**：[1-7-1 發佈／訂閱模式簡單應用](./1-7-1.md)、[16-9 私有屬性](./16-9.md)
 
 ### Q8. 實作 curry <Badge type="tip" text="基礎" /> {#interview-12-8}
 
@@ -292,7 +292,7 @@ curriedAdd(1, 2)(3) // 6
 限制：依賴 `fn.length`，有預設參數或其餘參數的函式 length 不準。
 :::
 
-**相關筆記**：[1-5-6 柯里化分析](./1-5-6.md)
+**相關筆記**：[1-25-6 柯里化分析](./1-25-6.md)
 
 ### Q9. 陣列扁平化 <Badge type="tip" text="基礎" /> {#interview-12-9}
 
@@ -360,7 +360,7 @@ class LRUCache {
 傳統解法是「HashMap + 雙向鏈結串列」，面試官可能追問：用 Map 的版本依賴了插入順序的語言特性。前端應用：API 快取、Vue `KeepAlive` 的 `max`。
 :::
 
-**相關筆記**：[1-10-5 資料結構](./1-10-5.md)、[1-10-6 資料結構與系統設計用途](./1-10-6.md#1-10-6-1)、[5-1 ES6 的映射](./5-1.md)
+**相關筆記**：[1-24-5 資料結構](./1-24-5.md)、[1-24-6 資料結構與系統設計用途](./1-24-6.md#1-24-6-1)、[5-1 ES6 的映射](./5-1.md)
 
 ### Q11. 扁平陣列轉成樹（選單、組織架構） <Badge type="tip" text="高頻" /> {#interview-12-11}
 
@@ -397,7 +397,7 @@ listToTree(menus)
 延伸：反過來「樹轉扁平」用 DFS；依權限過濾樹時，子節點有權限就要保留父節點。
 :::
 
-**相關筆記**：[1-10-6 資料結構與演算法速查](./1-10-6.md)、[模擬面試 5 Q9 動態路由](./interview-5.md#interview-5-9)
+**相關筆記**：[1-24-6 資料結構與演算法速查](./1-24-6.md)、[模擬面試 5 Q9 動態路由](./interview-5.md#interview-5-9)
 
 ### Q12. LazyMan（鏈式呼叫 + 任務佇列） <Badge type="warning" text="進階" /> {#interview-12-12}
 
@@ -431,7 +431,7 @@ LazyMan('Hank').sleepFirst(5).eat('supper')
 ```
 :::
 
-**相關筆記**：[1-20 常見面試題（LazyMan 完整分析）](./1-20.md)
+**相關筆記**：[1-3-8 常見面試題（LazyMan 完整分析）](./1-3-8.md)
 
 ### Q13. 帶指數退避的重試 <Badge type="tip" text="基礎" /> {#interview-12-13}
 

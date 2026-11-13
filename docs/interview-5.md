@@ -50,7 +50,7 @@ function effect(fn) { activeEffect = fn; fn(); activeEffect = null }
 ```
 :::
 
-**相關筆記**：[1-6-1 響應式架構設計](./1-6-1.md)、[6-1 代理器初探](./6-1.md)、[5-2 弱映射](./5-2.md)
+**相關筆記**：[1-7-1 響應式架構設計](./1-7-1.md)、[6-1 代理器初探](./6-1.md)、[5-2 弱映射](./5-2.md)
 
 ### Q2. `ref` 和 `reactive` 怎麼選？ <Badge type="tip" text="高頻" /> {#interview-5-2}
 
@@ -84,7 +84,7 @@ Vue 官方建議以 `ref` 為主；要解構 reactive 用 `toRefs`。大型且�
 原則：能用 `computed` 表達的就不要用 `watch` 去同步另一個 ref（那會變成兩份狀態）。`watch` 用在打 API、寫 localStorage、操作 DOM 這類副作用；搜尋框打 API 要搭配 debounce 和取消舊請求（`onCleanup` / `onWatcherCleanup`）。
 :::
 
-**相關筆記**：[1-6-11 Source Data 與 Derived Data 分離](./1-6-11.md#1-6-11-1)
+**相關筆記**：[1-8-1 Source Data 與 Derived Data 分離](./1-8-1.md#1-8-1-1)
 
 ### Q4. 父子元件的生命週期執行順序？ <Badge type="tip" text="基礎" /> {#interview-5-4}
 
@@ -113,7 +113,7 @@ Composition API 的 hooks：`setup` → `onBeforeMount` → `onMounted` → `onB
 避免：Vue 3 已移除 `$on`，不要再用全域 Event Bus（難追蹤資料流）；不要在子元件直接改 props。
 :::
 
-**相關筆記**：[1-6-2 元件通訊和封裝](./1-6-2.md)
+**相關筆記**：[1-7-2 元件通訊和封裝](./1-7-2.md)
 
 ### Q6. `v-if` 與 `v-show` 差在哪？`v-for` 為什麼要 `key`？ <Badge type="tip" text="基礎" /> {#interview-5-6}
 
@@ -126,7 +126,7 @@ Composition API 的 hooks：`setup` → `onBeforeMount` → `onMounted` → `onB
 `v-if` 與 `v-for` 同一元素：Vue 3 中 `v-if` 優先級較高（Vue 2 相反），所以 `v-if` 拿不到迴圈變數。改法：先用 computed 過濾，或把 `v-if` 移到內層／外層 `template`。
 :::
 
-**相關筆記**：[1-6-2 不是每次加上 Key 都能效能最佳化](./1-6-2.md)、[1-4-3 Vue 3 動靜結合的 DOM diff](./1-4-3.md)
+**相關筆記**：[1-7-2 不是每次加上 Key 都能效能最佳化](./1-7-2.md)、[1-7-5 Vue 3 動靜結合的 DOM diff](./1-7-5.md)
 
 ### Q7. `nextTick` 是什麼？原理是？ <Badge type="tip" text="高頻" /> {#interview-5-7}
 
@@ -142,7 +142,7 @@ inputRef.value.focus() // DOM 已經出現
 ```
 :::
 
-**相關筆記**：[1-2-5 巨任務和微任務](./1-2-5.md)、[模擬面試 3 Q7 Event Loop](./interview-3.md#interview-3-7)
+**相關筆記**：[1-3-6 巨任務和微任務](./1-3-6.md)、[模擬面試 3 Q7 Event Loop](./interview-3.md#interview-3-7)
 
 ### Q8. Vuex 和 Pinia 差在哪？什麼資料該放 store？ <Badge type="tip" text="高頻" /> {#interview-5-8}
 
@@ -163,7 +163,7 @@ inputRef.value.focus() // DOM 已經出現
 - URL 能表達的狀態（篩選、分頁），放 query string 才能分享與重新整理後保留。
 :::
 
-**相關筆記**：[1-6-11 狀態先分類，再選工具](./1-6-11.md#1-6-11-3)、[1-6-3 資料狀態管理](./1-6-3.md)
+**相關筆記**：[1-8-1 狀態先分類，再選工具](./1-8-1.md#1-8-1-3)、[1-7-3 資料狀態管理](./1-7-3.md)
 
 ### Q9. 怎麼用 Vue Router 做權限控管與動態路由？ <Badge type="tip" text="高頻" /> {#interview-5-9}
 
@@ -200,7 +200,7 @@ router.beforeEach(async (to) => {
 4. **前端權限只是 UX**，API 必須在後端再驗一次。
 :::
 
-**相關筆記**：[1-6-12 Vue Router 4 動態路由 + 動態 import](./1-6-12.md#1-6-12-8)、[1-19-5 權限模型](./1-19-5.md#1-19-5-2)
+**相關筆記**：[1-8-2 Vue Router 4 動態路由 + 動態 import](./1-8-2.md#1-8-2-6)、[1-15-7 權限模型](./1-15-7.md#1-15-7-2)
 
 ### Q10. `KeepAlive` 是什麼？有什麼坑？ <Badge type="tip" text="基礎" /> {#interview-5-10}
 
@@ -273,4 +273,4 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>) {
 Vue 3 編譯器本身有靜態提升與 Patch Flags，只 diff 動態節點，所以模板寫法盡量讓靜態部分保持靜態。
 :::
 
-**相關筆記**：[1-4-3 Vue 3 動靜結合的 DOM diff](./1-4-3.md)、[模擬面試 8 效能優化](./interview-8.md)
+**相關筆記**：[1-7-5 Vue 3 動靜結合的 DOM diff](./1-7-5.md)、[模擬面試 8 效能優化](./interview-8.md)

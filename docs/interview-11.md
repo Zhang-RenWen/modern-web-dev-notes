@@ -18,7 +18,7 @@
 選擇：新專案 Vite；舊專案的 Webpack 設定複雜、或依賴 Module Federation 時評估遷移成本，也可以先換成相容 Webpack 設定的 Rspack。
 :::
 
-**相關筆記**：[1-6-8 webpack 前端知識點](./1-6-8.md)、[1-6-7 前端模組化發展](./1-6-7.md)
+**相關筆記**：[1-9-2 webpack 前端知識點](./1-9-2.md)、[1-9-1 前端模組化發展](./1-9-1.md)
 
 ### Q2. Tree Shaking 的條件是什麼？為什麼有時候沒效？ <Badge type="tip" text="高頻" /> {#interview-11-2}
 
@@ -33,7 +33,7 @@ Tree Shaking 是靠 ESM 的**靜態結構**在建置時找出沒被使用的匯�
 沒效的常見原因：套件只提供 CJS 版本；`import * as _ from 'lodash'` 後動態存取；模組頂層有副作用（修改全域、註冊 polyfill）；Babel 把 ESM 轉成 CJS（`modules: false` 沒設）。
 :::
 
-**相關筆記**：[1-6-8 webpack 和 Rollup](./1-6-8.md)、[模擬面試 3 Q13 ESM 與 CommonJS](./interview-3.md#interview-3-13)
+**相關筆記**：[1-9-2 webpack 和 Rollup](./1-9-2.md)、[模擬面試 3 Q13 ESM 與 CommonJS](./interview-3.md#interview-3-13)
 
 ### Q3. Webpack 的 Loader 和 Plugin 差在哪？ <Badge type="tip" text="基礎" /> {#interview-11-3}
 
@@ -49,7 +49,7 @@ module.exports = function (source) {
 ```
 :::
 
-**相關筆記**：[1-6-8 撰寫 webpack loader／plugin](./1-6-8.md)
+**相關筆記**：[1-9-2 撰寫 webpack loader／plugin](./1-9-2.md)
 
 ### Q4. Monorepo 的優缺點？怎麼管？ <Badge type="tip" text="高頻" /> {#interview-11-4}
 
@@ -71,7 +71,7 @@ packages/
 ```
 :::
 
-**相關筆記**：[1-6-9 前端專案化背後的專案組織設計](./1-6-9.md)
+**相關筆記**：[1-9-3 前端專案化背後的專案組織設計](./1-9-3.md)
 
 ### Q5. Git Flow 和 Trunk-based 怎麼選？merge 和 rebase 差在哪？ <Badge type="tip" text="高頻" /> {#interview-11-5}
 
@@ -90,7 +90,7 @@ packages/
 - 已上線的錯誤 commit 用 `git revert`（新增反向 commit），不要 `reset` 後強推。
 :::
 
-**相關筆記**：[1-7-2 Git 心智模型與團隊實務](./1-7-2.md)、[1-7-3 Git 情境速查](./1-7-3.md)
+**相關筆記**：[1-21-1 Git 心智模型與團隊實務](./1-21-1.md)、[1-21-2 Git 情境速查](./1-21-2.md)
 
 ### Q6. 前端測試怎麼規劃？什麼該測？ <Badge type="tip" text="高頻" /> {#interview-11-6}
 
@@ -135,7 +135,7 @@ PR 階段：install（npm ci）→ lint / type-check → unit test → build →
 4. 版本號與 commit SHA 寫進產物，錯誤監控能對應版本。
 :::
 
-**相關筆記**：[1-7-1 工程交付流程](./1-7-1.md#1-7-1-3)
+**相關筆記**：[1-22-1 工程交付流程](./1-22-1.md#1-22-1-3)
 
 ### Q8. 前端 SPA 怎麼用 Docker 部署？ <Badge type="tip" text="高頻" /> {#interview-11-8}
 
@@ -177,7 +177,7 @@ server {
 除錯指令：`docker build -t web .`、`docker run -p 8080:80 web`、`docker logs <id>`、`docker exec -it <id> sh`。
 :::
 
-**相關筆記**：[1-7-5 Container：Docker 與 Kubernetes](./1-7-5.md)、[模擬面試 8 Q6 快取策略](./interview-8.md#interview-8-6)
+**相關筆記**：[1-22-2 Container：Docker 與 Kubernetes](./1-22-2.md)、[模擬面試 8 Q6 快取策略](./interview-8.md#interview-8-6)
 
 ### Q9. Kubernetes 你需要知道哪些？ <Badge type="tip" text="基礎" /> {#interview-11-9}
 
@@ -207,7 +207,7 @@ kubectl port-forward svc/web 8080:80 -n web
 常見狀態：`ImagePullBackOff`（映像名稱或權限錯）、`CrashLoopBackOff`（程式啟動就掛，看 logs）、`OOMKilled`（記憶體限制太小）。
 :::
 
-**相關筆記**：[1-7-5 Container：Docker 與 Kubernetes](./1-7-5.md)
+**相關筆記**：[1-22-2 Container：Docker 與 Kubernetes](./1-22-2.md)
 
 ### Q10. Micro-Frontends 有哪些做法？什麼時候該用？ <Badge type="warning" text="進階" /> {#interview-11-10}
 
@@ -227,7 +227,7 @@ Micro-Frontends 是把大型前端依業務拆成可**獨立開發、獨立部�
 不該用：單一團隊、產品規模不大。它解決的是**組織問題**，代價是共享依賴、樣式衝突、跨應用通訊、整體效能、端對端測試都變複雜。
 :::
 
-**相關筆記**：[1-1-4 未來趨勢：Web components](./1-1-4.md)、[1-22-6 Strangler Pattern](./1-22-6.md#1-22-6-6)
+**相關筆記**：[1-1-2 未來趨勢：Web components](./1-1-2.md)、[1-17-1 Strangler Pattern](./1-17-1.md#1-17-1-6)
 
 ### Q11. 怎麼建立共用元件庫和 Design System？ <Badge type="tip" text="高頻" /> {#interview-11-11}
 
@@ -241,7 +241,7 @@ Micro-Frontends 是把大型前端依業務拆成可**獨立開發、獨立部�
 7. **治理**：貢獻流程、審查標準、使用率追蹤；不要讓業務邏輯滲進元件庫。
 :::
 
-**相關筆記**：[1-6-11 去框架化的前端架構](./1-6-11.md)、[1-6-12 高難度通用元件](./1-6-12.md#1-6-12-2)、[1-6-10 標準化工具管理團隊](./1-6-10.md)
+**相關筆記**：[1-8-1 去框架化的前端架構](./1-8-1.md)、[1-8-2 高難度通用元件](./1-8-2.md#1-8-2-2)、[1-9-4 標準化工具管理團隊](./1-9-4.md)
 
 ### Q12. i18n 要注意什麼？ <Badge type="tip" text="高頻" /> {#interview-11-12}
 
@@ -286,7 +286,7 @@ curl -sv https://api.example.com/health
 4. **事後**：寫 postmortem（時間線、根因、為什麼沒被測到、預防措施），把預防措施變成測試、告警或 CI 檢查。
 :::
 
-**相關筆記**：[1-17-1 Linux 指令與排查](./1-17-1.md)、[1-7-6 Observability](./1-7-6.md#1-7-6-3)
+**相關筆記**：[1-20-2 Linux 指令與排查](./1-20-2.md)、[1-22-3 Observability](./1-22-3.md#1-22-3-3)
 
 ### Q14. 你怎麼使用 AI 工具開發？怎麼確保品質？ <Badge type="tip" text="基礎" /> {#interview-11-14}
 
@@ -307,4 +307,4 @@ curl -sv https://api.example.com/health
 回答時舉一個具體例子：用 AI 做了什麼、你發現了它哪裡錯、怎麼修正。
 :::
 
-**相關筆記**：[1-22-9 AI 應用架構](./1-22-9.md)
+**相關筆記**：[1-19-1 AI 應用架構](./1-19-1.md)

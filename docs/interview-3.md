@@ -27,7 +27,7 @@ typeOf(new Date())  // 'date'
 ```
 :::
 
-**相關筆記**：[1-2-4 高頻考點及基礎題庫](./1-2-4.md)
+**相關筆記**：[1-3-4 高頻考點及基礎題庫](./1-3-4.md)
 
 ### Q2. `==` 和 `===` 差在哪？ <Badge type="tip" text="基礎" /> {#interview-3-2}
 
@@ -102,7 +102,7 @@ for (var i = 0; i < 3; i++) ((j) => setTimeout(() => console.log(j), 0))(i)
 風險：閉包會讓外層變數持續被引用，若長期掛在全域或事件上，可能造成記憶體洩漏。
 :::
 
-**相關筆記**：[1-2-2 閉包](./1-2-2.md)、[1-2-8 JS／TS 面試核心](./1-2-8.md#1-2-8-2)
+**相關筆記**：[1-3-2 閉包](./1-3-2.md)、[1-3-10 JS／TS 面試核心](./1-3-10.md#1-3-10-2)
 
 ### Q5. `this` 怎麼決定？ <Badge type="tip" text="高頻" /> {#interview-3-5}
 
@@ -135,7 +135,7 @@ obj.arrow()  // undefined（取外層模組頂層的 this，也就是 undefined�
 常見坑：把物件方法當 callback 傳出去（`setTimeout(obj.normal)`、事件處理器）會遺失 `this`，用箭頭函式包一層或 `bind`。
 :::
 
-**相關筆記**：[1-2-1 this](./1-2-1.md)、[2-2 箭頭函式](./2-2.md)
+**相關筆記**：[1-3-1 this](./1-3-1.md)、[2-2 箭頭函式](./2-2.md)
 
 ### Q6. 原型鏈是什麼？`new` 做了哪些事？ <Badge type="tip" text="高頻" /> {#interview-3-6}
 
@@ -158,7 +158,7 @@ function myNew(Ctor, ...args) {
 ```
 :::
 
-**相關筆記**：[1-2-7 物件導向和原型鏈](./1-2-7.md)、[3-1 類別](./3-1.md)
+**相關筆記**：[1-3-3 物件導向和原型鏈](./1-3-3.md)、[3-1 類別](./3-1.md)
 
 ### Q7. Event Loop：下面程式輸出順序？ <Badge type="tip" text="高頻" /> {#interview-3-7}
 
@@ -194,7 +194,7 @@ console.log('7')
 延伸：瀏覽器在每個 macrotask 之後、清完 microtask 後才有機會渲染，所以 microtask 無限遞迴會讓畫面卡死。
 :::
 
-**相關筆記**：[1-2-5 實作非同步流程（巨任務和微任務）](./1-2-5.md)、[1-2-8 JS 單執行緒的真相](./1-2-8.md#1-2-8-1)、[4-4 非同步函式](./4-4.md)
+**相關筆記**：[1-3-6 實作非同步流程（巨任務和微任務）](./1-3-6.md)、[1-3-10 JS 單執行緒的真相](./1-3-10.md#1-3-10-1)、[4-4 非同步函式](./4-4.md)
 
 ### Q8. `Promise.all`、`allSettled`、`race`、`any` 差在哪？ <Badge type="tip" text="高頻" /> {#interview-3-8}
 
@@ -215,7 +215,7 @@ await Promise.race([fetch('/api/quote'), timeout(3000)])
 注意：`race` 逾時後原本的請求還在跑，真正取消要用 `AbortController`（`fetch(url, { signal: AbortSignal.timeout(3000) })`）。金融交易類操作不能用 `allSettled` 接受部分成功，要全有全無。
 :::
 
-**相關筆記**：[4-1 Promise](./4-1.md)、[14-1 Promise.allSettled](./14-1.md)、[15-2 Promise.any](./15-2.md)、[1-2-6 Promise 深入解析](./1-2-6.md)
+**相關筆記**：[4-1 Promise](./4-1.md)、[14-1 Promise.allSettled](./14-1.md)、[15-2 Promise.any](./15-2.md)、[1-3-7 Promise 深入解析](./1-3-7.md)
 
 ### Q9. 深拷貝和淺拷貝？怎麼做深拷貝？ <Badge type="tip" text="高頻" /> {#interview-3-9}
 
@@ -252,7 +252,7 @@ GC 回收的條件是「從根（全域、呼叫堆疊）無法再存取到」�
 預防：元件卸載時清理（Vue `onUnmounted`、React `useEffect` 回傳 cleanup）；快取用 LRU／TTL；與物件生命週期綁定的資料用 `WeakMap`。
 :::
 
-**相關筆記**：[1-2-2 閉包（記憶體洩漏場景）](./1-2-2.md)、[1-6-12 Memory Leak 排查 SOP](./1-6-12.md#1-6-12-1)、[5-2 弱映射](./5-2.md)
+**相關筆記**：[1-3-2 閉包（記憶體洩漏場景）](./1-3-2.md)、[1-8-2 Memory Leak 排查 SOP](./1-8-2.md#1-8-2-1)、[5-2 弱映射](./5-2.md)
 
 ### Q11. 哪些陣列方法會改變原陣列？ <Badge type="tip" text="基礎" /> {#interview-3-11}
 
@@ -302,4 +302,4 @@ JavaScript 的 number 是 IEEE 754 雙精度浮點數，0.1、0.2 在二進位�
 Node.js 以 `package.json` 的 `"type": "module"` 或副檔名 `.mjs` / `.cjs` 區分。新專案用 ESM。
 :::
 
-**相關筆記**：[1-23-2 Node.js 模組系統（含瀏覽器只認 ESM）](./1-23-2.md#1-23-2-5)、[8-1 CommonJS](./8-1.md)、[8-2 JavaScript 模組](./8-2.md)、[1-6-7 前端模組化發展](./1-6-7.md)、[16-5 頂層 await](./16-5.md)
+**相關筆記**：[1-16-2 Node.js 模組系統（含瀏覽器只認 ESM）](./1-16-2.md#1-16-2-2)、[8-1 CommonJS](./8-1.md)、[8-2 JavaScript 模組](./8-2.md)、[1-9-1 前端模組化發展](./1-9-1.md)、[16-5 頂層 await](./16-5.md)
