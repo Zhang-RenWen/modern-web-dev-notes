@@ -1,8 +1,10 @@
 # Modern WEB Dev Notes
 
-我的前端開發個人筆記，整理前端工程知識點與 ECMAScript 各版本的新語法，並盡量附上實際驗證過的範例。
+**Modern WEB Dev Notes** is my front-end engineering knowledge base. Wherever possible, each concept is verified by running code, and the results are recorded alongside the notes. It has 182 notes on HTML, CSS, JavaScript, TypeScript, browser internals, performance, frameworks, tooling and security, plus ECMAScript features from ES6 to ES2026 and a bank of 138 mock-interview questions. Harder mechanisms, such as the event loop and the prototype chain, come with step-by-step animations. The site is built with VitePress and deployed to GitHub Pages through GitHub Actions.
 
-**網站：** <https://zhang-renwen.github.io/modern-web-dev-notes/>
+**Modern WEB Dev Notes** 是我的前端開發知識庫。讀到的觀念盡量寫程式驗證，並把結果一起記下來。目前有 182 篇筆記，內容包括 HTML、CSS、JavaScript、TypeScript、瀏覽器原理、效能、框架、工程化與資安，以及 ES6～ES2026 的新語法和 138 題模擬面試；事件循環、原型鏈這類較難懂的原理附有逐步動畫。網站以 VitePress 建置，透過 GitHub Actions 部署到 GitHub Pages。
+
+**Website 網站：** <https://zhang-renwen.github.io/modern-web-dev-notes/>
 
 ## 內容
 
