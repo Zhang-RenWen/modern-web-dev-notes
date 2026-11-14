@@ -333,7 +333,7 @@ export const sidebar = [
             "link": "/1-11-1"
           },
           {
-            "text": "1-11-2 XMLHttpRequest",
+            "text": "1-11-2 XMLHttpRequest 與 fetch",
             "link": "/1-11-2"
           },
           {
