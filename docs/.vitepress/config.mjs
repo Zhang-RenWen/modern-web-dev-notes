@@ -22,8 +22,7 @@ gtag('config', '${GA_ID}');`
     ]
   ],
   markdown: {
-    lineNumbers: true,
-    math: true
+    lineNumbers: true
   },
   themeConfig: {
     sidebar,

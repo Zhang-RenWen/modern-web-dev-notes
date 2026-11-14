@@ -19,7 +19,6 @@
 ## 技術
 
 - [VitePress](https://vitepress.dev/) 1.x：Markdown 寫作、Shiki 語法高亮、本地全文搜尋
-- MathJax（`markdown-it-mathjax3`）：數學式
 - GitHub Actions + GitHub Pages：自動部署
 
 各技術的版本、建置與部署流程、架構圖見 [ARCHITECTURE.md](ARCHITECTURE.md)。
@@ -88,7 +87,6 @@ ARCHITECTURE.md               # 技術與架構圖
 | 自訂錨點 | `## 小節名稱 {#18-7-1}` |
 | 站內連結 | `[18-1](./18-1.md)` |
 | 提示框 | `::: info` / `::: tip` / `::: warning` / `::: danger` / `::: details` |
-| 數學式 | 行內 `$...$`，獨立區塊 `$$...$$` |
 | 互動示範 | `<div class="demo-block" v-pre>...</div>`，需要 JS 時在頁面中使用 `<script setup>` |
 
 ### 標示過時內容
