@@ -15,7 +15,6 @@
 | 建置工具 | [Vite](https://vite.dev/) | 5.4 | 開發時的 dev server 與熱更新（HMR）；建置時用 Rollup 打包、加上檔名雜湊 |
 | Markdown 解析 | [markdown-it](https://github.com/markdown-it/markdown-it) | 14 | 打包在 VitePress 裡。錨點 `{#id}`、提示框 `::: info`、程式碼行號都是它的外掛 |
 | 語法高亮 | [Shiki](https://shiki.style/) | 2.5 | 建置時就把程式碼上色成 HTML，瀏覽器不用跑高亮程式 |
-| 數學式 | [markdown-it-mathjax3](https://github.com/tani/markdown-it-mathjax3)（MathJax 3.2） | 4.3.2 | 建置時把 `$...$`、`$$...$$` 轉成 SVG，瀏覽器不載入 MathJax |
 | 全文搜尋 | [MiniSearch](https://github.com/lucaong/minisearch) | 7.2 | VitePress 的 `local` 搜尋。建置時產生索引，瀏覽器端查詢，細節見 [README 的站內搜尋](README.md#站內搜尋) |
 | 執行環境 | Node.js | 22 | 本機開發與 CI 建置（VitePress 最低需求 18） |
 | CI/CD | GitHub Actions | — | push 到 `main` 時自動建置並部署，流程在 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) |
@@ -23,7 +22,7 @@
 | 流量分析 | Google Analytics 4（`gtag.js`） | — | 在 `config.mjs` 的 `head` 注入，每頁載入 |
 | 編輯器 | Prettier、Code Spell Checker | — | 程式碼格式（[`.prettierrc.json`](.prettierrc.json)）與英文拼字檢查字典（[`.vscode/settings.json`](.vscode/settings.json)） |
 
-版本是 `package-lock.json` 鎖定的實際版本。`package.json` 只直接依賴 `vitepress` 與 `markdown-it-mathjax3`，其餘都是 VitePress 帶進來的。
+版本是 `package-lock.json` 鎖定的實際版本。`package.json` 只直接依賴 `vitepress`，其餘都是 VitePress 帶進來的。
 
 ## 架構圖
 
@@ -67,9 +66,7 @@ flowchart LR
 flowchart TD
   md["docs/1-3-1.md"] --> mdit["markdown-it 解析<br/>錨點、提示框、行號外掛"]
   mdit --> shiki["Shiki<br/>程式碼區塊上色成 HTML"]
-  mdit --> mj["markdown-it-mathjax3<br/>數學式轉成 SVG"]
   shiki --> sfc["組成 Vue 單檔元件<br/>頁內的 script setup、SectionToc 一起編譯"]
-  mj --> sfc
   theme["theme/index.js<br/>預設主題 + SectionToc + custom.css"] --> vite
   sfc --> vite["Vite 打包兩次"]
   vite --> client["用戶端 bundle<br/>app、framework、theme<br/>1-3-1.md.雜湊.js 與 .lean.js"]
@@ -156,7 +153,7 @@ sequenceDiagram
 | 選擇 | 好處 | 代價 |
 | --- | --- | --- |
 | 純靜態、放 GitHub Pages | 免費、不用維護伺服器、不會被打掛 | 無法做伺服器端轉址。第 1 章 2026-11 重新編號後，舊網址只能失效，不能導到新頁 |
-| 建置時就完成高亮與數學式 | 瀏覽器不用載 Shiki、MathJax，打開就是最終樣子 | HTML 變大；改設定要重新建置 |
+| 建置時就完成語法高亮 | 瀏覽器不用載 Shiki，打開就是最終樣子 | HTML 變大；改設定要重新建置 |
 | 本地搜尋（MiniSearch） | 不用 Algolia 等第三方服務，離線可用 | 索引隨頁數成長，目前約 1.3 MB；中文斷詞較弱（見 [README](README.md#站內搜尋)） |
 | 側邊欄渲染進每頁 HTML | 不跑 JS 也看得到完整目錄，對搜尋引擎友善 | 每頁固定多約 125 KB 的側邊欄 HTML，加上約 30 KB 的內嵌資料（頁面雜湊表約 5 KB、含整份側邊欄的站台設定約 24 KB），是 HTML 總量 43 MB 的主因。這些內容重複性高，gzip 傳輸時會壓得很小 |
 | 檔名即網址、單層 `docs/` | 網址短、好記，連結好寫 | 檔名不能為了排序改；分類只能靠 `sidebar.js` 表達 |
