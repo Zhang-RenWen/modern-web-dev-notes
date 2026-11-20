@@ -33,7 +33,7 @@
 ```mermaid
 flowchart LR
   subgraph repo["GitHub repo"]
-    md["docs/*.md<br/>208 頁筆記"]
+    md["docs/*.md<br/>209 頁筆記"]
     cfg["docs/.vitepress/<br/>config.mjs、sidebar.js"]
     theme["docs/.vitepress/theme/<br/>SectionToc.vue、custom.css"]
     pub["docs/public/<br/>圖示、favicon"]
@@ -111,7 +111,7 @@ sequenceDiagram
 
 ### 內容：`docs/`
 
-- `docs/*.md` 共 208 頁，**檔名就是網址**（`1-3-1.md` → `/modern-web-dev-notes/1-3-1.html`），沒有子資料夾。
+- `docs/*.md` 共 209 頁，**檔名就是網址**（`1-3-1.md` → `/modern-web-dev-notes/1-3-1.html`），沒有子資料夾。
 - `docs/public/` 的檔案原樣複製到網站根目錄，所以 `docs/public/assets/image/1-3-1/a.png` 在頁面裡寫成 `/assets/image/1-3-1/a.png`（VitePress 會自動補上 `base`）。2026-11 改寫書籍內容時，書頁翻拍與截圖都改成文字、表格或動畫，目前只剩少量圖示（約 70 KB）。
 - Markdown 會被當成 Vue 範本編譯，所以頁面裡可以直接用元件（12 頁用了 `<SectionToc />`，15 個動畫元件用在模擬面試與第 1 章 10 頁）、放 `<script setup>`（3 頁的互動示範），也因此 `{{ }}` 要跳脫，見 README 的注意事項。
 

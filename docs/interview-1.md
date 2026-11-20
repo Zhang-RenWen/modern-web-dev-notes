@@ -82,7 +82,7 @@
 
 ### 資深前端常見題型 {#interview-1-11}
 
-- **系統設計**：多語系 + 權限後台（i18n lazy-load、RBAC 控 router／元件、router meta 驗證）；大型 SPA 拆模組（lazy-load、monorepo、micro frontend）；schema 驅動表單。
+- **系統設計**：多語系 + 權限後台（i18n lazy-load、RBAC 控 router／元件、router meta 驗證）；大型 SPA 拆模組（lazy-load、monorepo、micro frontend）；[schema 驅動表單](./interview-13.md#interview-13-12)。
 - **效能**：LCP（圖片壓縮、WebP、preload）、互動延遲（拆 bundle、lazy load、第三方 script 非同步）；大量資料用虛擬滾動、Web Worker、canvas。
 - **視野**：SSR（SEO、首屏）／CSR（登入後、動態）／ISR（半動態）的取捨；怎麼帶 junior、怎麼 code review。
 
@@ -114,15 +114,16 @@
 | --- | --- | --- |
 | [模擬面試 2](./interview-2.md) | HTML、CSS、RWD 與相容性 | 10 |
 | [模擬面試 3](./interview-3.md) | JavaScript 核心 | 13 |
-| [模擬面試 4](./interview-4.md) | TypeScript | 9 |
-| [模擬面試 5](./interview-5.md) | Vue | 12 |
+| [模擬面試 4](./interview-4.md) | TypeScript | 10 |
+| [模擬面試 5](./interview-5.md) | Vue | 16 |
 | [模擬面試 6](./interview-6.md) | React 與 Next.js | 12 |
 | [模擬面試 7](./interview-7.md) | Angular 與 RxJS | 7 |
-| [模擬面試 8](./interview-8.md) | 效能優化 | 10 |
+| [模擬面試 8](./interview-8.md) | 效能優化 | 12 |
 | [模擬面試 9](./interview-9.md) | 網路、API 與認證 | 10 |
 | [模擬面試 10](./interview-10.md) | 前端資安 | 8 |
-| [模擬面試 11](./interview-11.md) | 工程化、測試與部署 | 14 |
+| [模擬面試 11](./interview-11.md) | 工程化、測試與部署 | 16 |
 | [模擬面試 12](./interview-12.md) | 手寫程式題 | 13 |
-| [模擬面試 13](./interview-13.md) | 架構、系統設計與行為面試 | 11 |
+| [模擬面試 13](./interview-13.md) | 架構、系統設計與行為面試 | 12 |
+| [模擬面試 14](./interview-14.md) | 資料視覺化與圖表 | 5 |
 
 舊有的 [1-3-8 常見面試題](./1-3-8.md)（LazyMan、中介軟體）也可一起練。

@@ -1,8 +1,8 @@
 # Modern WEB Dev Notes
 
-**Modern WEB Dev Notes** is my front-end engineering knowledge base. Wherever possible, each concept is verified by running code, and the results are recorded alongside the notes. It has 182 notes on HTML, CSS, JavaScript, TypeScript, browser internals, performance, frameworks, tooling and security, plus ECMAScript features from ES6 to ES2026 and a bank of 138 mock-interview questions. Harder mechanisms, such as the event loop and the prototype chain, come with step-by-step animations. The site is built with VitePress and deployed to GitHub Pages through GitHub Actions.
+**Modern WEB Dev Notes** is my front-end engineering knowledge base. Wherever possible, each concept is verified by running code, and the results are recorded alongside the notes. It has 182 notes on HTML, CSS, JavaScript, TypeScript, browser internals, performance, frameworks, tooling and security, plus ECMAScript features from ES6 to ES2026 and a bank of 144 mock-interview questions. Harder mechanisms, such as the event loop and the prototype chain, come with step-by-step animations. The site is built with VitePress and deployed to GitHub Pages through GitHub Actions.
 
-**Modern WEB Dev Notes** 是我的前端開發知識庫。讀到的觀念盡量寫程式驗證，並把結果一起記下來。目前有 182 篇筆記，內容包括 HTML、CSS、JavaScript、TypeScript、瀏覽器原理、效能、框架、工程化與資安，以及 ES6～ES2026 的新語法和 138 題模擬面試；事件循環、原型鏈這類較難懂的原理附有逐步動畫。網站以 VitePress 建置，透過 GitHub Actions 部署到 GitHub Pages。
+**Modern WEB Dev Notes** 是我的前端開發知識庫。讀到的觀念盡量寫程式驗證，並把結果一起記下來。目前有 182 篇筆記，內容包括 HTML、CSS、JavaScript、TypeScript、瀏覽器原理、效能、框架、工程化與資安，以及 ES6～ES2026 的新語法和 144 題模擬面試；事件循環、原型鏈這類較難懂的原理附有逐步動畫。網站以 VitePress 建置，透過 GitHub Actions 部署到 GitHub Pages。
 
 **Website 網站：** <https://zhang-renwen.github.io/modern-web-dev-notes/>
 
@@ -80,7 +80,7 @@ ARCHITECTURE.md               # 技術與架構圖
 2. 在 `docs/.vitepress/sidebar.js` 的對應章節加上 `{ "text": "18-7 標題", "link": "/18-7" }`。第 1 章的節分在 3 個頂層分組裡（「網頁前端基礎」「前端框架與工程化」「瀏覽器網路與前端資安」），新頁要加在主題相符的節，不要塞進主題不同的節。本站只放前端與瀏覽器相關的內容；網路協定、後端、電腦科學、數學、職涯等筆記放在個人 Notion，不放進這裡。
 3. 每章的第一頁以章節名稱作為 `#` 標題，頁面標題改用 `##`，例如 [docs/18-1.md](docs/18-1.md)。
 4. 有子頁的節首頁（例如 [docs/1-16.md](docs/1-16.md)）只放標題與 `<SectionToc />`，元件會依 `sidebar.js` 自動列出子頁。
-5. **檔名就是網址，不要因為排序改名**。第 1 章在 2026-11 依主題重新分組並重新編號過，之後又把非前端的節移出本站（舊網址已失效）；之後新增的頁面接在所屬節的最後面。編號序列只給會持續增加的章節用：新標準每年接著編（ES2027 用 `21-x`、ES2028 用 `22-x`）。固定的專區改用文字前綴，例如模擬面試是 `interview-1.md`～`interview-13.md`，錨點也用 `{#interview-3-7}`。顯示順序由 `sidebar.js` 決定。
+5. **檔名就是網址，不要因為排序改名**。第 1 章在 2026-11 依主題重新分組並重新編號過，之後又把非前端的節移出本站（舊網址已失效）；之後新增的頁面接在所屬節的最後面。編號序列只給會持續增加的章節用：新標準每年接著編（ES2027 用 `21-x`、ES2028 用 `22-x`）。固定的專區改用文字前綴，例如模擬面試是 `interview-1.md`～`interview-14.md`，錨點也用 `{#interview-3-7}`。顯示順序由 `sidebar.js` 決定。
 
 ### 常用語法
 

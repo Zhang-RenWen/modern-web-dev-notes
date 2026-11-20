@@ -1474,6 +1474,10 @@ export const sidebar = [
       {
         "text": "架構、系統設計與行為面試 🆕",
         "link": "/interview-13"
+      },
+      {
+        "text": "資料視覺化與圖表 🆕",
+        "link": "/interview-14"
       }
     ],
     "collapsed": true
