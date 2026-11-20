@@ -244,3 +244,25 @@ R（結果）：多久恢復、影響範圍
 
 避免只問薪資福利（交給 HR 階段），也避免問網路上查得到的資訊。
 :::
+
+### Q12. Schema 驅動表單是什麼？什麼時候適合？ <Badge type="warning" text="進階" /> {#interview-13-12}
+
+::: details 標準答案與過程
+用 JSON Schema（或自訂的設定格式）描述欄位、驗證規則和欄位之間的連動，表單引擎依 schema 渲染畫面。
+
+- **適合**：欄位多、常改、希望非前端也能維護的後台，例如大量相似的申請單、問卷、設定頁。
+- **代價**：複雜的連動很難用 schema 表達，最後 schema 裡塞滿條件式；出錯時要同時除錯引擎和設定，比直接寫元件難。
+- **折衷**：欄位、驗證、版面交給 schema；複雜連動保留成程式碼，由 schema 指定名稱呼叫。
+- **起點**：先把現有表單「哪個欄位一變、會影響哪些欄位」列成清單（見 [模擬面試 5 Q14](./interview-5.md#interview-5-14)）。這張清單就是 schema 的雛形，也看得出連動複雜到什麼程度、值不值得做引擎。
+
+```json
+{
+  "fields": [
+    { "name": "paymentType", "type": "select", "options": ["bank", "card"], "required": true },
+    { "name": "bankCode", "type": "text", "required": true, "visibleWhen": { "paymentType": "bank" } }
+  ]
+}
+```
+:::
+
+**相關筆記**：[模擬面試 5 Q14 大型表單的欄位連動](./interview-5.md#interview-5-14)

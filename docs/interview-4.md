@@ -214,4 +214,28 @@ const policy = Policy.parse(await res.json())
 - 建置相關：`isolatedModules`（配合 esbuild／SWC 單檔轉譯）、`verbatimModuleSyntax`（型別匯入要寫 `import type`）。
 
 舊專案導入：先開 `strict`，用 `// @ts-expect-error` 標記既有錯誤並逐步清除，CI 擋住新增的錯誤。
+
+既有錯誤多到看不出新錯誤時，另一種做法是 strangler：另開一份只涵蓋核心模組（認證、API、環境設定）的 tsconfig，要求零錯誤並掛上 CI，再一個模組一個模組擴大範圍，例如分成 `typecheck:core`、`typecheck:forms`、`typecheck:legacy` 幾組指令。不要為了讓 CI 變綠而關掉 `strict` 或改用 `any`。
 :::
+
+### Q10. 為什麼 build 會過，型別卻是錯的？型別檢查要放在哪？ <Badge type="tip" text="高頻" /> {#interview-4-10}
+
+::: details 標準答案與過程
+Vite（esbuild）、SWC 轉譯 TypeScript 時只是**把型別拿掉**，不做型別檢查，所以型別錯了照樣打包成功。型別檢查要另外跑：
+
+```bash
+tsc --noEmit        # 一般 TypeScript 專案
+vue-tsc --noEmit    # 有 .vue 檔的專案
+```
+
+放進 CI，並把檢查串成一個指令依序執行：格式檢查 → 型別檢查 → 測試 → build，任何一步失敗就停。
+
+型別保護常見的漏洞：
+
+1. **any 會傳染**：一個 `any` 進來，下游的型別檢查全部失效。用 ESLint 的 `@typescript-eslint/no-explicit-any` 擋，外部資料一律先當 `unknown`。
+2. **用 `as` 騙編譯器**：等於把執行期錯誤藏起來（見 [Q6](#interview-4-6)）。
+3. **事件型別**：`event.target` 的型別是 `EventTarget | null`，直接讀 `.value` 會報錯；先用 `instanceof HTMLInputElement` 縮小型別再讀。
+4. **型別正確不代表邏輯正確**：型別只保證資料的形狀。例如 API 沒有翻譯時回英文備援名稱並標 `localized: false`，型別完全正確，前端照單全收，中文介面就整批變英文（見 [1-8-4](./1-8-4.md#1-8-4-1)）。邏輯還是要靠測試。
+:::
+
+**相關筆記**：[1-4-1 型別擦除帶來的限制](./1-4-1.md#1-4-1-9)、[模擬面試 11 Q15 Vite 的坑](./interview-11.md#interview-11-15)

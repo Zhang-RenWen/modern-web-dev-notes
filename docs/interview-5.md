@@ -278,3 +278,140 @@ Vue 3 編譯器本身有靜態提升與 Patch Flags，只 diff 動態節點，�
 :::
 
 **相關筆記**：[1-7-5 Vue 3 動靜結合的 DOM diff](./1-7-5.md)、[模擬面試 8 效能優化](./interview-8.md)
+
+### Q13. Vue 2 專案要升到 Vue 3，怎麼規劃？ <Badge type="tip" text="高頻" /> {#interview-5-13}
+
+::: details 解題思路
+先講要不要升（舊系統的風險多半在業務規則，不在框架），再講盤點、策略、順序。
+:::
+
+::: details 標準答案與過程
+**先判斷要不要升**：Vue 2 在 2023-12-31 停止官方維護，資安掃描可能直接標出來；但舊系統的風險多半在業務規則，升級等於把所有欄位連動重新驗一次。常見的折衷是**新系統直接用 Vue 3 另起、舊系統維持維運，逐步取代**，並且先把業務邏輯釐清再搬，避免疊床架屋。
+
+**決定要升的話**：
+
+1. **盤點**：第三方套件有沒有 Vue 3 版本；已移除的用法，例如 filters、`$listeners`、實例上的 `$on`／`$off`（Event Bus）、`Vue.set`。
+2. **策略**：小專案直接重寫；大專案用 `@vue/compat`（相容模式）逐頁遷移，把它印出的警告當成待辦清單，共用元件先升。
+3. **順序**：常改的系統先升；很少改的，評估延長支援方案。
+4. **驗證**：每一批遷移都跑完整測試，再用真實瀏覽器走過主要流程。
+:::
+
+**相關筆記**：[模擬面試 5 Q1 響應式原理](#interview-5-1)、[模擬面試 5 Q14 大型表單的欄位連動](#interview-5-14)
+
+### Q14. 大型業務表單的欄位連動怎麼設計？ <Badge type="warning" text="進階" /> {#interview-5-14}
+
+::: details 解題思路
+先講「整包資料 + deep watch」為什麼會改 A 壞 B，再講解法：盯欄位、寫出連動關係、把業務規則從 UI 拿出來。
+:::
+
+::: details 標準答案與過程
+**常見的壞寫法**：後端給一整包資料，前端用一個 deep watch 盯整包，任何欄位變都進同一個 handler；handler 裡判斷是誰變了、再去改別的欄位，改完又觸發同一個 watch。結果是：
+
+- 連動關係藏在一個大函式裡，看不出誰影響誰，改 A 壞 B、C、D，只能靠大量測試補。
+- 大物件的 deep watch 每次都要走訪，畫面變慢。
+- 前後端各寫一份規則，對不上。
+
+**改法**：
+
+1. **watch 盯具體欄位**，能推導的值用 computed，不要 deep 盯整包。
+2. **把連動寫成清單**：「哪個欄位一變、會影響哪些欄位」。重構前先列，改完照清單逐一測，再拿之前正常的案例重跑一次，確認結果沒變。
+3. **業務邏輯和 UI 分開**：元件只負責顯示和送出事件；每條業務資料流一個資料夾，一開始不急著抽象，同樣的結構重複出現再往上抽。
+4. **狀態規則集中在後端**：「欠費的保單不能辦借款」「審核中的案件不能再申請變更」這類「什麼狀態能做什麼操作」的規則，由後端回傳可執行的操作（例如 `allowedActions`），前端只決定怎麼顯示。前端驗證是體驗，安全邊界在後端。
+5. **store 只放跨頁共用的狀態**：什麼都丟進 store，又會變成另一個「整包資料」。
+
+```js
+// ❌ 盯整包：任何欄位變都進來，看不出連動關係
+watch(form, () => { /* 判斷是誰變了… */ }, { deep: true })
+
+// ✅ 盯具體欄位：連動關係一眼看得出來
+watch(() => form.paymentType, () => {
+  form.bankCode = ''
+  form.accountNo = ''
+})
+```
+:::
+
+**相關筆記**：[1-8-1 專案結構：依業務邊界切](./1-8-1.md#1-8-1-2)、[模擬面試 5 Q3 computed 與 watch](#interview-5-3)
+
+### Q15. 包裝 UI 元件庫（例如 Vuetify）要注意什麼？ <Badge type="tip" text="高頻" /> {#interview-5-15}
+
+::: details 標準答案與過程
+**為什麼要包一層**：直接在頁面用 `v-text-field`，驗證規則、錯誤訊息、格式會散在幾百個地方。包一層之後，規範只改一次；元件庫大版本升級的破壞性變更只影響封裝層；頁面的程式只剩業務。
+
+**包多厚**：只封裝「有規範的部分」，其他用 `$attrs`、slot 原樣轉發（見 [1-8-2 元件設計實戰](./1-8-2.md#1-8-2-9)）。包太厚等於自己重寫元件庫，還要追每次升級。
+
+**wrapper 常見的坑**：
+
+1. **自己複製一份狀態**：用 `toRefs`、computed proxy、deepClone 轉來轉去，甚至直接改父層傳進來的陣列。改成單向資料流：props 進、`update:modelValue` 出，props 和 emits 都寫型別。
+2. **屬性套用到錯的元素**：要自己決定 `$attrs` 給誰時，設 `inheritAttrs: false`，再把 `$attrs` 綁到內層元件。
+3. **型別邊界**：元件庫用 `undefined` 表示空值、業務用 `null` 時，差異封在 wrapper 的 adapter 裡，不要漏進業務邏輯。
+4. **物件、陣列的預設值**：`withDefaults` 裡要寫成 factory（`() => []`），不然所有實例共用同一份。
+5. **元件不需要知道宿主做什麼**：按鈕只負責送出事件，宿主綁上去的處理函式做了什麼，元件不用管。
+
+**升級與多語系**：破壞性變更集中在 wrapper 裡改，再用 Demo Page 或元件測試逐個回歸。元件庫自己的字典（例如 Vuetify 的 `$vuetify.*`）要合併官方的各語系版本，不是缺一個 key 補一個；元件庫對 i18n 套件的 peer dependency 也會限制版本。一次只改一個主要變因，不要為了做多語系順便升元件庫的大版本。
+
+```vue
+<script setup lang="ts">
+// 薄封裝：只加團隊規範（密度、清除鈕），其他屬性與 slot 原樣轉發
+defineOptions({ inheritAttrs: false })
+
+const props = withDefaults(
+  defineProps<{ modelValue: string | null; items?: string[] }>(),
+  { items: () => [] }, // 物件、陣列的預設值要用 factory
+)
+const emit = defineEmits<{ 'update:modelValue': [value: string | null] }>()
+</script>
+
+<template>
+  <v-select
+    v-bind="$attrs"
+    density="compact"
+    clearable
+    :items="props.items"
+    :model-value="props.modelValue ?? undefined"
+    @update:model-value="(v) => emit('update:modelValue', v ?? null)"
+  >
+    <template v-for="(_, name) in $slots" #[name]="slotProps">
+      <slot :name="name" v-bind="slotProps ?? {}" />
+    </template>
+  </v-select>
+</template>
+```
+:::
+
+**相關筆記**：[1-8-2 元件設計實戰](./1-8-2.md#1-8-2-9)、[模擬面試 11 Q11 共用元件庫與 Design System](./interview-11.md#interview-11-11)
+
+### Q16. Pinia store 和 composable 怎麼分？多個資料來源要更新同一份狀態怎麼做？ <Badge type="tip" text="基礎" /> {#interview-5-16}
+
+::: details 標準答案與過程
+- **composable**：每次呼叫都是一份新的狀態，適合重用「邏輯」，例如輸入欄位的驗證與格式化。
+- **Pinia store**：全域單例，適合共用「狀態」，有 DevTools 可以追蹤變化。
+- 把 `reactive` 放在模組頂層也是一個簡易的全域單例，差別在少了 store 的慣例、DevTools 與測試工具，要靠規範和 review 補。
+
+**單一寫入入口**：同一份資料有好幾個來源時，例如工作監控頁的「HTTP 初次載入、手動重整、WebSocket 推播」，三條路都呼叫同一個 action，由它統一設定 ready、清錯誤、更新資料；推播來的資料也走同一個 runtime parser。三種來源不會各寫一套更新邏輯，出問題只要查一個地方。
+
+```ts
+export const useJobMonitorStore = defineStore('jobMonitor', () => {
+  const snapshot = ref<JobSnapshot | null>(null)
+  const error = ref<string | null>(null)
+
+  function applyMonitor(raw: unknown) {    // 唯一的寫入入口
+    snapshot.value = parseJobSnapshot(raw) // 同一個 runtime parser
+    error.value = null
+  }
+
+  async function load() {
+    applyMonitor(await api.getMonitor())
+  }
+
+  return { snapshot, error, applyMonitor, load }
+})
+
+// WebSocket 推播也走同一個入口
+socket.onmessage = (e) => store.applyMonitor(JSON.parse(e.data))
+```
+
+伺服器資料放進 store，就得自己管「什麼時候過期」；需要快取、重新驗證時，交給 TanStack Query 這類工具（見 [Q8](#interview-5-8)）。
+:::
+
+**相關筆記**：[1-8-1 Vue 常見坑（storeToRefs）](./1-8-1.md#1-8-1-7)、[模擬面試 4 Q8 在邊界做執行期驗證](./interview-4.md#interview-4-8)
